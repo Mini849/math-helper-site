@@ -1,0 +1,267 @@
+<!doctype html>
+<html lang="sk">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Úloha 5: Determinant 3×3 matice nad GF(2)</title>
+  <style>
+:root {
+  --bg: #f6f1e8;
+  --card: #fffdf9;
+  --ink: #1f1f1f;
+  --muted: #5f564a;
+  --line: #d9ccb8;
+  --accent: #8a4b08;
+  --accent-soft: #f5e6d4;
+  --shadow: 0 18px 40px rgba(54, 39, 20, 0.08);
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: "Iowan Old Style", "Palatino Linotype", "Book Antiqua", serif;
+  background:
+    radial-gradient(circle at top right, rgba(138, 75, 8, 0.12), transparent 28%),
+    linear-gradient(180deg, #faf6ef 0%, var(--bg) 100%);
+  color: var(--ink);
+}
+
+.page {
+  max-width: 1040px;
+  margin: 0 auto;
+  padding: 48px 20px 72px;
+}
+
+.hero {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 28px;
+  padding: 28px 32px;
+  box-shadow: var(--shadow);
+  margin-bottom: 24px;
+}
+
+.eyebrow {
+  color: var(--accent);
+  font-size: 0.95rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin: 0 0 10px;
+}
+
+h1, h2, h3 {
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin: 0 0 14px;
+}
+
+h1 { font-size: clamp(2rem, 3.5vw, 3rem); }
+h2 { font-size: 1.45rem; }
+h3 { font-size: 1.12rem; margin-top: 18px; }
+
+.card h2,
+.index-list a {
+  overflow-wrap: anywhere;
+}
+
+p, li {
+  font-size: 1.05rem;
+  line-height: 1.72;
+}
+
+.lead {
+  color: var(--muted);
+  margin: 0;
+}
+
+.backlink {
+  display: inline-flex;
+  gap: 0.45rem;
+  align-items: center;
+  text-decoration: none;
+  color: var(--accent);
+  font-weight: 700;
+  margin-bottom: 18px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 22px;
+}
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 24px;
+  padding: 24px 26px;
+  box-shadow: var(--shadow);
+}
+
+.card + .card {
+  margin-top: 24px;
+}
+
+.section-tag {
+  display: inline-block;
+  padding: 0.25rem 0.65rem;
+  border-radius: 999px;
+  background: var(--accent-soft);
+  color: var(--accent);
+  font-size: 0.88rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+
+.math-block {
+  overflow-x: auto;
+  padding: 10px 0;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 16px 0;
+  background: rgba(255, 255, 255, 0.7);
+}
+
+.table-scroll {
+  overflow-x: auto;
+  margin: 16px 0;
+}
+
+.table-scroll table {
+  margin: 0;
+  min-width: 520px;
+}
+
+th, td {
+  border: 1px solid var(--line);
+  padding: 10px 12px;
+  vertical-align: top;
+  text-align: left;
+}
+
+th {
+  background: #f5ede1;
+}
+
+.compact td, .compact th {
+  padding: 8px 10px;
+  font-size: 0.98rem;
+}
+
+.index-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 10px;
+}
+
+.index-list a {
+  color: var(--ink);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+}
+
+.index-list a:hover {
+  border-bottom-color: var(--accent);
+}
+
+.note {
+  border-left: 4px solid var(--accent);
+  padding: 14px 16px;
+  background: #fff7ed;
+  border-radius: 0 16px 16px 0;
+}
+
+.small {
+  color: var(--muted);
+  font-size: 0.96rem;
+}
+
+.plot {
+  width: 100%;
+  max-width: 520px;
+  margin: 18px auto 6px;
+  display: block;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  background: #fffdfa;
+}
+
+.source-figure {
+  margin: 18px auto 8px;
+  text-align: center;
+}
+
+.source-figure figcaption {
+  color: var(--muted);
+  font-size: 0.96rem;
+  margin-top: 8px;
+}
+
+.diagram-svg {
+  width: 100%;
+  max-width: 680px;
+  display: block;
+  margin: 0 auto;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  background: #fffdfa;
+}
+
+.hardware-svg {
+  max-width: 840px;
+}
+
+code {
+  font-family: "SFMono-Regular", Menlo, Monaco, Consolas, monospace;
+  font-size: 0.92em;
+  background: #f4ede4;
+  padding: 0.1rem 0.3rem;
+  border-radius: 0.35rem;
+}
+
+@media print {
+  body { background: white; }
+  .page { padding: 0; }
+  .hero, .card { box-shadow: none; }
+}
+</style>
+  <script>
+    window.MathJax = {
+      tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]']] },
+      svg: { fontCache: 'global' }
+    };
+  </script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+</head>
+<body>
+  <main class="page">
+    <a class="backlink" href="../index.html">← Späť na index helperov</a>
+    <section class="hero">
+      <p class="eyebrow">Priklady_pocitane_na_cviceni_DM_2marec.pdf</p>
+      <h1>Úloha 5: Determinant 3×3 matice nad GF(2)</h1>
+      <p class="lead">Samostatné vypracovanie jednej číslovanej úlohy so zhrnutím použitých definícií.</p>
+    </section>
+    <section class="card">
+      <div class="section-tag">Zadanie</div>
+      <p>Vypočítajte determinant matice nad \(GF(2)\)</p><div class="math-block">\[\begin{bmatrix}1 & 0 & 1 \\\\ 1 & 1 & 0 \\\\ 0 & 1 & 1\end{bmatrix}\]</div>
+    </section>
+    <section class="card">
+      <div class="section-tag">Vypracovanie</div>
+      <p>Rozvoj podľa prvého riadku dá</p><div class="math-block">\[\det A = 1\cdot\begin{vmatrix}1&0\\1&1\end{vmatrix} + 0 + 1\cdot\begin{vmatrix}1&1\\0&1\end{vmatrix}\]</div><p>V obyčajných číslach sú menšie determinanty \(1\) a \(1\), takže celkový determinant je \(2\).</p><p>Nad \(GF(2)\) však redukujeme modulo \(2\):</p><div class="math-block">\[2 \equiv 0 \pmod 2\]</div><p>Preto \(\det A = 0\) v \(GF(2)\).</p>
+    </section>
+    <section class="card">
+      <div class="section-tag">Definície</div>
+      <ul><li><strong>Determinant nad \(GF(2)\):</strong> determinant sa po výpočte redukuje modulo \(2\).</li><li><strong>Redukcia modulo \(2\):</strong> párne čísla sú \(0\), nepárne čísla sú \(1\).</li></ul>
+    </section>
+    
+  </main>
+</body>
+</html>

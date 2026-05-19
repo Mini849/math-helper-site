@@ -1,0 +1,255 @@
+<!doctype html>
+<html lang="sk">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ťahák: Vzorce a Všeobecné Vzťahy</title>
+  <style>
+:root {
+  --bg: #f6f1e8;
+  --card: #fffdf9;
+  --ink: #1f1f1f;
+  --muted: #5f564a;
+  --line: #d9ccb8;
+  --accent: #8a4b08;
+  --accent-soft: #f5e6d4;
+  --shadow: 0 18px 40px rgba(54, 39, 20, 0.08);
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: "Iowan Old Style", "Palatino Linotype", "Book Antiqua", serif;
+  background:
+    radial-gradient(circle at top right, rgba(138, 75, 8, 0.12), transparent 28%),
+    linear-gradient(180deg, #faf6ef 0%, var(--bg) 100%);
+  color: var(--ink);
+}
+
+.page {
+  max-width: 1040px;
+  margin: 0 auto;
+  padding: 48px 20px 72px;
+}
+
+.hero {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 28px;
+  padding: 28px 32px;
+  box-shadow: var(--shadow);
+  margin-bottom: 24px;
+}
+
+.eyebrow {
+  color: var(--accent);
+  font-size: 0.95rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin: 0 0 10px;
+}
+
+h1, h2, h3 {
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin: 0 0 14px;
+}
+
+h1 { font-size: clamp(2rem, 3.5vw, 3rem); }
+h2 { font-size: 1.45rem; }
+h3 { font-size: 1.12rem; margin-top: 18px; }
+
+.card h2,
+.index-list a {
+  overflow-wrap: anywhere;
+}
+
+p, li {
+  font-size: 1.05rem;
+  line-height: 1.72;
+}
+
+.lead {
+  color: var(--muted);
+  margin: 0;
+}
+
+.backlink {
+  display: inline-flex;
+  gap: 0.45rem;
+  align-items: center;
+  text-decoration: none;
+  color: var(--accent);
+  font-weight: 700;
+  margin-bottom: 18px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 22px;
+}
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 24px;
+  padding: 24px 26px;
+  box-shadow: var(--shadow);
+}
+
+.card + .card {
+  margin-top: 24px;
+}
+
+.section-tag {
+  display: inline-block;
+  padding: 0.25rem 0.65rem;
+  border-radius: 999px;
+  background: var(--accent-soft);
+  color: var(--accent);
+  font-size: 0.88rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+
+.math-block {
+  overflow-x: auto;
+  padding: 10px 0;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 16px 0;
+  background: rgba(255, 255, 255, 0.7);
+}
+
+.table-scroll {
+  overflow-x: auto;
+  margin: 16px 0;
+}
+
+.table-scroll table {
+  margin: 0;
+  min-width: 520px;
+}
+
+th, td {
+  border: 1px solid var(--line);
+  padding: 10px 12px;
+  vertical-align: top;
+  text-align: left;
+}
+
+th {
+  background: #f5ede1;
+}
+
+.compact td, .compact th {
+  padding: 8px 10px;
+  font-size: 0.98rem;
+}
+
+.index-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 10px;
+}
+
+.index-list a {
+  color: var(--ink);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+}
+
+.index-list a:hover {
+  border-bottom-color: var(--accent);
+}
+
+.note {
+  border-left: 4px solid var(--accent);
+  padding: 14px 16px;
+  background: #fff7ed;
+  border-radius: 0 16px 16px 0;
+}
+
+.small {
+  color: var(--muted);
+  font-size: 0.96rem;
+}
+
+.plot {
+  width: 100%;
+  max-width: 520px;
+  margin: 18px auto 6px;
+  display: block;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  background: #fffdfa;
+}
+
+.source-figure {
+  margin: 18px auto 8px;
+  text-align: center;
+}
+
+.source-figure figcaption {
+  color: var(--muted);
+  font-size: 0.96rem;
+  margin-top: 8px;
+}
+
+.diagram-svg {
+  width: 100%;
+  max-width: 680px;
+  display: block;
+  margin: 0 auto;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  background: #fffdfa;
+}
+
+.hardware-svg {
+  max-width: 840px;
+}
+
+code {
+  font-family: "SFMono-Regular", Menlo, Monaco, Consolas, monospace;
+  font-size: 0.92em;
+  background: #f4ede4;
+  padding: 0.1rem 0.3rem;
+  border-radius: 0.35rem;
+}
+
+@media print {
+  body { background: white; }
+  .page { padding: 0; }
+  .hero, .card { box-shadow: none; }
+}
+</style>
+  <script>
+    window.MathJax = {
+      tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]']] },
+      svg: { fontCache: 'global' }
+    };
+  </script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+</head>
+<body>
+  <main class="page">
+    <a class="backlink" href="index.html">← Späť na index helperov</a>
+    <section class="hero">
+      <p class="eyebrow">Súhrn vzorcov</p>
+      <h1>Ťahák: Vzorce a Všeobecné Vzťahy</h1>
+      <p class="lead">Prehľad všeobecných vzorcov a schém, ktoré sa opakovane objavujú vo všetkých materiáloch: logaritmy, informácia, grupy, matice, lineárna algebra, lineárne kódy, polynómy, cyklické kódy a RS kódy.</p>
+    </section>
+    <section class="card"><div class="section-tag">Logaritmy a informácia</div><p>Základné vzťahy z úloh o logaritmoch, bitoch a ukladaní dát:</p><div class="math-block">\[\log_a(x)=y \iff a^y=x\]</div><div class="math-block">\[\log_a(a^t)=t,\qquad a^{\log_a(x)}=x\]</div><div class="math-block">\[\text{počet binárnych slov dĺžky }n = 2^n\]</div><div class="math-block">\[n_{\min}=\left\lceil \log_2(M)\right\rceil\]</div><div class="math-block">\[\text{počet bitov obrázka} = (\text{počet pixelov})\cdot(\text{počet kanálov})\cdot(\text{bitov na kanál})\]</div><p>Typicky: RGB obrázok má 3 farebné kanály.</p></section><section class="card"><div class="section-tag">Modulo, grupy a konečné polia</div><p>Vzťahy používané pri práci s GF(2), GF(3), GF(5) a grupami:</p><div class="math-block">\[a \equiv b \pmod n \iff n \mid (a-b)\]</div><div class="math-block">\[(a+b)\bmod n,\qquad (ab)\bmod n\]</div><p><strong>GF(p)</strong> = {0,1,…,p−1} s operáciami modulo p, kde p je prvočíslo.</p><p><strong>V GF(2):</strong> 1 + 1 = 0, x + x = 0, −x = x.</p><p><strong>Grupa (G, ∗):</strong> pre všetky a,b z G platí a ∗ b ∈ G, existuje neutrálny prvok e a ku každému prvku existuje inverz a<sup>−1</sup>.</p><p>Pri sčítaní modulo p je neutrálny prvok 0; pri násobení nenulových prvkov je neutrálny prvok 1.</p></section><section class="card"><div class="section-tag">Polynómy a konštrukcia GF(2^m)</div><p>V rozšírených poliach počítame s polynómami, ktorých koeficienty sú v \(GF(2)\). Sčítanie znamená XOR koeficientov.</p><div class="math-block">\[GF(2^m)=GF(2)[x]/p(x)\]</div><div class="math-block">\[\alpha^m \equiv \text{zvyšok z }x^m\text{ po delení }p(x)\]</div><p>Pre \(GF(4)\) s \(p(x)=x^2+x+1\) platí \(\alpha^2=\alpha+1\). Pre \(GF(8)\) s \(p(x)=x^3+x+1\) platí \(\alpha^3=\alpha+1\).</p><p>Prakticky: vyššie mocniny \(\alpha\) znižujeme pomocou rovnosti určenej polynómom \(p(x)\).</p></section><section class="card"><div class="section-tag">Matice, determinanty a lineárna algebra</div><p>Všeobecné vzorce k maticiam, determinantům a lineárnym kombináciám:</p><div class="math-block">\[(AB)_{ij}=\sum_{k=1}^{n} a_{ik}b_{kj}\]</div><div class="math-block">\[\det\begin{bmatrix}a&b\\ c&d\end{bmatrix}=ad-bc\]</div><div class="math-block">\[\det(A)\neq 0 \iff A\text{ je invertibilná}\]</div><div class="math-block">\[v=\alpha_1x_1+\alpha_2x_2+\cdots+\alpha_mx_m\]</div><div class="math-block">\[A\mathbf{x}=\mathbf{b}\]</div><p>Nad \(GF(2)\) sa po každom sčítaní alebo násobení výsledok redukuje modulo 2.</p></section><section class="card"><div class="section-tag">Hammingova váha, vzdialenosť a kódy</div><p>Jadro príkladov z lineárnych blokových kódov:</p><div class="math-block">\[w(c)=\text{počet nenulových súradníc vektora }c\]</div><div class="math-block">\[d(x,y)=\text{počet pozícií, kde }x_i\neq y_i\]</div><div class="math-block">\[\text{nad }GF(2):\ d(x,y)=w(x+y)\]</div><div class="math-block">\[|C|=q^k\]</div><div class="math-block">\[|GF(q)^n|=q^n\]</div><div class="math-block">\[R=\frac{k}{n}\]</div><div class="math-block">\[t=\left\lfloor\frac{d-1}{2}\right\rfloor\]</div><div class="math-block">\[d_{\min}=\min\{w(c)\,;\,c\in C,\ c\neq 0\}\quad\text{(pre lineárny kód)}\]</div><p>Pri binárnych kódoch je \(q=2\).</p></section><section class="card"><div class="section-tag">Generujúca a kontrolná matica</div><p>Všeobecné vzťahy pre systematické lineárne kódy:</p><div class="math-block">\[c=uG\]</div><div class="math-block">\[G=[I_k\mid P]\]</div><div class="math-block">\[H=[-P^T\mid I_{n-k}]\]</div><div class="math-block">\[\text{nad }GF(2):\ H=[P^T\mid I_{n-k}]\]</div><div class="math-block">\[cH^T=0\]</div><div class="math-block">\[GH^T=0\]</div><p>Riadky matice \(G\) generujú celý kód; matica \(H\) testuje, či vektor patrí do kódu.</p></section><section class="card"><div class="section-tag">Cyklické kódy a syndrómy</div><p>Vzorce z úloh s Hammingovým kódom v polynomiálnom tvare:</p><div class="math-block">\[c(x)=m(x)g(x)\quad\text{(nonsystematické kódovanie)}\]</div><div class="math-block">\[c(x)=x^{n-k}m(x)+r(x),\qquad r(x)=\operatorname{rem}(x^{n-k}m(x),g(x))\]</div><div class="math-block">\[s(x)=\operatorname{rem}(r(x),g(x))\]</div><div class="math-block">\[r(x)=c(x)+e(x)\]</div><div class="math-block">\[\text{oprava: }c(x)=r(x)+e(x)\]</div><p>Syndróm je zvyšok po delení prijatého polynómu generujúcim polynómom.</p></section><section class="card"><div class="section-tag">Reed-Solomon kódy</div><p>Pre výpočty v týchto príkladoch stačí jednoduchý recept: ak má RS kód opraviť \(t\) chýb, generujúci polynóm má \(2t\) po sebe idúcich koreňov.</p><div class="math-block">\[g(x)=(x-\alpha^b)(x-\alpha^{b+1})\cdots(x-\alpha^{b+2t-1})\]</div><div class="math-block">\[d\ge 2t+1,\qquad n=q-1,\qquad k=n-2t\]</div><p>Nad poliami charakteristiky 2 je mínus to isté ako plus, teda \(x-\alpha^i=x+\alpha^i\).</p><p>Štandardný plný RS kód nad \(GF(q)\) má maximálnu dĺžku \(q-1\).</p></section>
+  </main>
+</body>
+</html>

@@ -1,0 +1,250 @@
+<!doctype html>
+<html lang="sk">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Helpers k diskrétnej matematike</title>
+  <style>
+:root {
+  --bg: #f6f1e8;
+  --card: #fffdf9;
+  --ink: #1f1f1f;
+  --muted: #5f564a;
+  --line: #d9ccb8;
+  --accent: #8a4b08;
+  --accent-soft: #f5e6d4;
+  --shadow: 0 18px 40px rgba(54, 39, 20, 0.08);
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: "Iowan Old Style", "Palatino Linotype", "Book Antiqua", serif;
+  background:
+    radial-gradient(circle at top right, rgba(138, 75, 8, 0.12), transparent 28%),
+    linear-gradient(180deg, #faf6ef 0%, var(--bg) 100%);
+  color: var(--ink);
+}
+
+.page {
+  max-width: 1040px;
+  margin: 0 auto;
+  padding: 48px 20px 72px;
+}
+
+.hero {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 28px;
+  padding: 28px 32px;
+  box-shadow: var(--shadow);
+  margin-bottom: 24px;
+}
+
+.eyebrow {
+  color: var(--accent);
+  font-size: 0.95rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin: 0 0 10px;
+}
+
+h1, h2, h3 {
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin: 0 0 14px;
+}
+
+h1 { font-size: clamp(2rem, 3.5vw, 3rem); }
+h2 { font-size: 1.45rem; }
+h3 { font-size: 1.12rem; margin-top: 18px; }
+
+.card h2,
+.index-list a {
+  overflow-wrap: anywhere;
+}
+
+p, li {
+  font-size: 1.05rem;
+  line-height: 1.72;
+}
+
+.lead {
+  color: var(--muted);
+  margin: 0;
+}
+
+.backlink {
+  display: inline-flex;
+  gap: 0.45rem;
+  align-items: center;
+  text-decoration: none;
+  color: var(--accent);
+  font-weight: 700;
+  margin-bottom: 18px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 22px;
+}
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 24px;
+  padding: 24px 26px;
+  box-shadow: var(--shadow);
+}
+
+.card + .card {
+  margin-top: 24px;
+}
+
+.section-tag {
+  display: inline-block;
+  padding: 0.25rem 0.65rem;
+  border-radius: 999px;
+  background: var(--accent-soft);
+  color: var(--accent);
+  font-size: 0.88rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+
+.math-block {
+  overflow-x: auto;
+  padding: 10px 0;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 16px 0;
+  background: rgba(255, 255, 255, 0.7);
+}
+
+.table-scroll {
+  overflow-x: auto;
+  margin: 16px 0;
+}
+
+.table-scroll table {
+  margin: 0;
+  min-width: 520px;
+}
+
+th, td {
+  border: 1px solid var(--line);
+  padding: 10px 12px;
+  vertical-align: top;
+  text-align: left;
+}
+
+th {
+  background: #f5ede1;
+}
+
+.compact td, .compact th {
+  padding: 8px 10px;
+  font-size: 0.98rem;
+}
+
+.index-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 10px;
+}
+
+.index-list a {
+  color: var(--ink);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+}
+
+.index-list a:hover {
+  border-bottom-color: var(--accent);
+}
+
+.note {
+  border-left: 4px solid var(--accent);
+  padding: 14px 16px;
+  background: #fff7ed;
+  border-radius: 0 16px 16px 0;
+}
+
+.small {
+  color: var(--muted);
+  font-size: 0.96rem;
+}
+
+.plot {
+  width: 100%;
+  max-width: 520px;
+  margin: 18px auto 6px;
+  display: block;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  background: #fffdfa;
+}
+
+.source-figure {
+  margin: 18px auto 8px;
+  text-align: center;
+}
+
+.source-figure figcaption {
+  color: var(--muted);
+  font-size: 0.96rem;
+  margin-top: 8px;
+}
+
+.diagram-svg {
+  width: 100%;
+  max-width: 680px;
+  display: block;
+  margin: 0 auto;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  background: #fffdfa;
+}
+
+.hardware-svg {
+  max-width: 840px;
+}
+
+code {
+  font-family: "SFMono-Regular", Menlo, Monaco, Consolas, monospace;
+  font-size: 0.92em;
+  background: #f4ede4;
+  padding: 0.1rem 0.3rem;
+  border-radius: 0.35rem;
+}
+
+@media print {
+  body { background: white; }
+  .page { padding: 0; }
+  .hero, .card { box-shadow: none; }
+}
+</style>
+</head>
+<body>
+  <main class="page">
+    <section class="hero">
+      <p class="eyebrow">Finálne materiály</p>
+      <h1>Helpers k príkladom z diskrétnej matematiky</h1>
+      <p class="lead">V tomto priečinku je 50 samostatných HTML vypracovaní, vždy jedno pre každú číslovanú úlohu zo zdrojových PDF.</p>
+    </section>
+    <div class="grid">
+      <section class="card"><h2>Ťaháky</h2><p class="small">Súhrn všeobecných vzorcov a definícií zo všetkých tém v materiáloch.</p><ul class="index-list"><li><a href="tahak_vzorce.html">Ťahák: vzorce a všeobecné vzťahy</a></li><li><a href="tahak_definicie.html">Ťahák: definície a pojmy</a></li></ul></section>
+      <section class="card"><h2>Typicke_priklady_pocitane_na_cviceni_23.pdf</h2><p class="small">Počet helperov: 7</p><ul class="index-list"><li><a href="Typicke_priklady_pocitane_na_cviceni_23/priklad_01.html">Úloha 1: Úloha 1: GF(2) a grupa modulo 2</a></li><li><a href="Typicke_priklady_pocitane_na_cviceni_23/priklad_02.html">Úloha 2: Úloha 2: GF(3) a grupa modulo 3</a></li><li><a href="Typicke_priklady_pocitane_na_cviceni_23/priklad_03.html">Úloha 3: Úloha 3: Ako násobiť matice s celými číslami</a></li><li><a href="Typicke_priklady_pocitane_na_cviceni_23/priklad_04.html">Úloha 4: Úloha 4: Násobenie celočíselných matíc</a></li><li><a href="Typicke_priklady_pocitane_na_cviceni_23/priklad_05.html">Úloha 5: Úloha 5: Ako násobiť matice nad GF(2)</a></li><li><a href="Typicke_priklady_pocitane_na_cviceni_23/priklad_06.html">Úloha 6: Úloha 6: Násobenie matíc nad GF(2)</a></li><li><a href="Typicke_priklady_pocitane_na_cviceni_23/priklad_07.html">Úloha 7: Úloha 7: Tvoria všetky matice 2×2 nad GF(2) grupu?</a></li></ul></section><section class="card"><h2>Typicke_priklady_pocitane_na_cviceni_9_16.pdf</h2><p class="small">Počet helperov: 6</p><ul class="index-list"><li><a href="Typicke_priklady_pocitane_na_cviceni_9_16/priklad_01.html">Úloha 1: Úloha 1: Náčrt funkcie y = log₂(x)</a></li><li><a href="Typicke_priklady_pocitane_na_cviceni_9_16/priklad_02.html">Úloha 2: Úloha 2: Hodnoty logaritmov</a></li><li><a href="Typicke_priklady_pocitane_na_cviceni_9_16/priklad_03.html">Úloha 3: Úloha 3: Počet bitov pre 1024 správ</a></li><li><a href="Typicke_priklady_pocitane_na_cviceni_9_16/priklad_04.html">Úloha 4: Úloha 4: Veľkosť nekomprimovanej fotografie</a></li><li><a href="Typicke_priklady_pocitane_na_cviceni_9_16/priklad_05.html">Úloha 5: Úloha 5: Grupa transformácií trojuholníka</a></li><li><a href="Typicke_priklady_pocitane_na_cviceni_9_16/priklad_06.html">Úloha 6: Úloha 6: Sústava rovníc nad GF(2)</a></li></ul></section><section class="card"><h2>Priklady_pocitane_na_cviceni_DM_2marec.pdf</h2><p class="small">Počet helperov: 5</p><ul class="index-list"><li><a href="Priklady_pocitane_na_cviceni_DM_2marec/priklad_01.html">Úloha 1: Úloha 1: Konštrukcia GF(5)</a></li><li><a href="Priklady_pocitane_na_cviceni_DM_2marec/priklad_02.html">Úloha 2: Úloha 2: Je GF(5) grupa vzhľadom na +?</a></li><li><a href="Priklady_pocitane_na_cviceni_DM_2marec/priklad_03.html">Úloha 3: Úloha 3: Je GF(5) grupa vzhľadom na ×?</a></li><li><a href="Priklady_pocitane_na_cviceni_DM_2marec/priklad_04.html">Úloha 4: Úloha 4: Determinant 2×2 matice nad celými číslami</a></li><li><a href="Priklady_pocitane_na_cviceni_DM_2marec/priklad_05.html">Úloha 5: Úloha 5: Determinant 3×3 matice nad GF(2)</a></li></ul></section><section class="card"><h2>Priklady_z_cviceni11a16_3.pdf</h2><p class="small">Počet helperov: 7</p><ul class="index-list"><li><a href="Priklady_z_cviceni11a16_3/priklad_01.html">Úloha 1: Úloha 1: Prečo je Hammingova vzdialenosť rovná váhe súčtu</a></li><li><a href="Priklady_z_cviceni11a16_3/priklad_02.html">Úloha 2: Úloha 2: Vyjadrenie vektora ako lineárnej kombinácie</a></li><li><a href="Priklady_z_cviceni11a16_3/priklad_03.html">Úloha 3: Úloha 3: Parametre lineárneho blokového kódu [15,11,3]</a></li><li><a href="Priklady_z_cviceni11a16_3/priklad_04.html">Úloha 4: Úloha 4: Generujúca a kontrolná matica kódu [8,7,2]</a></li><li><a href="Priklady_z_cviceni11a16_3/priklad_05.html">Úloha 5: Úloha 5: Kód násobok</a></li><li><a href="Priklady_z_cviceni11a16_3/priklad_06.html">Úloha 6: Úloha 6: Uzavretosť lineárneho blokového kódu na sčítanie</a></li><li><a href="Priklady_z_cviceni11a16_3/priklad_07.html">Úloha 7: Úloha 7: Ako využiť uzavretosť pri výpočte minimálnej vzdialenosti</a></li></ul></section><section class="card"><h2>cvicenie_DM_23_3_2026.pdf</h2><p class="small">Počet helperov: 4</p><ul class="index-list"><li><a href="cvicenie_DM_23_3_2026/priklad_01.html">Úloha 1: Úloha 1: Hammingova vzdialenosť a váha konkrétnych vektorov</a></li><li><a href="cvicenie_DM_23_3_2026/priklad_02.html">Úloha 2: Úloha 2: Lineárna kombinácia dvoch reálnych vektorov</a></li><li><a href="cvicenie_DM_23_3_2026/priklad_03.html">Úloha 3: Úloha 3: Hammingov kód [7,4,3] z generujúcej matice</a></li><li><a href="cvicenie_DM_23_3_2026/priklad_04.html">Úloha 4: Úloha 4: SPC kód [8,7,2]</a></li></ul></section><section class="card"><h2>cvicenie_DM_30_3_2026.pdf</h2><p class="small">Počet helperov: 2</p><ul class="index-list"><li><a href="cvicenie_DM_30_3_2026/priklad_01.html">Úloha 1: Úloha 1: Úprava generujúcej matice do systematického tvaru</a></li><li><a href="cvicenie_DM_30_3_2026/priklad_02.html">Úloha 2: Úloha 2: Kódové slová a váhové spektrum Hammingovho kódu</a></li></ul></section><section class="card"><h2>Cvicenie_DM_13_4_2026.pdf</h2><p class="small">Počet helperov: 2</p><ul class="index-list"><li><a href="Cvicenie_DM_13_4_2026/priklad_01.html">Úloha 1: Úloha 1: Dekódovanie cyklického kódu pomocou syndrómov</a></li><li><a href="Cvicenie_DM_13_4_2026/priklad_02.html">Úloha 2: Úloha 2: Nonsystematické a systematické kódovanie polynómami</a></li></ul></section><section class="card"><h2>2. 5. 2026 - 1.pdf</h2><p class="small">Počet helperov: 3</p><ul class="index-list"><li><a href="material_2026_05_02_1/priklad_01.html">Úloha 1: Úloha 1: Lineárny blokový kód zo schémy</a></li><li><a href="material_2026_05_02_1/priklad_02.html">Úloha 2: Úloha 2: Hammingov [15,11,3] kód zo syndrómov</a></li><li><a href="material_2026_05_02_1/priklad_03.html">Úloha 3: Úloha 3: Vlastnosti grupy</a></li></ul></section><section class="card"><h2>2. 5. 2026 - 2.pdf</h2><p class="small">Počet helperov: 2</p><ul class="index-list"><li><a href="material_2026_05_02_2/priklad_01.html">Úloha 1: Úloha 1: Systematické kódovanie polynómom</a></li><li><a href="material_2026_05_02_2/priklad_02.html">Úloha 2: Úloha 2: Syndrómové dekódovanie polynómom</a></li></ul></section><section class="card"><h2>5. 5. 2026 - 3.pdf</h2><p class="small">Počet helperov: 3</p><ul class="index-list"><li><a href="material_2026_05_05_3/priklad_01.html">Úloha 1: Úloha 1: GF(8) a delenie mocnín</a></li><li><a href="material_2026_05_05_3/priklad_02.html">Úloha 2: Úloha 2: Lineárny blokový kód a systematický tvar</a></li><li><a href="material_2026_05_05_3/priklad_03.html">Úloha 3: Úloha 3: Reed-Solomonov kód nad GF(8)</a></li></ul></section><section class="card"><h2>12. 5. 2026 - fotky</h2><p class="small">Počet helperov: 3</p><ul class="index-list"><li><a href="material_2026_05_12_photos/priklad_01.html">Úloha 1: Úloha 1: GF(4), ireducibilita a primitívnosť</a></li><li><a href="material_2026_05_12_photos/priklad_02.html">Úloha 2: Úloha 2: Kód s opakovaním dĺžky 5</a></li><li><a href="material_2026_05_12_photos/priklad_03.html">Úloha 3: Úloha 3: Reed-Solomonov kód nad GF(256)</a></li></ul></section><section class="card"><h2>ai priklady</h2><p class="small">Počet helperov: 6</p><ul class="index-list"><li><a href="ai_priklady/priklad_01.html">Úloha 1: Úloha 1: Ako navrhnúť hardvér z polynómu</a></li><li><a href="ai_priklady/priklad_02.html">Úloha 2: Úloha 2: Delenie polynómov nad GF(2)</a></li><li><a href="ai_priklady/priklad_03.html">Úloha 3: Úloha 3: Mini test na precvičenie</a></li><li><a href="ai_priklady/priklad_04.html">Úloha 4: Úloha 4: Hardvér, zvyšok a oprava chyby</a></li><li><a href="ai_priklady/priklad_05.html">Úloha 5: Úloha 5: GF(8) bez paniky</a></li><li><a href="ai_priklady/priklad_06.html">Úloha 6: Úloha 6: RS parametre nad GF(32)</a></li></ul></section>
+    </div>
+  </main>
+</body>
+</html>

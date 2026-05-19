@@ -1,0 +1,324 @@
+<!doctype html>
+<html lang="sk">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Úloha 4: Hardvér, zvyšok a oprava chyby</title>
+  <style>
+:root {
+  --bg: #f6f1e8;
+  --card: #fffdf9;
+  --ink: #1f1f1f;
+  --muted: #5f564a;
+  --line: #d9ccb8;
+  --accent: #8a4b08;
+  --accent-soft: #f5e6d4;
+  --shadow: 0 18px 40px rgba(54, 39, 20, 0.08);
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: "Iowan Old Style", "Palatino Linotype", "Book Antiqua", serif;
+  background:
+    radial-gradient(circle at top right, rgba(138, 75, 8, 0.12), transparent 28%),
+    linear-gradient(180deg, #faf6ef 0%, var(--bg) 100%);
+  color: var(--ink);
+}
+
+.page {
+  max-width: 1040px;
+  margin: 0 auto;
+  padding: 48px 20px 72px;
+}
+
+.hero {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 28px;
+  padding: 28px 32px;
+  box-shadow: var(--shadow);
+  margin-bottom: 24px;
+}
+
+.eyebrow {
+  color: var(--accent);
+  font-size: 0.95rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin: 0 0 10px;
+}
+
+h1, h2, h3 {
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin: 0 0 14px;
+}
+
+h1 { font-size: clamp(2rem, 3.5vw, 3rem); }
+h2 { font-size: 1.45rem; }
+h3 { font-size: 1.12rem; margin-top: 18px; }
+
+.card h2,
+.index-list a {
+  overflow-wrap: anywhere;
+}
+
+p, li {
+  font-size: 1.05rem;
+  line-height: 1.72;
+}
+
+.lead {
+  color: var(--muted);
+  margin: 0;
+}
+
+.backlink {
+  display: inline-flex;
+  gap: 0.45rem;
+  align-items: center;
+  text-decoration: none;
+  color: var(--accent);
+  font-weight: 700;
+  margin-bottom: 18px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 22px;
+}
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 24px;
+  padding: 24px 26px;
+  box-shadow: var(--shadow);
+}
+
+.card + .card {
+  margin-top: 24px;
+}
+
+.section-tag {
+  display: inline-block;
+  padding: 0.25rem 0.65rem;
+  border-radius: 999px;
+  background: var(--accent-soft);
+  color: var(--accent);
+  font-size: 0.88rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+
+.math-block {
+  overflow-x: auto;
+  padding: 10px 0;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 16px 0;
+  background: rgba(255, 255, 255, 0.7);
+}
+
+.table-scroll {
+  overflow-x: auto;
+  margin: 16px 0;
+}
+
+.table-scroll table {
+  margin: 0;
+  min-width: 520px;
+}
+
+th, td {
+  border: 1px solid var(--line);
+  padding: 10px 12px;
+  vertical-align: top;
+  text-align: left;
+}
+
+th {
+  background: #f5ede1;
+}
+
+.compact td, .compact th {
+  padding: 8px 10px;
+  font-size: 0.98rem;
+}
+
+.index-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 10px;
+}
+
+.index-list a {
+  color: var(--ink);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+}
+
+.index-list a:hover {
+  border-bottom-color: var(--accent);
+}
+
+.note {
+  border-left: 4px solid var(--accent);
+  padding: 14px 16px;
+  background: #fff7ed;
+  border-radius: 0 16px 16px 0;
+}
+
+.small {
+  color: var(--muted);
+  font-size: 0.96rem;
+}
+
+.plot {
+  width: 100%;
+  max-width: 520px;
+  margin: 18px auto 6px;
+  display: block;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  background: #fffdfa;
+}
+
+.source-figure {
+  margin: 18px auto 8px;
+  text-align: center;
+}
+
+.source-figure figcaption {
+  color: var(--muted);
+  font-size: 0.96rem;
+  margin-top: 8px;
+}
+
+.diagram-svg {
+  width: 100%;
+  max-width: 680px;
+  display: block;
+  margin: 0 auto;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  background: #fffdfa;
+}
+
+.hardware-svg {
+  max-width: 840px;
+}
+
+code {
+  font-family: "SFMono-Regular", Menlo, Monaco, Consolas, monospace;
+  font-size: 0.92em;
+  background: #f4ede4;
+  padding: 0.1rem 0.3rem;
+  border-radius: 0.35rem;
+}
+
+@media print {
+  body { background: white; }
+  .page { padding: 0; }
+  .hero, .card { box-shadow: none; }
+}
+</style>
+  <script>
+    window.MathJax = {
+      tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]']] },
+      svg: { fontCache: 'global' }
+    };
+  </script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+</head>
+<body>
+  <main class="page">
+    <a class="backlink" href="../index.html">← Späť na index helperov</a>
+    <section class="hero">
+      <p class="eyebrow">ai priklady</p>
+      <h1>Úloha 4: Hardvér, zvyšok a oprava chyby</h1>
+      <p class="lead">Samostatné vypracovanie jednej číslovanej úlohy so zhrnutím použitých definícií.</p>
+    </section>
+    <section class="card">
+      <div class="section-tag">Zadanie</div>
+      <p>Navrhnite sériový delič pre \(g(x)=x^4+x^3+1\). Potom cez tento register spracujte prijaté slovo <code>111001</code>, teda \(v(x)=x^5+x^4+x^3+1\). Určte syndróm a opravte jednobitovú chybu.</p>
+    </section>
+    <section class="card">
+      <div class="section-tag">Vypracovanie</div>
+      <p>Najprv pozeráme iba na generujúci polynóm:</p><div class="math-block">\[g(x)=x^4+1x^3+0x^2+0x+1\]</div><p>Stupeň je \(4\), preto budú štyri registre. Spätná väzba ide zo starého \(R_3\). Nenulové nižšie členy sú \(1\) a \(x^3\), preto XOR brány kreslíme pred \(R_0\) a pred \(R_3\).</p><figure class="source-figure">
+<svg class="diagram-svg hardware-svg" viewBox="0 0 960 420" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Sériový delič polynómov pre g(x)=x^4+x^3+1">
+  <defs>
+    <marker id="arrow-hw431" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#1f1f1f"/>
+    </marker>
+  </defs>
+  <rect x="0" y="0" width="960" height="420" fill="#fffdfa"/>
+  <style>
+    .hw-wire { fill: none; stroke: #1f1f1f; stroke-width: 3; marker-end: url(#arrow-hw431); }
+    .hw-branch { fill: none; stroke: #8a4b08; stroke-width: 3; marker-end: url(#arrow-hw431); }
+    .hw-box { fill: #fff; stroke: #1f1f1f; stroke-width: 3; rx: 6; }
+    .hw-xor { fill: #fff7ed; stroke: #8a4b08; stroke-width: 3; }
+    .hw-label { font: 20px serif; fill: #1f1f1f; dominant-baseline: middle; text-anchor: middle; }
+    .hw-small { font: 16px serif; fill: #5f564a; dominant-baseline: middle; text-anchor: middle; }
+    .hw-tap { font: 16px serif; fill: #8a4b08; dominant-baseline: middle; text-anchor: middle; }
+    .hw-callout { fill: #fffdfa; stroke: #d9ccb8; stroke-width: 1.5; rx: 6; }
+  </style>
+  <text class="hw-label" x="480" y="34">Hardvér pre g(x) = x^4 + x^3 + 1</text>
+  <text class="hw-small" x="480" y="60">vedúci člen x^4 -> 4 registre; tapy sú pri 1 a x^3</text>
+
+  <path class="hw-wire" d="M46 160 L96 160"/>
+  <text class="hw-small" x="57" y="136">bit b</text>
+  <circle class="hw-xor" cx="116" cy="160" r="20"/><text class="hw-label" x="116" y="161">+</text>
+  <path class="hw-wire" d="M136 160 L178 160"/>
+  <rect class="hw-box" x="180" y="123" width="74" height="74"/><text class="hw-label" x="217" y="161">R0</text>
+
+  <path class="hw-wire" d="M254 160 L338 160"/>
+  <rect class="hw-box" x="340" y="123" width="74" height="74"/><text class="hw-label" x="377" y="161">R1</text>
+
+  <path class="hw-wire" d="M414 160 L498 160"/>
+  <rect class="hw-box" x="500" y="123" width="74" height="74"/><text class="hw-label" x="537" y="161">R2</text>
+
+  <path class="hw-wire" d="M574 160 L638 160"/>
+  <circle class="hw-xor" cx="658" cy="160" r="20"/><text class="hw-label" x="658" y="161">+</text>
+  <path class="hw-wire" d="M678 160 L718 160"/>
+  <rect class="hw-box" x="720" y="123" width="74" height="74"/><text class="hw-label" x="757" y="161">R3</text>
+  <path class="hw-wire" d="M794 160 L852 160"/>
+  <text class="hw-small" x="872" y="136">výstup</text>
+
+  <path class="hw-branch" d="M820 160 L884 160 L884 320 L116 320 L116 182"/>
+  <path class="hw-branch" d="M658 320 L658 182"/>
+
+  <rect class="hw-callout" x="78" y="334" width="116" height="26"/>
+  <text class="hw-tap" x="136" y="348">tap 1 = x^0</text>
+  <rect class="hw-callout" x="604" y="334" width="116" height="26"/>
+  <text class="hw-tap" x="662" y="348">tap x^3</text>
+  <rect class="hw-callout" x="770" y="274" width="118" height="28"/>
+  <text class="hw-tap" x="829" y="289">fb = starý R3</text>
+
+  <text class="hw-small" x="217" y="228">R0'=b+fb</text>
+  <text class="hw-small" x="377" y="228">R1'=R0</text>
+  <text class="hw-small" x="537" y="228">R2'=R1</text>
+  <text class="hw-small" x="757" y="228">R3'=R2+fb</text>
+  <rect class="hw-callout" x="286" y="262" width="330" height="28"/>
+  <text class="hw-small" x="451" y="277">pri x a x^2 nie je XOR, lebo koeficient je 0</text>
+</svg>
+<figcaption>Toto je rovnaký princíp ako predtým, ale tap pri x^3 je až pred posledným registrom.</figcaption></figure><p>Rovnice jedného taktu sú:</p><div class="math-block">\[\begin{aligned}R_0'&=b+R_3,\\ R_1'&=R_0,\\ R_2'&=R_1,\\ R_3'&=R_2+R_3.\end{aligned}\]</div><p>Teraz čítame bity <code>111001</code> zľava doprava. Posledný stav registra je zvyšok po delení, teda syndróm.</p><div class="table-scroll"><table class="compact"><thead><tr><th>Krok</th><th>bit</th><th>stav pred \(R_3R_2R_1R_0\)</th><th>fb</th><th>výpočet nového stavu</th><th>stav po \(R_3R_2R_1R_0\)</th></tr></thead><tbody><tr><td>1</td><td>1</td><td>0000</td><td>0</td><td>\(R_0'=1+0=1\)<br>\(R_1'=0\)<br>\(R_2'=0\)<br>\(R_3'=0+0=0\)</td><td>0001</td></tr><tr><td>2</td><td>1</td><td>0001</td><td>0</td><td>\(R_0'=1+0=1\)<br>\(R_1'=1\)<br>\(R_2'=0\)<br>\(R_3'=0+0=0\)</td><td>0011</td></tr><tr><td>3</td><td>1</td><td>0011</td><td>0</td><td>\(R_0'=1+0=1\)<br>\(R_1'=1\)<br>\(R_2'=1\)<br>\(R_3'=0+0=0\)</td><td>0111</td></tr><tr><td>4</td><td>0</td><td>0111</td><td>0</td><td>\(R_0'=0+0=0\)<br>\(R_1'=1\)<br>\(R_2'=1\)<br>\(R_3'=1+0=1\)</td><td>1110</td></tr><tr><td>5</td><td>0</td><td>1110</td><td>1</td><td>\(R_0'=0+1=1\)<br>\(R_1'=0\)<br>\(R_2'=1\)<br>\(R_3'=1+1=0\)</td><td>0101</td></tr><tr><td>6</td><td>1</td><td>0101</td><td>0</td><td>\(R_0'=1+0=1\)<br>\(R_1'=1\)<br>\(R_2'=0\)<br>\(R_3'=1+0=1\)</td><td>1011</td></tr></tbody></table></div><p>Výsledný stav je <code>1011</code>, čiže</p><div class="math-block">\[s(x)=x^3 + x + 1\]</div><p>Rovnaký výsledok dostaneme klasickým delením:</p><div class="math-block">\[\operatorname{rem}(x^5 + x^4 + x^3 + 1, x^4 + x^3 + 1)=x^3 + x + 1\]</div><p>Na opravu porovnáme syndróm so zvyškami jednobitových chýb. Stačí nám okolie, kde sa zhoda nájde:</p><div class="table-scroll"><table class="compact"><thead><tr><th>Chyba \(e(x)\)</th><th>Zvyšok \(e(x)\bmod g(x)\)</th></tr></thead><tbody><tr><td>\(x^4\)</td><td>\(x^3 + 1\)</td></tr><tr><td>\(x^5\)</td><td>\(x^3 + x + 1\)</td></tr><tr><td>\(x^6\)</td><td>\(x^3 + x^2 + x + 1\)</td></tr><tr><td>\(x^7\)</td><td>\(x^2 + x + 1\)</td></tr></tbody></table></div><p>Syndróm \(x^3+x+1\) sedí na chybu \(x^5\). Nad \(GF(2)\) opravujeme pripočítaním tej istej chyby:</p><div class="math-block">\[c(x)=v(x)+x^5=x^4 + x^3 + 1\]</div>
+    </section>
+    <section class="card">
+      <div class="section-tag">Definície</div>
+      <ul><li><strong>Registerový zvyšok:</strong> po načítaní všetkých bitov ostane v registri zvyšok po delení generujúcim polynómom.</li><li><strong>Syndróm v cyklickom kóde:</strong> práve tento zvyšok po delení prijatého polynómu.</li><li><strong>Oprava jednobitovej chyby:</strong> nájdeme chybový polynóm s rovnakým syndrómom a pripočítame ho k prijatému slovu.</li></ul>
+    </section>
+    
+  </main>
+</body>
+</html>

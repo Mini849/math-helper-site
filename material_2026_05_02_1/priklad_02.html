@@ -1,0 +1,267 @@
+<!doctype html>
+<html lang="sk">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Úloha 2: Hammingov [15,11,3] kód zo syndrómov</title>
+  <style>
+:root {
+  --bg: #f6f1e8;
+  --card: #fffdf9;
+  --ink: #1f1f1f;
+  --muted: #5f564a;
+  --line: #d9ccb8;
+  --accent: #8a4b08;
+  --accent-soft: #f5e6d4;
+  --shadow: 0 18px 40px rgba(54, 39, 20, 0.08);
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: "Iowan Old Style", "Palatino Linotype", "Book Antiqua", serif;
+  background:
+    radial-gradient(circle at top right, rgba(138, 75, 8, 0.12), transparent 28%),
+    linear-gradient(180deg, #faf6ef 0%, var(--bg) 100%);
+  color: var(--ink);
+}
+
+.page {
+  max-width: 1040px;
+  margin: 0 auto;
+  padding: 48px 20px 72px;
+}
+
+.hero {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 28px;
+  padding: 28px 32px;
+  box-shadow: var(--shadow);
+  margin-bottom: 24px;
+}
+
+.eyebrow {
+  color: var(--accent);
+  font-size: 0.95rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin: 0 0 10px;
+}
+
+h1, h2, h3 {
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin: 0 0 14px;
+}
+
+h1 { font-size: clamp(2rem, 3.5vw, 3rem); }
+h2 { font-size: 1.45rem; }
+h3 { font-size: 1.12rem; margin-top: 18px; }
+
+.card h2,
+.index-list a {
+  overflow-wrap: anywhere;
+}
+
+p, li {
+  font-size: 1.05rem;
+  line-height: 1.72;
+}
+
+.lead {
+  color: var(--muted);
+  margin: 0;
+}
+
+.backlink {
+  display: inline-flex;
+  gap: 0.45rem;
+  align-items: center;
+  text-decoration: none;
+  color: var(--accent);
+  font-weight: 700;
+  margin-bottom: 18px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 22px;
+}
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 24px;
+  padding: 24px 26px;
+  box-shadow: var(--shadow);
+}
+
+.card + .card {
+  margin-top: 24px;
+}
+
+.section-tag {
+  display: inline-block;
+  padding: 0.25rem 0.65rem;
+  border-radius: 999px;
+  background: var(--accent-soft);
+  color: var(--accent);
+  font-size: 0.88rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+
+.math-block {
+  overflow-x: auto;
+  padding: 10px 0;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 16px 0;
+  background: rgba(255, 255, 255, 0.7);
+}
+
+.table-scroll {
+  overflow-x: auto;
+  margin: 16px 0;
+}
+
+.table-scroll table {
+  margin: 0;
+  min-width: 520px;
+}
+
+th, td {
+  border: 1px solid var(--line);
+  padding: 10px 12px;
+  vertical-align: top;
+  text-align: left;
+}
+
+th {
+  background: #f5ede1;
+}
+
+.compact td, .compact th {
+  padding: 8px 10px;
+  font-size: 0.98rem;
+}
+
+.index-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 10px;
+}
+
+.index-list a {
+  color: var(--ink);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+}
+
+.index-list a:hover {
+  border-bottom-color: var(--accent);
+}
+
+.note {
+  border-left: 4px solid var(--accent);
+  padding: 14px 16px;
+  background: #fff7ed;
+  border-radius: 0 16px 16px 0;
+}
+
+.small {
+  color: var(--muted);
+  font-size: 0.96rem;
+}
+
+.plot {
+  width: 100%;
+  max-width: 520px;
+  margin: 18px auto 6px;
+  display: block;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  background: #fffdfa;
+}
+
+.source-figure {
+  margin: 18px auto 8px;
+  text-align: center;
+}
+
+.source-figure figcaption {
+  color: var(--muted);
+  font-size: 0.96rem;
+  margin-top: 8px;
+}
+
+.diagram-svg {
+  width: 100%;
+  max-width: 680px;
+  display: block;
+  margin: 0 auto;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  background: #fffdfa;
+}
+
+.hardware-svg {
+  max-width: 840px;
+}
+
+code {
+  font-family: "SFMono-Regular", Menlo, Monaco, Consolas, monospace;
+  font-size: 0.92em;
+  background: #f4ede4;
+  padding: 0.1rem 0.3rem;
+  border-radius: 0.35rem;
+}
+
+@media print {
+  body { background: white; }
+  .page { padding: 0; }
+  .hero, .card { box-shadow: none; }
+}
+</style>
+  <script>
+    window.MathJax = {
+      tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]']] },
+      svg: { fontCache: 'global' }
+    };
+  </script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+</head>
+<body>
+  <main class="page">
+    <a class="backlink" href="../index.html">← Späť na index helperov</a>
+    <section class="hero">
+      <p class="eyebrow">2. 5. 2026 - 1.pdf</p>
+      <h1>Úloha 2: Hammingov [15,11,3] kód zo syndrómov</h1>
+      <p class="lead">Samostatné vypracovanie jednej číslovanej úlohy so zhrnutím použitých definícií.</p>
+    </section>
+    <section class="card">
+      <div class="section-tag">Zadanie</div>
+      <p>Hammingov \([15,11,3]\) kód nad \(GF(2)\) je daný kontrolnou maticou \(H\). Zostrojte syndrómovú tabuľku a dekódujte vektor \(v=(1,0,1,0,1,0,1,0,1,0,1,0,1,0,1)\).</p><div class="math-block">\[H=\begin{bmatrix}0 & 0 & 0 & 0 & 0 & 0 & 0 & 1 & 1 & 1 & 1 & 1 & 1 & 1 & 1 \\\\ 0 & 0 & 0 & 1 & 1 & 1 & 1 & 0 & 0 & 0 & 0 & 1 & 1 & 1 & 1 \\\\ 0 & 1 & 1 & 0 & 0 & 1 & 1 & 0 & 0 & 1 & 1 & 0 & 0 & 1 & 1 \\\\ 1 & 0 & 1 & 0 & 1 & 0 & 1 & 0 & 1 & 0 & 1 & 0 & 1 & 0 & 1\end{bmatrix}\]</div>
+    </section>
+    <section class="card">
+      <div class="section-tag">Vypracovanie</div>
+      <p>Kontrolná matica má stĺpce zodpovedajúce binárnym číslam \(1\) až \(15\):</p><div class="math-block">\[H=\begin{bmatrix}0 & 0 & 0 & 0 & 0 & 0 & 0 & 1 & 1 & 1 & 1 & 1 & 1 & 1 & 1 \\\\ 0 & 0 & 0 & 1 & 1 & 1 & 1 & 0 & 0 & 0 & 0 & 1 & 1 & 1 & 1 \\\\ 0 & 1 & 1 & 0 & 0 & 1 & 1 & 0 & 0 & 1 & 1 & 0 & 0 & 1 & 1 \\\\ 1 & 0 & 1 & 0 & 1 & 0 & 1 & 0 & 1 & 0 & 1 & 0 & 1 & 0 & 1\end{bmatrix}\]</div><p>Pri jednobitovej chybe je syndróm presne stĺpec matice \(H\), v ktorom nastala chyba. Preto tabuľka vyzerá takto:</p><div class="table-scroll"><table class="compact"><thead><tr><th>Syndróm</th><th>Najpravdepodobnejšia chyba</th></tr></thead><tbody><tr><td>\(0001\)</td><td>chyba v pozícii 1</td></tr><tr><td>\(0010\)</td><td>chyba v pozícii 2</td></tr><tr><td>\(0011\)</td><td>chyba v pozícii 3</td></tr><tr><td>\(0100\)</td><td>chyba v pozícii 4</td></tr><tr><td>\(0101\)</td><td>chyba v pozícii 5</td></tr><tr><td>\(0110\)</td><td>chyba v pozícii 6</td></tr><tr><td>\(0111\)</td><td>chyba v pozícii 7</td></tr><tr><td>\(1000\)</td><td>chyba v pozícii 8</td></tr><tr><td>\(1001\)</td><td>chyba v pozícii 9</td></tr><tr><td>\(1010\)</td><td>chyba v pozícii 10</td></tr><tr><td>\(1011\)</td><td>chyba v pozícii 11</td></tr><tr><td>\(1100\)</td><td>chyba v pozícii 12</td></tr><tr><td>\(1101\)</td><td>chyba v pozícii 13</td></tr><tr><td>\(1110\)</td><td>chyba v pozícii 14</td></tr><tr><td>\(1111\)</td><td>chyba v pozícii 15</td></tr></tbody></table></div><p>Syndróm prijatého vektora počítame ako \(s=vH^T\):</p><div class="math-block">\[s=0000\]</div><p>Keďže syndróm je nulový, vektor už spĺňa všetky kontrolné rovnice. Dekódovaný výsledok je teda rovnaký vektor:</p><div class="math-block">\[c=v=(1,0,1,0,1,0,1,0,1,0,1,0,1,0,1)\]</div>
+    </section>
+    <section class="card">
+      <div class="section-tag">Definície</div>
+      <ul><li><strong>Syndróm:</strong> vektor \(s=vH^T\), ktorý ukazuje porušené kontrolné rovnice.</li><li><strong>Hammingov \([15,11,3]\) kód:</strong> binárny lineárny kód, ktorý opraví jednu chybu.</li><li><strong>Nulový syndróm:</strong> prijaté slovo patrí do kódu alebo chyba nie je zistiteľná danou kontrolou.</li></ul>
+    </section>
+    
+  </main>
+</body>
+</html>

@@ -1,0 +1,255 @@
+<!doctype html>
+<html lang="sk">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ťahák: Definície a Pojmy</title>
+  <style>
+:root {
+  --bg: #f6f1e8;
+  --card: #fffdf9;
+  --ink: #1f1f1f;
+  --muted: #5f564a;
+  --line: #d9ccb8;
+  --accent: #8a4b08;
+  --accent-soft: #f5e6d4;
+  --shadow: 0 18px 40px rgba(54, 39, 20, 0.08);
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: "Iowan Old Style", "Palatino Linotype", "Book Antiqua", serif;
+  background:
+    radial-gradient(circle at top right, rgba(138, 75, 8, 0.12), transparent 28%),
+    linear-gradient(180deg, #faf6ef 0%, var(--bg) 100%);
+  color: var(--ink);
+}
+
+.page {
+  max-width: 1040px;
+  margin: 0 auto;
+  padding: 48px 20px 72px;
+}
+
+.hero {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 28px;
+  padding: 28px 32px;
+  box-shadow: var(--shadow);
+  margin-bottom: 24px;
+}
+
+.eyebrow {
+  color: var(--accent);
+  font-size: 0.95rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin: 0 0 10px;
+}
+
+h1, h2, h3 {
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin: 0 0 14px;
+}
+
+h1 { font-size: clamp(2rem, 3.5vw, 3rem); }
+h2 { font-size: 1.45rem; }
+h3 { font-size: 1.12rem; margin-top: 18px; }
+
+.card h2,
+.index-list a {
+  overflow-wrap: anywhere;
+}
+
+p, li {
+  font-size: 1.05rem;
+  line-height: 1.72;
+}
+
+.lead {
+  color: var(--muted);
+  margin: 0;
+}
+
+.backlink {
+  display: inline-flex;
+  gap: 0.45rem;
+  align-items: center;
+  text-decoration: none;
+  color: var(--accent);
+  font-weight: 700;
+  margin-bottom: 18px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 22px;
+}
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 24px;
+  padding: 24px 26px;
+  box-shadow: var(--shadow);
+}
+
+.card + .card {
+  margin-top: 24px;
+}
+
+.section-tag {
+  display: inline-block;
+  padding: 0.25rem 0.65rem;
+  border-radius: 999px;
+  background: var(--accent-soft);
+  color: var(--accent);
+  font-size: 0.88rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+
+.math-block {
+  overflow-x: auto;
+  padding: 10px 0;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 16px 0;
+  background: rgba(255, 255, 255, 0.7);
+}
+
+.table-scroll {
+  overflow-x: auto;
+  margin: 16px 0;
+}
+
+.table-scroll table {
+  margin: 0;
+  min-width: 520px;
+}
+
+th, td {
+  border: 1px solid var(--line);
+  padding: 10px 12px;
+  vertical-align: top;
+  text-align: left;
+}
+
+th {
+  background: #f5ede1;
+}
+
+.compact td, .compact th {
+  padding: 8px 10px;
+  font-size: 0.98rem;
+}
+
+.index-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 10px;
+}
+
+.index-list a {
+  color: var(--ink);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+}
+
+.index-list a:hover {
+  border-bottom-color: var(--accent);
+}
+
+.note {
+  border-left: 4px solid var(--accent);
+  padding: 14px 16px;
+  background: #fff7ed;
+  border-radius: 0 16px 16px 0;
+}
+
+.small {
+  color: var(--muted);
+  font-size: 0.96rem;
+}
+
+.plot {
+  width: 100%;
+  max-width: 520px;
+  margin: 18px auto 6px;
+  display: block;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  background: #fffdfa;
+}
+
+.source-figure {
+  margin: 18px auto 8px;
+  text-align: center;
+}
+
+.source-figure figcaption {
+  color: var(--muted);
+  font-size: 0.96rem;
+  margin-top: 8px;
+}
+
+.diagram-svg {
+  width: 100%;
+  max-width: 680px;
+  display: block;
+  margin: 0 auto;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  background: #fffdfa;
+}
+
+.hardware-svg {
+  max-width: 840px;
+}
+
+code {
+  font-family: "SFMono-Regular", Menlo, Monaco, Consolas, monospace;
+  font-size: 0.92em;
+  background: #f4ede4;
+  padding: 0.1rem 0.3rem;
+  border-radius: 0.35rem;
+}
+
+@media print {
+  body { background: white; }
+  .page { padding: 0; }
+  .hero, .card { box-shadow: none; }
+}
+</style>
+  <script>
+    window.MathJax = {
+      tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]']] },
+      svg: { fontCache: 'global' }
+    };
+  </script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+</head>
+<body>
+  <main class="page">
+    <a class="backlink" href="index.html">← Späť na index helperov</a>
+    <section class="hero">
+      <p class="eyebrow">Súhrn definícií</p>
+      <h1>Ťahák: Definície a Pojmy</h1>
+      <p class="lead">Rýchly slovník pojmov pokrývajúci celé zadania: od logaritmov a modulo aritmetiky až po Hammingovu metriku, polynómy, generujúce matice, syndrómy a Reed-Solomonove kódy.</p>
+    </section>
+    <section class="card"><div class="section-tag">Základné pojmy</div><ul><li><strong>Logaritmus:</strong> číslo \(y\), pre ktoré platí \(a^y=x\).</li><li><strong>Bit:</strong> binárny symbol, teda \(0\) alebo \(1\).</li><li><strong>Modulo \(n\):</strong> počítanie so zvyškami po delení číslom \(n\).</li><li><strong>Pixel:</strong> jeden obrazový bod digitálneho obrázka.</li><li><strong>Kompresia:</strong> spôsob zmenšenia objemu dát pri ukladaní alebo prenose.</li></ul></section><section class="card"><div class="section-tag">Grupy a konečné polia</div><ul><li><strong>Binárna operácia:</strong> operácia, ktorá dvom prvkom množiny priradí opäť prvok tej istej množiny.</li><li><strong>Grupa:</strong> množina s uzavretou, asociatívnou operáciou, s neutrálnym prvkom a inverzom ku každému prvku.</li><li><strong>Ábelovská grupa:</strong> grupa, v ktorej navyše platí komutativita.</li><li><strong>Neutrálny prvok:</strong> prvok <em>e</em>, pre ktorý platí a ∗ e = e ∗ a = a.</li><li><strong>Inverzný prvok:</strong> prvok a<sup>−1</sup>, pre ktorý platí a ∗ a<sup>−1</sup> = e.</li><li><strong>Konečné pole \(GF(p)\):</strong> pole s konečným počtom prvkov; pri prvočíselnom \(p\) je to \(\{0,1,\dots,p-1\}\) s operáciami modulo \(p\).</li></ul></section><section class="card"><div class="section-tag">Matice a lineárna algebra</div><ul><li><strong>Matica:</strong> obdĺžnikové usporiadanie prvkov do riadkov a stĺpcov.</li><li><strong>Rozmery matice:</strong> počet riadkov krát počet stĺpcov.</li><li><strong>Skalárny súčin:</strong> súčet súčinov zodpovedajúcich si zložiek dvoch rovnako dlhých vektorov.</li><li><strong>Determinant:</strong> číslo priradené štvorcovej matici, ktoré okrem iného hovorí, či je matica invertibilná.</li><li><strong>Invertibilná matica:</strong> matica, ku ktorej existuje inverzná matica.</li><li><strong>Singulárna matica:</strong> matica bez inverzu.</li><li><strong>Lineárna kombinácia:</strong> súčet násobkov daných vektorov.</li><li><strong>Lineárna nezávislosť:</strong> žiadny vektor sa nedá vyjadriť ako lineárna kombinácia ostatných.</li><li><strong>Podpriestor:</strong> podmnožina vektorového priestoru uzavretá na sčítanie a násobenie skalárom.</li></ul></section><section class="card"><div class="section-tag">Teória kódovania</div><ul><li><strong>Blokový kód:</strong> kód, ktorý správy mapuje na kódové slová pevnej dĺžky.</li><li><strong>Lineárny blokový kód:</strong> podpriestor priestoru \(GF(q)^n\).</li><li><strong>Kód \([n,k,d]\):</strong> kód dĺžky \(n\), dimenzie \(k\) a minimálnej vzdialenosti \(d\).</li><li><strong>Kódové slovo:</strong> vektor patriaci do kódu.</li><li><strong>Rýchlosť kódu:</strong> pomer \(k/n\), teda informačná účinnosť kódu.</li><li><strong>Generujúca matica \(G\):</strong> matica, ktorej riadky generujú všetky kódové slová.</li><li><strong>Kontrolná matica \(H\):</strong> matica, pre ktorú platí \(cH^T=0\) pre každé kódové slovo \(c\).</li><li><strong>Systematický kód:</strong> kód, v ktorom sa informačné symboly objavujú priamo v kódovom slove.</li><li><strong>SPC kód:</strong> kód s jednoduchou kontrolou parity.</li><li><strong>Hammingov kód:</strong> špeciálny lineárny kód, typicky s minimálnou vzdialenosťou 3 a opravou jednej chyby.</li></ul></section><section class="card"><div class="section-tag">Hammingova metrika a odvodené pojmy</div><ul><li><strong>Hammingova váha \(w(c)\):</strong> počet nenulových súradníc vektora \(c\).</li><li><strong>Hammingova vzdialenosť \(d(x,y)\):</strong> počet pozícií, na ktorých sa vektory \(x\) a \(y\) líšia.</li><li><strong>Minimálna vzdialenosť \(d_{\min}\):</strong> najmenšia vzdialenosť dvoch rôznych kódových slov.</li><li><strong>Váhové spektrum:</strong> rozdelenie počtu kódových slov podľa ich Hammingovej váhy.</li><li><strong>Opravná schopnosť kódu:</strong> maximálny počet chýb, ktoré vie kód opraviť v jednom slove.</li></ul></section><section class="card"><div class="section-tag">Cyklické kódy a dekódovanie</div><ul><li><strong>Cyklický kód:</strong> lineárny kód, v ktorom cyklický posun kódového slova zostáva kódovým slovom.</li><li><strong>Generujúci polynóm \(g(x)\):</strong> polynóm, ktorým sa generujú kódové slová cyklického kódu.</li><li><strong>Informačný polynóm \(m(x)\):</strong> polynóm reprezentujúci informačnú správu.</li><li><strong>Syndróm:</strong> zvyšok po delení prijatého slova generujúcim polynómom alebo ekvivalentne hodnota \(rH^T\).</li><li><strong>Chybový vzor \(e(x)\):</strong> polynóm alebo vektor opisujúci, na ktorých pozíciách nastala chyba.</li><li><strong>Líder kosetu:</strong> reprezentant triedy chýb zodpovedajúci danému syndrómu, typicky najľahší chybový vzor.</li><li><strong>Dekódovanie syndrómami:</strong> postup, kde sa zo syndrómu určí chyba a následne sa opraví prijaté slovo.</li></ul></section><section class="card"><div class="section-tag">Polynómy a Reed-Solomon</div><ul><li><strong>Ireducibilný polynóm:</strong> polynóm, ktorý sa nad daným poľom nedá rozložiť na súčin polynómov nižšieho stupňa.</li><li><strong>Primitívny polynóm:</strong> ireducibilný polynóm, pri ktorom zvolený prvok \(\alpha\) postupne vygeneruje všetky nenulové prvky poľa.</li><li><strong>Rozšírené pole \(GF(2^m)\):</strong> pole vytvorené z polynómov modulo ireducibilný polynóm stupňa \(m\).</li><li><strong>Koreň generujúceho polynómu RS kódu:</strong> prvok \(\alpha^i\), pre ktorý platí \(g(\alpha^i)=0\).</li><li><strong>RS kód:</strong> Reed-Solomonov kód nad \(GF(q)\), ktorého plná štandardná dĺžka je \(q-1\).</li><li><strong>Symbol RS kódu:</strong> jeden prvok poľa; nad \(GF(256)=GF(2^8)\) má jeden symbol 8 bitov.</li></ul></section>
+  </main>
+</body>
+</html>
