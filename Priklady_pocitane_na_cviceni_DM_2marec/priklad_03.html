@@ -163,6 +163,22 @@ th {
   margin-top: 0.35rem;
 }
 
+.worked-panel {
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  background: #fffaf2;
+  padding: 18px 20px;
+  margin: 0 0 20px;
+}
+
+.worked-panel h3:first-child {
+  margin-top: 0;
+}
+
+.worked-panel table {
+  background: #fffdf9;
+}
+
 .index-list {
   list-style: none;
   padding: 0;
@@ -264,8 +280,8 @@ code {
     </section>
     <section class="card"><div class="section-tag">Ako to riešiť</div><p>Najprv si úlohu rozdeľ na malé rozhodnutia. Pri skúške je dôležitejšie vedieť, ktorý postup použiť, než si pamätať výsledok.</p><ol class="guide-list"><li>Grupu vzhľadom na násobenie modulo \(5\) overuješ cez neutrálny prvok a inverzy.</li><li>Neutrálny prvok pri násobení by bol \(1\), lebo \(1\cdot a=a\).</li><li>Každý prvok by musel mať inverz, teda ku každému \(a\) by muselo existovať \(b\) s \(ab\equiv1\pmod5\).</li><li>Prvok \(0\) inverz nemá, lebo \(0\cdot b=0\) pre každé \(b\), nikdy \(1\).</li></ol><div class="note"><p><strong>Kontrola:</strong> Všetky prvky \(GF(5)\) netvoria grupu vzhľadom na násobenie; grupu tvoria iba nenulové prvky \(\{1,2,3,4\}\).</p></div></section>
     <section class="card">
-      <div class="section-tag">Vypracovanie</div>
-      <p>Nie, celá množina GF(5) netvorí grupu vzhľadom na násobenie, pretože prvok 0 nemá násobkový inverz.</p><p>Keby 0 malo inverz x, muselo by platiť 0 · x = 1, čo je nemožné, lebo 0 · x = 0.</p><p>Naopak, množina nenulových prvkov {1,2,3,4} už grupu tvorí.</p>
+      <div class="section-tag">Riešenie krok za krokom</div>
+      <div class="worked-panel"><h3>Postup výpočtu</h3><p>Celé \(GF(5)\) pri násobení nie je grupa, lebo \(0\) nemá inverz. Pre porovnanie, nenulové prvky inverzy majú:</p><div class="table-scroll"><table class="compact"><thead><tr><th>a</th><th>inverz</th><th>kontrola</th></tr></thead><tbody><tr><td>1</td><td>1</td><td>\(1\cdot1=1\)</td></tr><tr><td>2</td><td>3</td><td>\(2\cdot3=6\equiv1\)</td></tr><tr><td>3</td><td>2</td><td>\(3\cdot2=6\equiv1\)</td></tr><tr><td>4</td><td>4</td><td>\(4\cdot4=16\equiv1\)</td></tr></tbody></table></div><p>Práve preto sa pri násobení modulo \(5\) ako grupa berie iba množina \(\{1,2,3,4\}\), nie celé pole vrátane nuly.</p></div><h3>Výsledok a kontrola</h3><p>Nie, celá množina GF(5) netvorí grupu vzhľadom na násobenie, pretože prvok 0 nemá násobkový inverz.</p><p>Keby 0 malo inverz x, muselo by platiť 0 · x = 1, čo je nemožné, lebo 0 · x = 0.</p><p>Naopak, množina nenulových prvkov {1,2,3,4} už grupu tvorí.</p>
     </section>
     <section class="card">
       <div class="section-tag">Definície</div>

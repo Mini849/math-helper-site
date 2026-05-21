@@ -163,6 +163,22 @@ th {
   margin-top: 0.35rem;
 }
 
+.worked-panel {
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  background: #fffaf2;
+  padding: 18px 20px;
+  margin: 0 0 20px;
+}
+
+.worked-panel h3:first-child {
+  margin-top: 0;
+}
+
+.worked-panel table {
+  background: #fffdf9;
+}
+
 .index-list {
   list-style: none;
   padding: 0;
@@ -264,8 +280,8 @@ code {
     </section>
     <section class="card"><div class="section-tag">Ako to riešiť</div><p>Najprv si úlohu rozdeľ na malé rozhodnutia. Pri skúške je dôležitejšie vedieť, ktorý postup použiť, než si pamätať výsledok.</p><ol class="guide-list"><li>Z parametrov \([15,11,3]\) priamo prečítaj \(n=15\), \(k=11\), \(d=3\).</li><li>Počet kódových slov binárneho lineárneho kódu je \(|C|=2^k\).</li><li>Okolitý priestor obsahuje všetky binárne vektory dĺžky \(n\), teda \(2^n\).</li><li>Informačná rýchlosť je \(R=k/n\) a počet opraviteľných chýb je \(t=\lfloor(d-1)/2\rfloor\).</li></ol><div class="note"><p><strong>Kontrola:</strong> Pri \(d=3\) má kód opravovať jednu chybu, lebo \(\lfloor(3-1)/2\rfloor=1\).</p></div></section>
     <section class="card">
-      <div class="section-tag">Vypracovanie</div>
-      <p>Pre lineárny kód \([n,k,d]\) platí:</p><ul><li>počet kódových slov je \(2^k\),</li><li>počet všetkých vektorov v okolí je \(2^n\),</li><li>rýchlosť kódu je \(R=\frac{k}{n}\),</li><li>počet opraviteľných chýb je \(t=\left\lfloor\frac{d-1}{2}\right\rfloor\).</li></ul><div class="math-block">\[|C| = 2^{11} = 2048\]</div><div class="math-block">\[|GF(2)^{15}| = 2^{15} = 32768\]</div><div class="math-block">\[R = \frac{11}{15} \approx 0.7333\]</div><div class="math-block">\[t = \left\lfloor \frac{3-1}{2} \right\rfloor = 1\]</div><p>Záver: kód má 2048 kódových slov, okolitý priestor 32768 vektorov, rýchlosť \(11/15\) a opraví najviac 1 chybu v kódovom slove.</p>
+      <div class="section-tag">Riešenie krok za krokom</div>
+      <div class="worked-panel"><h3>Postup výpočtu</h3><p>Toto je rozpis výpočtu pred finálnym výsledkom. Čítaj ho zhora nadol a po každom kroku si skontroluj, čo sa práve zmenilo.</p><ol class="guide-list"><li>Urči \(n\), \(k\), pole a spôsob tvorby paritných symbolov.</li><li>Ak máš \(G\), kódové slová vznikajú ako \(uG\). Ak máš \(H\), platné slová spĺňajú \(cH^T=0\).</li><li>Počet slov lineárneho binárneho kódu je \(2^k\), celý priestor má \(2^n\) slov.</li><li>Minimálnu vzdialenosť lineárneho kódu hľadaj ako najmenšiu nenulovú váhu kódového slova.</li></ol><p><strong>Kontrola na konci:</strong> Každý uvedený výsledok musí sedieť s paritnými rovnicami alebo s maticou \(H\).</p></div><h3>Výsledok a kontrola</h3><p>Pre lineárny kód \([n,k,d]\) platí:</p><ul><li>počet kódových slov je \(2^k\),</li><li>počet všetkých vektorov v okolí je \(2^n\),</li><li>rýchlosť kódu je \(R=\frac{k}{n}\),</li><li>počet opraviteľných chýb je \(t=\left\lfloor\frac{d-1}{2}\right\rfloor\).</li></ul><div class="math-block">\[|C| = 2^{11} = 2048\]</div><div class="math-block">\[|GF(2)^{15}| = 2^{15} = 32768\]</div><div class="math-block">\[R = \frac{11}{15} \approx 0.7333\]</div><div class="math-block">\[t = \left\lfloor \frac{3-1}{2} \right\rfloor = 1\]</div><p>Záver: kód má 2048 kódových slov, okolitý priestor 32768 vektorov, rýchlosť \(11/15\) a opraví najviac 1 chybu v kódovom slove.</p>
     </section>
     <section class="card">
       <div class="section-tag">Definície</div>

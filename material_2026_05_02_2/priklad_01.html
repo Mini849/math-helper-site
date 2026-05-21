@@ -163,6 +163,22 @@ th {
   margin-top: 0.35rem;
 }
 
+.worked-panel {
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  background: #fffaf2;
+  padding: 18px 20px;
+  margin: 0 0 20px;
+}
+
+.worked-panel h3:first-child {
+  margin-top: 0;
+}
+
+.worked-panel table {
+  background: #fffdf9;
+}
+
 .index-list {
   list-style: none;
   padding: 0;
@@ -264,8 +280,8 @@ code {
     </section>
     <section class="card"><div class="section-tag">Ako to riešiť</div><p>Najprv si úlohu rozdeľ na malé rozhodnutia. Pri skúške je dôležitejšie vedieť, ktorý postup použiť, než si pamätať výsledok.</p><ol class="guide-list"><li>Pri LSB napravo čítaj bity sprava doľava: pravý bit je koeficient pri \(x^0\). Úvodné nuly pri tvorbe polynómu len nič nepridajú.</li><li>Pre <code>00000000001010111</code> dostaneš \(m(x)=x^6+x^4+x^2+x+1\).</li><li>Generujúci polynóm má stupeň \(r=4\), preto systematické kódovanie začína posunom \(x^4m(x)\). Tým necháš miesto pre štyri kontrolné bity.</li><li>Vydeľ \(x^4m(x)\) polynómom \(g(x)=x^4+x+1\) a zober iba zvyšok. Nad \(GF(2)\) sa pri delení odčítava XOR-om.</li><li>Kódové slovo je \(c(x)=x^4m(x)+r(x)\): vľavo ostane pôvodná informácia a pravé štyri bity sú zvyšok.</li></ol><div class="note"><p><strong>Kontrola:</strong> Po opätovnom delení \(c(x)\) polynómom \(g(x)\) musí vyjsť nulový zvyšok.</p></div></section>
     <section class="card">
-      <div class="section-tag">Vypracovanie</div>
-      <p>Keďže posledný bit napravo je LSB, informačný polynóm je</p><div class="math-block">\[m(x)=x^6 + x^4 + x^2 + x + 1\]</div><p>Stupeň generujúceho polynómu je \(4\), preto pri systematickom kódovaní najprv posunieme správu o štyri miesta:</p><div class="math-block">\[x^4m(x)=x^10 + x^8 + x^6 + x^5 + x^4\]</div><p>Vypočítame zvyšok po delení polynómom \(g(x)\):</p><div class="math-block">\[r(x)=\operatorname{rem}(x^4m(x),g(x))=x^3 + x + 1\]</div><p>Systematické kódové slovo je \(c(x)=x^4m(x)+r(x)\):</p><div class="math-block">\[c(x)=x^10 + x^8 + x^6 + x^5 + x^4 + x^3 + x + 1\]</div><p>Pravé štyri bity <code>1011</code> sú zvyšok \(x^3+x+1\); zvyšok vľavo je pôvodná informácia.</p><p>V bitoch, stále s LSB napravo, dostaneme</p><div class="math-block">\[\texttt{000000000010101111011}\]</div>
+      <div class="section-tag">Riešenie krok za krokom</div>
+      <div class="worked-panel"><h3>Postup výpočtu</h3><p>Pravý bit je LSB, takže najprv dostaneme \(m(x)=x^6+x^4+x^2+x+1\). Stupeň \(g(x)\) je \(4\), preto delíme \(x^4m(x)\):</p><div class="table-scroll"><table class="compact"><thead><tr><th>Aktuálny zvyšok</th><th>Pripočítame posunuté \(g(x)\)</th><th>Nový zvyšok</th></tr></thead><tbody><tr><td>\(x^10 + x^8 + x^6 + x^5 + x^4\)</td><td>\(x^{6}\cdot g(x)=x^10 + x^7 + x^6\)</td><td>\(x^8 + x^7 + x^5 + x^4\)</td></tr><tr><td>\(x^8 + x^7 + x^5 + x^4\)</td><td>\(x^{4}\cdot g(x)=x^8 + x^5 + x^4\)</td><td>\(x^7\)</td></tr><tr><td>\(x^7\)</td><td>\(x^{3}\cdot g(x)=x^7 + x^4 + x^3\)</td><td>\(x^4 + x^3\)</td></tr><tr><td>\(x^4 + x^3\)</td><td>\(x^{0}\cdot g(x)=x^4 + x + 1\)</td><td>\(x^3 + x + 1\)</td></tr></tbody></table></div><p>Posledný zvyšok je \(x^3+x+1\), teda kontrolné bity sú <code>1011</code>. Po pripojení k pôvodnej správe vznikne systematické slovo.</p></div><h3>Výsledok a kontrola</h3><p>Keďže posledný bit napravo je LSB, informačný polynóm je</p><div class="math-block">\[m(x)=x^6 + x^4 + x^2 + x + 1\]</div><p>Stupeň generujúceho polynómu je \(4\), preto pri systematickom kódovaní najprv posunieme správu o štyri miesta:</p><div class="math-block">\[x^4m(x)=x^10 + x^8 + x^6 + x^5 + x^4\]</div><p>Vypočítame zvyšok po delení polynómom \(g(x)\):</p><div class="math-block">\[r(x)=\operatorname{rem}(x^4m(x),g(x))=x^3 + x + 1\]</div><p>Systematické kódové slovo je \(c(x)=x^4m(x)+r(x)\):</p><div class="math-block">\[c(x)=x^10 + x^8 + x^6 + x^5 + x^4 + x^3 + x + 1\]</div><p>Pravé štyri bity <code>1011</code> sú zvyšok \(x^3+x+1\); zvyšok vľavo je pôvodná informácia.</p><p>V bitoch, stále s LSB napravo, dostaneme</p><div class="math-block">\[\texttt{000000000010101111011}\]</div>
     </section>
     <section class="card">
       <div class="section-tag">Definície</div>

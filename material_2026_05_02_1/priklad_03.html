@@ -163,6 +163,22 @@ th {
   margin-top: 0.35rem;
 }
 
+.worked-panel {
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  background: #fffaf2;
+  padding: 18px 20px;
+  margin: 0 0 20px;
+}
+
+.worked-panel h3:first-child {
+  margin-top: 0;
+}
+
+.worked-panel table {
+  background: #fffdf9;
+}
+
 .index-list {
   list-style: none;
   padding: 0;
@@ -264,8 +280,8 @@ code {
     </section>
     <section class="card"><div class="section-tag">Ako to riešiť</div><p>Najprv si úlohu rozdeľ na malé rozhodnutia. Pri skúške je dôležitejšie vedieť, ktorý postup použiť, než si pamätať výsledok.</p><ol class="guide-list"><li>Najprv jasne pomenuj množinu a operáciu. Bez toho sa nedá rozhodnúť, či ide o grupu.</li><li>Over uzavretosť: výsledok operácie dvoch prvkov musí ostať v tej istej množine.</li><li>Nájdi neutrálny prvok a pre každý prvok jeho inverz. Pri modulo sčítaní je neutrálny prvok zvyčajne \(0\), pri násobení \(1\).</li><li>Asociativitu buď zdedíš zo známej operácie, alebo ju overíš tabuľkou, ak ide o malé transformácie.</li></ol><div class="note"><p><strong>Kontrola:</strong> Ak čo i len jeden axióm zlyhá, nejde o grupu.</p></div></section>
     <section class="card">
-      <div class="section-tag">Vypracovanie</div>
-      <p>Množina \(G\) s operáciou \(\ast\) je grupa, ak platia tieto štyri vlastnosti:</p><ol><li><strong>Uzavretosť:</strong> pre všetky \(a,b\in G\) je aj \(a\ast b\in G\).</li><li><strong>Asociativita:</strong> \((a\ast b)\ast c=a\ast(b\ast c)\).</li><li><strong>Neutrálny prvok:</strong> existuje \(e\in G\), že \(a\ast e=e\ast a=a\).</li><li><strong>Inverzný prvok:</strong> ku každému \(a\in G\) existuje \(a^{-1}\in G\), že \(a\ast a^{-1}=a^{-1}\ast a=e\).</li></ol><p>Ak navyše platí \(a\ast b=b\ast a\), grupa je komutatívna, teda ábelovská. Komutativita však nie je povinná vlastnosť každej grupy.</p>
+      <div class="section-tag">Riešenie krok za krokom</div>
+      <div class="worked-panel"><h3>Postup výpočtu</h3><p>Toto je rozpis výpočtu pred finálnym výsledkom. Čítaj ho zhora nadol a po každom kroku si skontroluj, čo sa práve zmenilo.</p><ol class="guide-list"><li>Prepíš zadanie do symbolov a označ, čo hľadáš.</li><li>Vyber definíciu alebo vzorec podľa typu úlohy.</li><li>Urob výpočet po malých krokoch, nie skokom na výsledok.</li><li>Na konci dosaď výsledok späť alebo ho over príslušnou kontrolou.</li></ol><p><strong>Kontrola na konci:</strong> Výsledok musí spĺňať všetky podmienky zo zadania.</p></div><h3>Výsledok a kontrola</h3><p>Množina \(G\) s operáciou \(\ast\) je grupa, ak platia tieto štyri vlastnosti:</p><ol><li><strong>Uzavretosť:</strong> pre všetky \(a,b\in G\) je aj \(a\ast b\in G\).</li><li><strong>Asociativita:</strong> \((a\ast b)\ast c=a\ast(b\ast c)\).</li><li><strong>Neutrálny prvok:</strong> existuje \(e\in G\), že \(a\ast e=e\ast a=a\).</li><li><strong>Inverzný prvok:</strong> ku každému \(a\in G\) existuje \(a^{-1}\in G\), že \(a\ast a^{-1}=a^{-1}\ast a=e\).</li></ol><p>Ak navyše platí \(a\ast b=b\ast a\), grupa je komutatívna, teda ábelovská. Komutativita však nie je povinná vlastnosť každej grupy.</p>
     </section>
     <section class="card">
       <div class="section-tag">Definície</div>

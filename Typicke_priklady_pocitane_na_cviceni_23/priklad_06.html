@@ -163,6 +163,22 @@ th {
   margin-top: 0.35rem;
 }
 
+.worked-panel {
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  background: #fffaf2;
+  padding: 18px 20px;
+  margin: 0 0 20px;
+}
+
+.worked-panel h3:first-child {
+  margin-top: 0;
+}
+
+.worked-panel table {
+  background: #fffdf9;
+}
+
 .index-list {
   list-style: none;
   padding: 0;
@@ -264,8 +280,8 @@ code {
     </section>
     <section class="card"><div class="section-tag">Ako to riešiť</div><p>Najprv si úlohu rozdeľ na malé rozhodnutia. Pri skúške je dôležitejšie vedieť, ktorý postup použiť, než si pamätať výsledok.</p><ol class="guide-list"><li>Najprv skontroluj rozmery rovnako ako pri obyčajnom násobení matíc.</li><li>Každý prvok výsledku počítaj ako riadok krát stĺpec.</li><li>Rozdiel je iba v tom, že po každom sčítaní a násobení berieš výsledok modulo \(2\).</li><li>V \(GF(2)\) platí \(1+1=0\), takže párny počet jednotiek dá \(0\) a nepárny počet jednotiek dá \(1\).</li></ol><div class="note"><p><strong>Kontrola:</strong> Vo výslednej matici nad \(GF(2)\) sa smú objaviť iba hodnoty \(0\) a \(1\).</p></div></section>
     <section class="card">
-      <div class="section-tag">Vypracovanie</div>
-      <p>Každý prvok výsledku počítame ako skalárny súčin riadku a stĺpca modulo \(2\).</p><p>Napríklad prvok v prvom riadku a prvom stĺpci je</p><div class="math-block">\[0\cdot1 + 1\cdot0 + 1\cdot1 + 0\cdot1 = 1\]</div><p>Prvok v treťom riadku a druhom stĺpci je</p><div class="math-block">\[1\cdot0 + 1\cdot1 + 0\cdot0 + 1\cdot1 = 2 \equiv 0\pmod 2\]</div><h3>Výsledok</h3><div class="math-block">\[\begin{bmatrix}1 & 1 & 1 & 1 \\\\ 1 & 1 & 1 & 1 \\\\ 0 & 0 & 0 & 0 \\\\ 1 & 1 & 1 & 1\end{bmatrix}\]</div>
+      <div class="section-tag">Riešenie krok za krokom</div>
+      <div class="worked-panel"><h3>Postup výpočtu</h3><p>Počítame rovnako ako pri obyčajných maticiach, ale každý súčet zredukujeme modulo \(2\). Párny počet jednotiek dá \(0\), nepárny počet jednotiek dá \(1\).</p><div class="table-scroll"><table class="compact"><thead><tr><th>Pozícia</th><th>Riadok krát stĺpec</th><th>mod 2</th></tr></thead><tbody><tr><td>\((1,1)\)</td><td>\(0\cdot 1 + 1\cdot 0 + 1\cdot 1 + 0\cdot 1=1\equiv 1\pmod{2}\)</td><td>1</td></tr><tr><td>\((1,2)\)</td><td>\(0\cdot 0 + 1\cdot 1 + 1\cdot 0 + 0\cdot 1=1\equiv 1\pmod{2}\)</td><td>1</td></tr><tr><td>\((1,3)\)</td><td>\(0\cdot 1 + 1\cdot 0 + 1\cdot 1 + 0\cdot 1=1\equiv 1\pmod{2}\)</td><td>1</td></tr><tr><td>\((1,4)\)</td><td>\(0\cdot 1 + 1\cdot 1 + 1\cdot 0 + 0\cdot 0=1\equiv 1\pmod{2}\)</td><td>1</td></tr><tr><td>\((2,1)\)</td><td>\(1\cdot 1 + 0\cdot 0 + 1\cdot 1 + 1\cdot 1=3\equiv 1\pmod{2}\)</td><td>1</td></tr><tr><td>\((2,2)\)</td><td>\(1\cdot 0 + 0\cdot 1 + 1\cdot 0 + 1\cdot 1=1\equiv 1\pmod{2}\)</td><td>1</td></tr><tr><td>\((2,3)\)</td><td>\(1\cdot 1 + 0\cdot 0 + 1\cdot 1 + 1\cdot 1=3\equiv 1\pmod{2}\)</td><td>1</td></tr><tr><td>\((2,4)\)</td><td>\(1\cdot 1 + 0\cdot 1 + 1\cdot 0 + 1\cdot 0=1\equiv 1\pmod{2}\)</td><td>1</td></tr><tr><td>\((3,1)\)</td><td>\(1\cdot 1 + 1\cdot 0 + 0\cdot 1 + 1\cdot 1=2\equiv 0\pmod{2}\)</td><td>0</td></tr><tr><td>\((3,2)\)</td><td>\(1\cdot 0 + 1\cdot 1 + 0\cdot 0 + 1\cdot 1=2\equiv 0\pmod{2}\)</td><td>0</td></tr><tr><td>\((3,3)\)</td><td>\(1\cdot 1 + 1\cdot 0 + 0\cdot 1 + 1\cdot 1=2\equiv 0\pmod{2}\)</td><td>0</td></tr><tr><td>\((3,4)\)</td><td>\(1\cdot 1 + 1\cdot 1 + 0\cdot 0 + 1\cdot 0=2\equiv 0\pmod{2}\)</td><td>0</td></tr><tr><td>\((4,1)\)</td><td>\(1\cdot 1 + 0\cdot 0 + 1\cdot 1 + 1\cdot 1=3\equiv 1\pmod{2}\)</td><td>1</td></tr><tr><td>\((4,2)\)</td><td>\(1\cdot 0 + 0\cdot 1 + 1\cdot 0 + 1\cdot 1=1\equiv 1\pmod{2}\)</td><td>1</td></tr><tr><td>\((4,3)\)</td><td>\(1\cdot 1 + 0\cdot 0 + 1\cdot 1 + 1\cdot 1=3\equiv 1\pmod{2}\)</td><td>1</td></tr><tr><td>\((4,4)\)</td><td>\(1\cdot 1 + 0\cdot 1 + 1\cdot 0 + 1\cdot 0=1\equiv 1\pmod{2}\)</td><td>1</td></tr></tbody></table></div></div><h3>Výsledok a kontrola</h3><p>Každý prvok výsledku počítame ako skalárny súčin riadku a stĺpca modulo \(2\).</p><p>Napríklad prvok v prvom riadku a prvom stĺpci je</p><div class="math-block">\[0\cdot1 + 1\cdot0 + 1\cdot1 + 0\cdot1 = 1\]</div><p>Prvok v treťom riadku a druhom stĺpci je</p><div class="math-block">\[1\cdot0 + 1\cdot1 + 0\cdot0 + 1\cdot1 = 2 \equiv 0\pmod 2\]</div><h3>Výsledok</h3><div class="math-block">\[\begin{bmatrix}1 & 1 & 1 & 1 \\\\ 1 & 1 & 1 & 1 \\\\ 0 & 0 & 0 & 0 \\\\ 1 & 1 & 1 & 1\end{bmatrix}\]</div>
     </section>
     <section class="card">
       <div class="section-tag">Definície</div>

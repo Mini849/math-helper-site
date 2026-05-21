@@ -163,6 +163,22 @@ th {
   margin-top: 0.35rem;
 }
 
+.worked-panel {
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  background: #fffaf2;
+  padding: 18px 20px;
+  margin: 0 0 20px;
+}
+
+.worked-panel h3:first-child {
+  margin-top: 0;
+}
+
+.worked-panel table {
+  background: #fffdf9;
+}
+
 .index-list {
   list-style: none;
   padding: 0;
@@ -264,8 +280,8 @@ code {
     </section>
     <section class="card"><div class="section-tag">Ako to riešiť</div><p>Najprv si úlohu rozdeľ na malé rozhodnutia. Pri skúške je dôležitejšie vedieť, ktorý postup použiť, než si pamätať výsledok.</p><ol class="guide-list"><li>Najprv napíš, že lineárny blokový kód dĺžky \(n\) nad \(GF(q)\) je lineárny podpriestor \(GF(q)^n\).</li><li>Lineárnosť znamená uzavretosť na sčítanie a násobenie skalárom.</li><li>Pri systematickom kóde sú informačné symboly priamo viditeľné v kódovom slove.</li><li>Pri nesystematickom kóde je kódové slovo vypočítaná kombinácia a informačné symboly v ňom nemusia byť viditeľné ako súvislý blok.</li></ol><div class="note"><p><strong>Kontrola:</strong> Toto je definičná úloha; netreba počítať syndrómy ani minimálnu vzdialenosť, ak sa na ne zadanie nepýta.</p></div></section>
     <section class="card">
-      <div class="section-tag">Vypracovanie</div>
-      <p>Lineárny blokový kód dĺžky \(n\) nad \(GF(q)\) je lineárny podpriestor priestoru \(GF(q)^n\). To znamená, že kódové slová sú vektory dĺžky \(n\) a súčet dvoch kódových slov aj násobok kódového slova skalárom znovu patria do kódu.</p><div class="math-block">\[C\le GF(q)^n\]</div><p>Ak má kód dimenziu \(k\), označuje sa často ako \([n,k,d]\), kde \(d\) je minimálna vzdialenosť.</p><p><strong>Systematický tvar:</strong> informačné symboly sú priamo viditeľné v kódovom slove, napríklad \((i_1,i_2,\dots,i_k,p_1,p_2,\dots)\).</p><p><strong>Nesystematický tvar:</strong> kódové slovo je vypočítaná kombinácia informačných symbolov a informačnú správu v ňom nevidíme ako súvislý blok bez ďalšieho spätného výpočtu.</p>
+      <div class="section-tag">Riešenie krok za krokom</div>
+      <div class="worked-panel"><h3>Postup výpočtu</h3><p>Toto je rozpis výpočtu pred finálnym výsledkom. Čítaj ho zhora nadol a po každom kroku si skontroluj, čo sa práve zmenilo.</p><ol class="guide-list"><li>Najprv skontroluj rozmery alebo počet súradníc.</li><li>Pri maticiach počítaj každý prvok ako riadok krát stĺpec.</li><li>Pri lineárnej kombinácii najprv vytvor rovnice po súradniciach a až potom rieš neznáme koeficienty.</li><li>Ak je zadanie nad \(GF(2)\), po každom kroku redukuj modulo \(2\).</li></ol><p><strong>Kontrola na konci:</strong> Výsledok musí mať správny rozmer a po dosadení musí sedieť so zadaním.</p></div><h3>Výsledok a kontrola</h3><p>Lineárny blokový kód dĺžky \(n\) nad \(GF(q)\) je lineárny podpriestor priestoru \(GF(q)^n\). To znamená, že kódové slová sú vektory dĺžky \(n\) a súčet dvoch kódových slov aj násobok kódového slova skalárom znovu patria do kódu.</p><div class="math-block">\[C\le GF(q)^n\]</div><p>Ak má kód dimenziu \(k\), označuje sa často ako \([n,k,d]\), kde \(d\) je minimálna vzdialenosť.</p><p><strong>Systematický tvar:</strong> informačné symboly sú priamo viditeľné v kódovom slove, napríklad \((i_1,i_2,\dots,i_k,p_1,p_2,\dots)\).</p><p><strong>Nesystematický tvar:</strong> kódové slovo je vypočítaná kombinácia informačných symbolov a informačnú správu v ňom nevidíme ako súvislý blok bez ďalšieho spätného výpočtu.</p>
     </section>
     <section class="card">
       <div class="section-tag">Definície</div>

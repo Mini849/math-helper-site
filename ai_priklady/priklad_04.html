@@ -163,6 +163,22 @@ th {
   margin-top: 0.35rem;
 }
 
+.worked-panel {
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  background: #fffaf2;
+  padding: 18px 20px;
+  margin: 0 0 20px;
+}
+
+.worked-panel h3:first-child {
+  margin-top: 0;
+}
+
+.worked-panel table {
+  background: #fffdf9;
+}
+
 .index-list {
   list-style: none;
   padding: 0;
@@ -264,8 +280,8 @@ code {
     </section>
     <section class="card"><div class="section-tag">Ako to riešiť</div><p>Najprv si úlohu rozdeľ na malé rozhodnutia. Pri skúške je dôležitejšie vedieť, ktorý postup použiť, než si pamätať výsledok.</p><ol class="guide-list"><li>Z generujúceho polynómu najprv zober stupeň. Stupeň \(r\) znamená \(r\) registrov.</li><li>Spätná väzba ide zo starého najvyššieho registra. Ten rozhoduje, či sa pri posune pripočíta generujúci polynóm.</li><li>XOR odbočky kresli iba pri nižších členoch s koeficientom \(1\); vedúci člen určuje len počet registrov.</li><li>Bity čítaj od najvyššieho stupňa po najnižší; pri bežnom zápise s MSB vľavo je to zľava doprava. Po poslednom takte je stav registrov zvyšok.</li></ol><div class="note"><p><strong>Kontrola:</strong> Rovnaký zvyšok musí vyjsť aj klasickým delením polynómov nad \(GF(2)\).</p><p><strong>Pozor:</strong> Ak učiteľ kreslí register opačným smerom, rovnice sa iba preznačia. Podstatné sú tapy podľa koeficientov polynómu.</p></div></section>
     <section class="card">
-      <div class="section-tag">Vypracovanie</div>
-      <p>Najprv pozeráme iba na generujúci polynóm:</p><div class="math-block">\[g(x)=x^4+1x^3+0x^2+0x+1\]</div><p>Stupeň je \(4\), preto budú štyri registre. Spätná väzba ide zo starého \(R_3\). Nenulové nižšie členy sú \(1\) a \(x^3\), preto XOR brány kreslíme pred \(R_0\) a pred \(R_3\).</p><figure class="source-figure">
+      <div class="section-tag">Riešenie krok za krokom</div>
+      <div class="worked-panel"><h3>Postup výpočtu</h3><p>Stav registra čítame ako koeficienty zľava: \(R_3R_2R_1R_0=1011\) znamená \(x^3+x+1\).</p><p>Rovnaký syndróm dostaneme klasickým delením:</p><div class="table-scroll"><table class="compact"><thead><tr><th>Aktuálny zvyšok</th><th>Pripočítame posunuté \(g(x)\)</th><th>Nový zvyšok</th></tr></thead><tbody><tr><td>\(x^5 + x^4 + x^3 + 1\)</td><td>\(x^{1}\cdot g(x)=x^5 + x^4 + x\)</td><td>\(x^3 + x + 1\)</td></tr></tbody></table></div><p>Pre chybu \(x^5\) platí \(x^5+xg(x)=x^3+x+1\), preto presne táto chyba sedí na vypočítaný syndróm.</p></div><h3>Výsledok a kontrola</h3><p>Najprv pozeráme iba na generujúci polynóm:</p><div class="math-block">\[g(x)=x^4+1x^3+0x^2+0x+1\]</div><p>Stupeň je \(4\), preto budú štyri registre. Spätná väzba ide zo starého \(R_3\). Nenulové nižšie členy sú \(1\) a \(x^3\), preto XOR brány kreslíme pred \(R_0\) a pred \(R_3\).</p><figure class="source-figure">
 <svg class="diagram-svg hardware-svg" viewBox="0 0 960 420" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Sériový delič polynómov pre g(x)=x^4+x^3+1">
   <defs>
     <marker id="arrow-hw431" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">

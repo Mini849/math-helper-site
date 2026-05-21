@@ -163,6 +163,22 @@ th {
   margin-top: 0.35rem;
 }
 
+.worked-panel {
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  background: #fffaf2;
+  padding: 18px 20px;
+  margin: 0 0 20px;
+}
+
+.worked-panel h3:first-child {
+  margin-top: 0;
+}
+
+.worked-panel table {
+  background: #fffdf9;
+}
+
 .index-list {
   list-style: none;
   padding: 0;
@@ -264,8 +280,8 @@ code {
     </section>
     <section class="card"><div class="section-tag">Ako to riešiť</div><p>Najprv si úlohu rozdeľ na malé rozhodnutia. Pri skúške je dôležitejšie vedieť, ktorý postup použiť, než si pamätať výsledok.</p><ol class="guide-list"><li>Najprv pomenuj množinu: všetky \(2\times2\) matice nad \(GF(2)\), teda spolu \(16\) matíc.</li><li>Operácia je násobenie matíc, preto neutrálny prvok by bola jednotková matica.</li><li>Na vyvrátenie grupy stačí nájsť jeden prvok bez inverzu.</li><li>Nulová matica nemá inverz, lebo po vynásobení ľubovoľnou maticou zostane nulová, nie jednotková.</li></ol><div class="note"><p><strong>Kontrola:</strong> Keď existuje čo i len jeden prvok bez inverzu, celá množina nie je grupa.</p></div></section>
     <section class="card">
-      <div class="section-tag">Vypracovanie</div>
-      <p>Nie. Hlavný problém je existencia inverzov.</p><p>Napríklad nulová matica</p><div class="math-block">\[\begin{bmatrix}0 & 0 \\\\ 0 & 0\end{bmatrix}\]</div><p>nemá inverznú maticu, pretože pre žiadnu maticu X neplatí 0 · X = I.</p><p>Aj singulárna matica</p><div class="math-block">\[\begin{bmatrix}1 & 0 \\\\ 0 & 0\end{bmatrix}\]</div><p>nemá inverz. Preto podmienka grupy zlyhá.</p><p>Uzavretosť aj asociativita síce platia a jednotková matica existuje, ale bez inverzov nejde o grupu.</p><p>Záver: všetky matice 2×2 nad GF(2) <strong>netvoria</strong> grupu. Grupou je iba podmnožina všetkých invertibilných matíc, teda GL(2,2).</p>
+      <div class="section-tag">Riešenie krok za krokom</div>
+      <div class="worked-panel"><h3>Postup výpočtu</h3><p>Na vyvrátenie grupy stačí jeden prvok bez inverzu. Zoberieme nulovú maticu a ľubovoľnú maticu \(X\):</p><div class="math-block">\[\begin{bmatrix}0 & 0 \\\\ 0 & 0\end{bmatrix}\begin{bmatrix}a & b \\\\ c & d\end{bmatrix}=\begin{bmatrix}0 & 0 \\\\ 0 & 0\end{bmatrix}\]</div><p>Toto nikdy nemôže byť jednotková matica \(I=\begin{bmatrix}1&0\\0&1\end{bmatrix}\). Nulová matica teda nemá inverz, preto všetky matice \(2\times2\) nad \(GF(2)\) netvoria grupu.</p></div><h3>Výsledok a kontrola</h3><p>Nie. Hlavný problém je existencia inverzov.</p><p>Napríklad nulová matica</p><div class="math-block">\[\begin{bmatrix}0 & 0 \\\\ 0 & 0\end{bmatrix}\]</div><p>nemá inverznú maticu, pretože pre žiadnu maticu X neplatí 0 · X = I.</p><p>Aj singulárna matica</p><div class="math-block">\[\begin{bmatrix}1 & 0 \\\\ 0 & 0\end{bmatrix}\]</div><p>nemá inverz. Preto podmienka grupy zlyhá.</p><p>Uzavretosť aj asociativita síce platia a jednotková matica existuje, ale bez inverzov nejde o grupu.</p><p>Záver: všetky matice 2×2 nad GF(2) <strong>netvoria</strong> grupu. Grupou je iba podmnožina všetkých invertibilných matíc, teda GL(2,2).</p>
     </section>
     <section class="card">
       <div class="section-tag">Definície</div>

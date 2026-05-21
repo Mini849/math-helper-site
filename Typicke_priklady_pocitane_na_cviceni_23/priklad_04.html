@@ -163,6 +163,22 @@ th {
   margin-top: 0.35rem;
 }
 
+.worked-panel {
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  background: #fffaf2;
+  padding: 18px 20px;
+  margin: 0 0 20px;
+}
+
+.worked-panel h3:first-child {
+  margin-top: 0;
+}
+
+.worked-panel table {
+  background: #fffdf9;
+}
+
 .index-list {
   list-style: none;
   padding: 0;
@@ -264,8 +280,8 @@ code {
     </section>
     <section class="card"><div class="section-tag">Ako to riešiť</div><p>Najprv si úlohu rozdeľ na malé rozhodnutia. Pri skúške je dôležitejšie vedieť, ktorý postup použiť, než si pamätať výsledok.</p><ol class="guide-list"><li>Najprv skontroluj rozmery: ak \(A\) má rozmer \(m\times n\) a \(B\) má rozmer \(n\times k\), výsledok má rozmer \(m\times k\).</li><li>Prvok na pozícii \((i,j)\) dostaneš ako skalárny súčin \(i\)-teho riadku prvej matice a \(j\)-teho stĺpca druhej matice.</li><li>Pri celých číslach nič neredukuj modulo \(2\); záporné hodnoty môžu vo výsledku normálne ostať.</li><li>Počítaj po jednom prvku výslednej matice, nie naraz celý riadok spamäti.</li></ol><div class="note"><p><strong>Kontrola:</strong> Výsledná matica má správny rozmer a aspoň pár prvkov vieš spätne overiť výpočtom riadok krát stĺpec.</p></div></section>
     <section class="card">
-      <div class="section-tag">Vypracovanie</div>
-      <p>Rozmery sú \(4\times4\) a \(4\times4\), takže súčin existuje a výsledok bude opäť \(4\times4\).</p><p>Ukážka výpočtu prvých dvoch prvkov prvého riadku:</p><div class="math-block">\[(AB)_{11}=1\cdot0+(-2)\cdot(-3)+(-1)\cdot1+4\cdot5=25\]</div><div class="math-block">\[(AB)_{12}=1\cdot2+(-2)\cdot4+(-1)\cdot2+4\cdot1=-4\]</div><p>Rovnakým postupom dopočítame všetky ostatné prvky.</p><h3>Výsledok</h3><div class="math-block">\[\begin{bmatrix}25 & -4 & -14 & 1 \\\\ 1 & 20 & -1 & 1 \\\\ -22 & 1 & 10 & -5 \\\\ 7 & 7 & -1 & 6\end{bmatrix}\]</div>
+      <div class="section-tag">Riešenie krok za krokom</div>
+      <div class="worked-panel"><h3>Postup výpočtu</h3><p>Rozmery sedia: \(4\times4\) krát \(4\times4\). Každý prvok výsledku je jeden riadok prvej matice krát jeden stĺpec druhej matice.</p><div class="table-scroll"><table class="compact"><thead><tr><th>Pozícia</th><th>Riadok krát stĺpec</th><th>Výsledok</th></tr></thead><tbody><tr><td>\((1,1)\)</td><td>\(1\cdot 0 + (-2)\cdot (-3) + (-1)\cdot 1 + 4\cdot 5=25\)</td><td>25</td></tr><tr><td>\((1,2)\)</td><td>\(1\cdot 2 + (-2)\cdot 4 + (-1)\cdot 2 + 4\cdot 1=-4\)</td><td>-4</td></tr><tr><td>\((1,3)\)</td><td>\(1\cdot (-1) + (-2)\cdot 2 + (-1)\cdot 1 + 4\cdot (-2)=-14\)</td><td>-14</td></tr><tr><td>\((1,4)\)</td><td>\(1\cdot (-2) + (-2)\cdot 1 + (-1)\cdot 3 + 4\cdot 2=1\)</td><td>1</td></tr><tr><td>\((2,1)\)</td><td>\(3\cdot 0 + 3\cdot (-3) + 0\cdot 1 + 2\cdot 5=1\)</td><td>1</td></tr><tr><td>\((2,2)\)</td><td>\(3\cdot 2 + 3\cdot 4 + 0\cdot 2 + 2\cdot 1=20\)</td><td>20</td></tr><tr><td>\((2,3)\)</td><td>\(3\cdot (-1) + 3\cdot 2 + 0\cdot 1 + 2\cdot (-2)=-1\)</td><td>-1</td></tr><tr><td>\((2,4)\)</td><td>\(3\cdot (-2) + 3\cdot 1 + 0\cdot 3 + 2\cdot 2=1\)</td><td>1</td></tr><tr><td>\((3,1)\)</td><td>\((-1)\cdot 0 + 2\cdot (-3) + (-1)\cdot 1 + (-3)\cdot 5=-22\)</td><td>-22</td></tr><tr><td>\((3,2)\)</td><td>\((-1)\cdot 2 + 2\cdot 4 + (-1)\cdot 2 + (-3)\cdot 1=1\)</td><td>1</td></tr><tr><td>\((3,3)\)</td><td>\((-1)\cdot (-1) + 2\cdot 2 + (-1)\cdot 1 + (-3)\cdot (-2)=10\)</td><td>10</td></tr><tr><td>\((3,4)\)</td><td>\((-1)\cdot (-2) + 2\cdot 1 + (-1)\cdot 3 + (-3)\cdot 2=-5\)</td><td>-5</td></tr><tr><td>\((4,1)\)</td><td>\(1\cdot 0 + 0\cdot (-3) + 2\cdot 1 + 1\cdot 5=7\)</td><td>7</td></tr><tr><td>\((4,2)\)</td><td>\(1\cdot 2 + 0\cdot 4 + 2\cdot 2 + 1\cdot 1=7\)</td><td>7</td></tr><tr><td>\((4,3)\)</td><td>\(1\cdot (-1) + 0\cdot 2 + 2\cdot 1 + 1\cdot (-2)=-1\)</td><td>-1</td></tr><tr><td>\((4,4)\)</td><td>\(1\cdot (-2) + 0\cdot 1 + 2\cdot 3 + 1\cdot 2=6\)</td><td>6</td></tr></tbody></table></div></div><h3>Výsledok a kontrola</h3><p>Rozmery sú \(4\times4\) a \(4\times4\), takže súčin existuje a výsledok bude opäť \(4\times4\).</p><p>Ukážka výpočtu prvých dvoch prvkov prvého riadku:</p><div class="math-block">\[(AB)_{11}=1\cdot0+(-2)\cdot(-3)+(-1)\cdot1+4\cdot5=25\]</div><div class="math-block">\[(AB)_{12}=1\cdot2+(-2)\cdot4+(-1)\cdot2+4\cdot1=-4\]</div><p>Rovnakým postupom dopočítame všetky ostatné prvky.</p><h3>Výsledok</h3><div class="math-block">\[\begin{bmatrix}25 & -4 & -14 & 1 \\\\ 1 & 20 & -1 & 1 \\\\ -22 & 1 & 10 & -5 \\\\ 7 & 7 & -1 & 6\end{bmatrix}\]</div>
     </section>
     <section class="card">
       <div class="section-tag">Definície</div>

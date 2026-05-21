@@ -163,6 +163,22 @@ th {
   margin-top: 0.35rem;
 }
 
+.worked-panel {
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  background: #fffaf2;
+  padding: 18px 20px;
+  margin: 0 0 20px;
+}
+
+.worked-panel h3:first-child {
+  margin-top: 0;
+}
+
+.worked-panel table {
+  background: #fffdf9;
+}
+
 .index-list {
   list-style: none;
   padding: 0;
@@ -264,8 +280,8 @@ code {
     </section>
     <section class="card"><div class="section-tag">Ako to riešiť</div><p>Najprv si úlohu rozdeľ na malé rozhodnutia. Pri skúške je dôležitejšie vedieť, ktorý postup použiť, než si pamätať výsledok.</p><ol class="guide-list"><li>Rob elementárne riadkové operácie nad \(GF(2)\), teda sčítanie riadkov je XOR.</li><li>Cieľ je dostať prvé štyri stĺpce do tvaru jednotkovej matice \(I_4\).</li><li>Keď prvá časť vyzerá ako \(I_4\), matica má systematický tvar \([I_4\mid P]\).</li><li>Riadkové operácie nemenia generovaný kód; menia iba bázu riadkov.</li></ol><div class="note"><p><strong>Kontrola:</strong> Po úprave musia prvé štyri stĺpce obsahovať jednotkovú maticu.</p></div></section>
     <section class="card">
-      <div class="section-tag">Vypracovanie</div>
-      <p>Budeme robiť elementárne riadkové operácie nad \(GF(2)\). Chceme dostať jednotkovú maticu v prvých štyroch stĺpcoch.</p><p>Zoberieme:</p><ul><li>\(r_1 \leftarrow r_1 + r_3 + r_4\),</li><li>\(r_2 \leftarrow r_2 + r_4\).</li></ul><p>Potom dostaneme</p><div class="math-block">\[G = \begin{bmatrix}1 & 0 & 0 & 0 & 1 & 0 & 1 \\\\ 0 & 1 & 0 & 0 & 1 & 1 & 1 \\\\ 0 & 0 & 1 & 0 & 1 & 1 & 0 \\\\ 0 & 0 & 0 & 1 & 0 & 1 & 1\end{bmatrix}\]</div><p>Takto je matica v systematickom tvare \([I_4\mid P]\).</p>
+      <div class="section-tag">Riešenie krok za krokom</div>
+      <div class="worked-panel"><h3>Postup výpočtu</h3><p>Riadkové operácie robíme ako XOR riadkov, lebo sme nad \(GF(2)\). Rozpíšeme dve zmenené riadkové operácie:</p><div class="math-block">\[r_1+r_3+r_4:\quad 1011000+0010110=1001110\]</div><div class="math-block">\[1001110+0001011=1000101\]</div><div class="math-block">\[r_2+r_4:\quad 0101100+0001011=0100111\]</div><p>Nové riadky sú \(r_1'=1000101\), \(r_2'=0100111\), \(r_3=0010110\), \(r_4=0001011\). Prvé štyri stĺpce teraz tvoria \(I_4\).</p></div><h3>Výsledok a kontrola</h3><p>Budeme robiť elementárne riadkové operácie nad \(GF(2)\). Chceme dostať jednotkovú maticu v prvých štyroch stĺpcoch.</p><p>Zoberieme:</p><ul><li>\(r_1 \leftarrow r_1 + r_3 + r_4\),</li><li>\(r_2 \leftarrow r_2 + r_4\).</li></ul><p>Potom dostaneme</p><div class="math-block">\[G = \begin{bmatrix}1 & 0 & 0 & 0 & 1 & 0 & 1 \\\\ 0 & 1 & 0 & 0 & 1 & 1 & 1 \\\\ 0 & 0 & 1 & 0 & 1 & 1 & 0 \\\\ 0 & 0 & 0 & 1 & 0 & 1 & 1\end{bmatrix}\]</div><p>Takto je matica v systematickom tvare \([I_4\mid P]\).</p>
     </section>
     <section class="card">
       <div class="section-tag">Definície</div>

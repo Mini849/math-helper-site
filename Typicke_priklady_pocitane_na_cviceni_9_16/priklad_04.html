@@ -163,6 +163,22 @@ th {
   margin-top: 0.35rem;
 }
 
+.worked-panel {
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  background: #fffaf2;
+  padding: 18px 20px;
+  margin: 0 0 20px;
+}
+
+.worked-panel h3:first-child {
+  margin-top: 0;
+}
+
+.worked-panel table {
+  background: #fffdf9;
+}
+
 .index-list {
   list-style: none;
   padding: 0;
@@ -264,8 +280,8 @@ code {
     </section>
     <section class="card"><div class="section-tag">Ako to riešiť</div><p>Najprv si úlohu rozdeľ na malé rozhodnutia. Pri skúške je dôležitejšie vedieť, ktorý postup použiť, než si pamätať výsledok.</p><ol class="guide-list"><li>Najprv si premenuj slovné zadanie na počet možností, počet bitov alebo veľkosť dát.</li><li>Pri počte binárnych slov používaj \(2^n\). Pri minimálnom počte bitov použi \(\lceil\log_2 M\rceil\).</li><li>Pri obrázkoch násob počet pixelov počtom kanálov a počtom bitov na kanál.</li><li>Na konci preveď jednotky pomaly: bity na bajty delíš \(8\), väčšie jednotky delíš príslušnou mocninou.</li></ol><div class="note"><p><strong>Kontrola:</strong> Odpoveď musí mať jednotku: bit, bajt, počet slov alebo konkrétnu hodnotu logaritmu.</p></div></section>
     <section class="card">
-      <div class="section-tag">Vypracovanie</div>
-      <p>Ak má každá farba \(2^{16}\) úrovní, potom na jednu farbu treba \(16\) bitov.</p><p>Pre jeden pixel teda treba</p><div class="math-block">\[3\cdot16 = 48\text{ bitov/pixel}\]</div><p>Fotografia má \(100\,000\,000\) pixelov, preto celkový počet bitov je</p><div class="math-block">\[100\,000\,000\cdot48 = 4\,800\,000\,000\text{ bitov}\]</div><p>To je \(600\,000\,000\) bajtov, približne \(600\) MB, resp. asi \(572\) MiB.</p>
+      <div class="section-tag">Riešenie krok za krokom</div>
+      <div class="worked-panel"><h3>Postup výpočtu</h3><p>Toto je rozpis výpočtu pred finálnym výsledkom. Čítaj ho zhora nadol a po každom kroku si skontroluj, čo sa práve zmenilo.</p><ol class="guide-list"><li>Prepíš zadanie do symbolov a označ, čo hľadáš.</li><li>Vyber definíciu alebo vzorec podľa typu úlohy.</li><li>Urob výpočet po malých krokoch, nie skokom na výsledok.</li><li>Na konci dosaď výsledok späť alebo ho over príslušnou kontrolou.</li></ol><p><strong>Kontrola na konci:</strong> Výsledok musí spĺňať všetky podmienky zo zadania.</p></div><h3>Výsledok a kontrola</h3><p>Ak má každá farba \(2^{16}\) úrovní, potom na jednu farbu treba \(16\) bitov.</p><p>Pre jeden pixel teda treba</p><div class="math-block">\[3\cdot16 = 48\text{ bitov/pixel}\]</div><p>Fotografia má \(100\,000\,000\) pixelov, preto celkový počet bitov je</p><div class="math-block">\[100\,000\,000\cdot48 = 4\,800\,000\,000\text{ bitov}\]</div><p>To je \(600\,000\,000\) bajtov, približne \(600\) MB, resp. asi \(572\) MiB.</p>
     </section>
     <section class="card">
       <div class="section-tag">Definície</div>

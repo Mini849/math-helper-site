@@ -163,6 +163,22 @@ th {
   margin-top: 0.35rem;
 }
 
+.worked-panel {
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  background: #fffaf2;
+  padding: 18px 20px;
+  margin: 0 0 20px;
+}
+
+.worked-panel h3:first-child {
+  margin-top: 0;
+}
+
+.worked-panel table {
+  background: #fffdf9;
+}
+
 .index-list {
   list-style: none;
   padding: 0;
@@ -264,8 +280,8 @@ code {
     </section>
     <section class="card"><div class="section-tag">Ako to riešiť</div><p>Najprv si úlohu rozdeľ na malé rozhodnutia. Pri skúške je dôležitejšie vedieť, ktorý postup použiť, než si pamätať výsledok.</p><ol class="guide-list"><li>Najprv jasne pomenuj množinu a operáciu. Bez toho sa nedá rozhodnúť, či ide o grupu.</li><li>Over uzavretosť: výsledok operácie dvoch prvkov musí ostať v tej istej množine.</li><li>Nájdi neutrálny prvok a pre každý prvok jeho inverz. Pri modulo sčítaní je neutrálny prvok zvyčajne \(0\), pri násobení \(1\).</li><li>Asociativitu buď zdedíš zo známej operácie, alebo ju overíš tabuľkou, ak ide o malé transformácie.</li></ol><div class="note"><p><strong>Kontrola:</strong> Ak čo i len jeden axióm zlyhá, nejde o grupu.</p></div></section>
     <section class="card">
-      <div class="section-tag">Vypracovanie</div>
-      <p>Dané transformácie tvoria symetrickú grupu rovnostranného trojuholníka, teda grupu D₃ s troma rotáciami a troma reflexiami.</p><h3>Tabuľka operácie</h3><div class="table-scroll"><table class="compact"><thead><tr><th>y * x</th><th>1</th><th>a</th><th>b</th><th>c</th><th>d</th><th>e</th></tr></thead><tbody><tr><td>1</td><td>1</td><td>a</td><td>b</td><td>c</td><td>d</td><td>e</td></tr><tr><td>a</td><td>a</td><td>b</td><td>1</td><td>e</td><td>c</td><td>d</td></tr><tr><td>b</td><td>b</td><td>1</td><td>a</td><td>d</td><td>e</td><td>c</td></tr><tr><td>c</td><td>c</td><td>d</td><td>e</td><td>1</td><td>a</td><td>b</td></tr><tr><td>d</td><td>d</td><td>e</td><td>c</td><td>b</td><td>1</td><td>a</td></tr><tr><td>e</td><td>e</td><td>c</td><td>d</td><td>a</td><td>b</td><td>1</td></tr></tbody></table></div><h3>Overenie grupových vlastností</h3><ol><li><strong>Uzavretosť:</strong> zloženie dvoch symetrií trojuholníka je opäť symetria trojuholníka.</li><li><strong>Asociativita:</strong> skladanie zobrazení je vždy asociatívne.</li><li><strong>Neutrálny prvok:</strong> je 1, identická transformácia.</li><li><strong>Inverzy:</strong> a<sup>−1</sup> = b, b<sup>−1</sup> = a, c<sup>−1</sup> = c, d<sup>−1</sup> = d, e<sup>−1</sup> = e.</li></ol><p>Grupa nie je ábelovská. Napríklad a ∗ c = e, ale c ∗ a = d, takže a ∗ c ≠ c ∗ a.</p>
+      <div class="section-tag">Riešenie krok za krokom</div>
+      <div class="worked-panel"><h3>Postup výpočtu</h3><p>V tabuľke \(y*x\) najprv vykonáme transformáciu \(x\), až potom transformáciu \(y\). Dva riadky tabuľky si vieme overiť takto:</p><div class="table-scroll"><table class="compact"><thead><tr><th>Súčin</th><th>Stopa vrcholov</th><th>Výsledok</th></tr></thead><tbody><tr><td>\(a*b\)</td><td>A→C→A, B→A→B, C→B→C</td><td>\(1\)</td></tr><tr><td>\(a*c\)</td><td>A→A→B, B→C→A, C→B→C</td><td>\(e\)</td></tr><tr><td>\(c*a\)</td><td>A→B→C, B→C→B, C→A→A</td><td>\(d\)</td></tr></tbody></table></div><p>Keďže \(a*c=e\), ale \(c*a=d\), poradie skladania záleží. Preto grupa symetrií trojuholníka nie je ábelovská.</p></div><h3>Výsledok a kontrola</h3><p>Dané transformácie tvoria symetrickú grupu rovnostranného trojuholníka, teda grupu D₃ s troma rotáciami a troma reflexiami.</p><h3>Tabuľka operácie</h3><div class="table-scroll"><table class="compact"><thead><tr><th>y * x</th><th>1</th><th>a</th><th>b</th><th>c</th><th>d</th><th>e</th></tr></thead><tbody><tr><td>1</td><td>1</td><td>a</td><td>b</td><td>c</td><td>d</td><td>e</td></tr><tr><td>a</td><td>a</td><td>b</td><td>1</td><td>e</td><td>c</td><td>d</td></tr><tr><td>b</td><td>b</td><td>1</td><td>a</td><td>d</td><td>e</td><td>c</td></tr><tr><td>c</td><td>c</td><td>d</td><td>e</td><td>1</td><td>a</td><td>b</td></tr><tr><td>d</td><td>d</td><td>e</td><td>c</td><td>b</td><td>1</td><td>a</td></tr><tr><td>e</td><td>e</td><td>c</td><td>d</td><td>a</td><td>b</td><td>1</td></tr></tbody></table></div><h3>Overenie grupových vlastností</h3><ol><li><strong>Uzavretosť:</strong> zloženie dvoch symetrií trojuholníka je opäť symetria trojuholníka.</li><li><strong>Asociativita:</strong> skladanie zobrazení je vždy asociatívne.</li><li><strong>Neutrálny prvok:</strong> je 1, identická transformácia.</li><li><strong>Inverzy:</strong> a<sup>−1</sup> = b, b<sup>−1</sup> = a, c<sup>−1</sup> = c, d<sup>−1</sup> = d, e<sup>−1</sup> = e.</li></ol><p>Grupa nie je ábelovská. Napríklad a ∗ c = e, ale c ∗ a = d, takže a ∗ c ≠ c ∗ a.</p>
     </section>
     <section class="card">
       <div class="section-tag">Definície</div>

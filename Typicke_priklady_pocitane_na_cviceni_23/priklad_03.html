@@ -163,6 +163,22 @@ th {
   margin-top: 0.35rem;
 }
 
+.worked-panel {
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  background: #fffaf2;
+  padding: 18px 20px;
+  margin: 0 0 20px;
+}
+
+.worked-panel h3:first-child {
+  margin-top: 0;
+}
+
+.worked-panel table {
+  background: #fffdf9;
+}
+
 .index-list {
   list-style: none;
   padding: 0;
@@ -264,8 +280,8 @@ code {
     </section>
     <section class="card"><div class="section-tag">Ako to riešiť</div><p>Najprv si úlohu rozdeľ na malé rozhodnutia. Pri skúške je dôležitejšie vedieť, ktorý postup použiť, než si pamätať výsledok.</p><ol class="guide-list"><li>Najprv skontroluj rozmery: ak \(A\) má rozmer \(m\times n\) a \(B\) má rozmer \(n\times k\), výsledok má rozmer \(m\times k\).</li><li>Prvok na pozícii \((i,j)\) dostaneš ako skalárny súčin \(i\)-teho riadku prvej matice a \(j\)-teho stĺpca druhej matice.</li><li>Pri celých číslach nič neredukuj modulo \(2\); záporné hodnoty môžu vo výsledku normálne ostať.</li><li>Počítaj po jednom prvku výslednej matice, nie naraz celý riadok spamäti.</li></ol><div class="note"><p><strong>Kontrola:</strong> Výsledná matica má správny rozmer a aspoň pár prvkov vieš spätne overiť výpočtom riadok krát stĺpec.</p></div></section>
     <section class="card">
-      <div class="section-tag">Vypracovanie</div>
-      <p>Ak má matica \(A\) rozmery \(m\times n\) a matica \(B\) rozmery \(n\times p\), potom súčin \(AB\) existuje a má rozmery \(m\times p\).</p><p>Prvok v \(i\)-tom riadku a \(j\)-tom stĺpci sa počíta skalárnym súčinom \(i\)-teho riadku matice \(A\) a \(j\)-teho stĺpca matice \(B\):</p><div class="math-block">\[(AB)_{ij} = \sum_{k=1}^{n} a_{ik}b_{kj}\]</div><p>Krátky príklad:</p><div class="math-block">\[\begin{bmatrix}1 & 2 \\\\ 3 & 4\end{bmatrix}\begin{bmatrix}5 & 6 \\\\ 7 & 8\end{bmatrix}=\begin{bmatrix}19 & 22 \\\\ 43 & 50\end{bmatrix}\]</div><p>Prvý prvok výsledku vznikol takto: \(1\cdot5 + 2\cdot7 = 19\).</p><p>Dôležité je vždy násobiť <em>riadok krát stĺpec</em>, nie riadok s riadkom.</p>
+      <div class="section-tag">Riešenie krok za krokom</div>
+      <div class="worked-panel"><h3>Postup výpočtu</h3><p>Na malej ukážke je najdôležitejšie vidieť všetky štyri prvky výsledku. Vždy berieme riadok zľava a stĺpec sprava.</p><div class="table-scroll"><table class="compact"><thead><tr><th>Pozícia</th><th>Výpočet</th><th>Výsledok</th></tr></thead><tbody><tr><td>\((1,1)\)</td><td>\(1\cdot 5 + 2\cdot 7=19\)</td><td>19</td></tr><tr><td>\((1,2)\)</td><td>\(1\cdot 6 + 2\cdot 8=22\)</td><td>22</td></tr><tr><td>\((2,1)\)</td><td>\(3\cdot 5 + 4\cdot 7=43\)</td><td>43</td></tr><tr><td>\((2,2)\)</td><td>\(3\cdot 6 + 4\cdot 8=50\)</td><td>50</td></tr></tbody></table></div><p>Preto je výsledná matica \(\begin{bmatrix}19&22\\43&50\end{bmatrix}\).</p></div><h3>Výsledok a kontrola</h3><p>Ak má matica \(A\) rozmery \(m\times n\) a matica \(B\) rozmery \(n\times p\), potom súčin \(AB\) existuje a má rozmery \(m\times p\).</p><p>Prvok v \(i\)-tom riadku a \(j\)-tom stĺpci sa počíta skalárnym súčinom \(i\)-teho riadku matice \(A\) a \(j\)-teho stĺpca matice \(B\):</p><div class="math-block">\[(AB)_{ij} = \sum_{k=1}^{n} a_{ik}b_{kj}\]</div><p>Krátky príklad:</p><div class="math-block">\[\begin{bmatrix}1 & 2 \\\\ 3 & 4\end{bmatrix}\begin{bmatrix}5 & 6 \\\\ 7 & 8\end{bmatrix}=\begin{bmatrix}19 & 22 \\\\ 43 & 50\end{bmatrix}\]</div><p>Prvý prvok výsledku vznikol takto: \(1\cdot5 + 2\cdot7 = 19\).</p><p>Dôležité je vždy násobiť <em>riadok krát stĺpec</em>, nie riadok s riadkom.</p>
     </section>
     <section class="card">
       <div class="section-tag">Definície</div>

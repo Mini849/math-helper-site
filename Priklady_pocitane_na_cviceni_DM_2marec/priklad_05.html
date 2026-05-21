@@ -163,6 +163,22 @@ th {
   margin-top: 0.35rem;
 }
 
+.worked-panel {
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  background: #fffaf2;
+  padding: 18px 20px;
+  margin: 0 0 20px;
+}
+
+.worked-panel h3:first-child {
+  margin-top: 0;
+}
+
+.worked-panel table {
+  background: #fffdf9;
+}
+
 .index-list {
   list-style: none;
   padding: 0;
@@ -264,8 +280,8 @@ code {
     </section>
     <section class="card"><div class="section-tag">Ako to riešiť</div><p>Najprv si úlohu rozdeľ na malé rozhodnutia. Pri skúške je dôležitejšie vedieť, ktorý postup použiť, než si pamätať výsledok.</p><ol class="guide-list"><li>Determinant \(3\times3\) vypočítaj napríklad rozvojom podľa riadka alebo úpravou na trojuholníkový tvar.</li><li>Všetky sčítania a násobenia rob modulo \(2\).</li><li>V \(GF(2)\) platí \(-1=1\), takže znamienka pri rozvoji sa po redukcii správajú inak ako nad celými číslami.</li><li>Každý medzivýsledok po výpočte zredukuj na \(0\) alebo \(1\).</li></ol><div class="note"><p><strong>Kontrola:</strong> Výsledok determinantu nad \(GF(2)\) musí byť iba \(0\) alebo \(1\).</p></div></section>
     <section class="card">
-      <div class="section-tag">Vypracovanie</div>
-      <p>Rozvoj podľa prvého riadku dá</p><div class="math-block">\[\det A = 1\cdot\begin{vmatrix}1&0\\1&1\end{vmatrix} + 0 + 1\cdot\begin{vmatrix}1&1\\0&1\end{vmatrix}\]</div><p>V obyčajných číslach sú menšie determinanty \(1\) a \(1\), takže celkový determinant je \(2\).</p><p>Nad \(GF(2)\) však redukujeme modulo \(2\):</p><div class="math-block">\[2 \equiv 0 \pmod 2\]</div><p>Preto \(\det A = 0\) v \(GF(2)\).</p>
+      <div class="section-tag">Riešenie krok za krokom</div>
+      <div class="worked-panel"><h3>Postup výpočtu</h3><p>Pri rozvoji determinantu nad \(GF(2)\) sa znamienka po redukcii správajú jednoducho, lebo \(-1\equiv1\pmod2\). Dva minory dopočítame explicitne:</p><div class="math-block">\[\begin{vmatrix}1&0\\1&1\end{vmatrix}=1\cdot1-0\cdot1=1\]</div><div class="math-block">\[\begin{vmatrix}1&1\\0&1\end{vmatrix}=1\cdot1-1\cdot0=1\]</div><div class="math-block">\[\det A=1\cdot1+1\cdot1=2\equiv0\pmod2\]</div><p>Výsledok determinantu nad \(GF(2)\) je teda \(0\).</p></div><h3>Výsledok a kontrola</h3><p>Rozvoj podľa prvého riadku dá</p><div class="math-block">\[\det A = 1\cdot\begin{vmatrix}1&0\\1&1\end{vmatrix} + 0 + 1\cdot\begin{vmatrix}1&1\\0&1\end{vmatrix}\]</div><p>V obyčajných číslach sú menšie determinanty \(1\) a \(1\), takže celkový determinant je \(2\).</p><p>Nad \(GF(2)\) však redukujeme modulo \(2\):</p><div class="math-block">\[2 \equiv 0 \pmod 2\]</div><p>Preto \(\det A = 0\) v \(GF(2)\).</p>
     </section>
     <section class="card">
       <div class="section-tag">Definície</div>

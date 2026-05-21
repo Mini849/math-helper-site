@@ -163,6 +163,22 @@ th {
   margin-top: 0.35rem;
 }
 
+.worked-panel {
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  background: #fffaf2;
+  padding: 18px 20px;
+  margin: 0 0 20px;
+}
+
+.worked-panel h3:first-child {
+  margin-top: 0;
+}
+
+.worked-panel table {
+  background: #fffdf9;
+}
+
 .index-list {
   list-style: none;
   padding: 0;
@@ -264,8 +280,8 @@ code {
     </section>
     <section class="card"><div class="section-tag">Ako to riešiť</div><p>Najprv si úlohu rozdeľ na malé rozhodnutia. Pri skúške je dôležitejšie vedieť, ktorý postup použiť, než si pamätať výsledok.</p><ol class="guide-list"><li>Pri Hammingovom kóde s kontrolnou maticou \(H\) je syndróm jednobitovej chyby presne príslušný stĺpec matice \(H\).</li><li>Syndrómovú tabuľku zostavíš tak, že ku každému nenulovému stĺpcu priradíš chybu na danej pozícii.</li><li>Prijaté slovo dekóduj cez \(s=vH^T\), teda vynásob prijatý vektor transponovanou kontrolnou maticou.</li><li>Ak je \(s\ne0\), v tabuľke nájdi stĺpec so zhodným syndrómom a oprav bit na tej pozícii.</li></ol><div class="note"><p><strong>Kontrola:</strong> Ak je \(s=0\), prijaté slovo patrí do kódu; formálne to nevylučuje nezistiteľnú viacbitovú chybu.</p></div></section>
     <section class="card">
-      <div class="section-tag">Vypracovanie</div>
-      <p>Kontrolná matica má stĺpce zodpovedajúce binárnym číslam \(1\) až \(15\):</p><div class="math-block">\[H=\begin{bmatrix}0 & 0 & 0 & 0 & 0 & 0 & 0 & 1 & 1 & 1 & 1 & 1 & 1 & 1 & 1 \\\\ 0 & 0 & 0 & 1 & 1 & 1 & 1 & 0 & 0 & 0 & 0 & 1 & 1 & 1 & 1 \\\\ 0 & 1 & 1 & 0 & 0 & 1 & 1 & 0 & 0 & 1 & 1 & 0 & 0 & 1 & 1 \\\\ 1 & 0 & 1 & 0 & 1 & 0 & 1 & 0 & 1 & 0 & 1 & 0 & 1 & 0 & 1\end{bmatrix}\]</div><p>Pri jednobitovej chybe je syndróm presne stĺpec matice \(H\), v ktorom nastala chyba. Preto tabuľka vyzerá takto:</p><div class="table-scroll"><table class="compact"><thead><tr><th>Syndróm</th><th>Najpravdepodobnejšia chyba</th></tr></thead><tbody><tr><td>\(0001\)</td><td>chyba v pozícii 1</td></tr><tr><td>\(0010\)</td><td>chyba v pozícii 2</td></tr><tr><td>\(0011\)</td><td>chyba v pozícii 3</td></tr><tr><td>\(0100\)</td><td>chyba v pozícii 4</td></tr><tr><td>\(0101\)</td><td>chyba v pozícii 5</td></tr><tr><td>\(0110\)</td><td>chyba v pozícii 6</td></tr><tr><td>\(0111\)</td><td>chyba v pozícii 7</td></tr><tr><td>\(1000\)</td><td>chyba v pozícii 8</td></tr><tr><td>\(1001\)</td><td>chyba v pozícii 9</td></tr><tr><td>\(1010\)</td><td>chyba v pozícii 10</td></tr><tr><td>\(1011\)</td><td>chyba v pozícii 11</td></tr><tr><td>\(1100\)</td><td>chyba v pozícii 12</td></tr><tr><td>\(1101\)</td><td>chyba v pozícii 13</td></tr><tr><td>\(1110\)</td><td>chyba v pozícii 14</td></tr><tr><td>\(1111\)</td><td>chyba v pozícii 15</td></tr></tbody></table></div><p>Syndróm prijatého vektora počítame ako \(s=vH^T\):</p><div class="math-block">\[s=0000\]</div><p>Keďže syndróm je nulový, vektor už spĺňa všetky kontrolné rovnice. Dekódovaný výsledok je teda rovnaký vektor:</p><div class="math-block">\[c=v=(1,0,1,0,1,0,1,0,1,0,1,0,1,0,1)\]</div>
+      <div class="section-tag">Riešenie krok za krokom</div>
+      <div class="worked-panel"><h3>Postup výpočtu</h3><p>Syndróm \(s=vH^T\) znamená štyri kontrolné súčty modulo \(2\). Pre vektor \(v=(1,0,1,0,\ldots,1)\) dostaneme:</p><div class="table-scroll"><table class="compact"><thead><tr><th>Kontrola</th><th>pozície</th><th>súčet</th><th>mod 2</th></tr></thead><tbody><tr><td>\(s_1\)</td><td>8,9,10,11,12,13,14,15</td><td>0+1+0+1+0+1+0+1=4</td><td>0</td></tr><tr><td>\(s_2\)</td><td>4,5,6,7,12,13,14,15</td><td>0+1+0+1+0+1+0+1=4</td><td>0</td></tr><tr><td>\(s_3\)</td><td>2,3,6,7,10,11,14,15</td><td>0+1+0+1+0+1+0+1=4</td><td>0</td></tr><tr><td>\(s_4\)</td><td>1,3,5,7,9,11,13,15</td><td>1+1+1+1+1+1+1+1=8</td><td>0</td></tr></tbody></table></div><p>Teda \(s=(0,0,0,0)\). V syndrómovej tabuľke to znamená, že neopravujeme žiadny bit.</p></div><h3>Výsledok a kontrola</h3><p>Kontrolná matica má stĺpce zodpovedajúce binárnym číslam \(1\) až \(15\):</p><div class="math-block">\[H=\begin{bmatrix}0 & 0 & 0 & 0 & 0 & 0 & 0 & 1 & 1 & 1 & 1 & 1 & 1 & 1 & 1 \\\\ 0 & 0 & 0 & 1 & 1 & 1 & 1 & 0 & 0 & 0 & 0 & 1 & 1 & 1 & 1 \\\\ 0 & 1 & 1 & 0 & 0 & 1 & 1 & 0 & 0 & 1 & 1 & 0 & 0 & 1 & 1 \\\\ 1 & 0 & 1 & 0 & 1 & 0 & 1 & 0 & 1 & 0 & 1 & 0 & 1 & 0 & 1\end{bmatrix}\]</div><p>Pri jednobitovej chybe je syndróm presne stĺpec matice \(H\), v ktorom nastala chyba. Preto tabuľka vyzerá takto:</p><div class="table-scroll"><table class="compact"><thead><tr><th>Syndróm</th><th>Najpravdepodobnejšia chyba</th></tr></thead><tbody><tr><td>\(0001\)</td><td>chyba v pozícii 1</td></tr><tr><td>\(0010\)</td><td>chyba v pozícii 2</td></tr><tr><td>\(0011\)</td><td>chyba v pozícii 3</td></tr><tr><td>\(0100\)</td><td>chyba v pozícii 4</td></tr><tr><td>\(0101\)</td><td>chyba v pozícii 5</td></tr><tr><td>\(0110\)</td><td>chyba v pozícii 6</td></tr><tr><td>\(0111\)</td><td>chyba v pozícii 7</td></tr><tr><td>\(1000\)</td><td>chyba v pozícii 8</td></tr><tr><td>\(1001\)</td><td>chyba v pozícii 9</td></tr><tr><td>\(1010\)</td><td>chyba v pozícii 10</td></tr><tr><td>\(1011\)</td><td>chyba v pozícii 11</td></tr><tr><td>\(1100\)</td><td>chyba v pozícii 12</td></tr><tr><td>\(1101\)</td><td>chyba v pozícii 13</td></tr><tr><td>\(1110\)</td><td>chyba v pozícii 14</td></tr><tr><td>\(1111\)</td><td>chyba v pozícii 15</td></tr></tbody></table></div><p>Syndróm prijatého vektora počítame ako \(s=vH^T\):</p><div class="math-block">\[s=0000\]</div><p>Keďže syndróm je nulový, vektor už spĺňa všetky kontrolné rovnice. Dekódovaný výsledok je teda rovnaký vektor:</p><div class="math-block">\[c=v=(1,0,1,0,1,0,1,0,1,0,1,0,1,0,1)\]</div>
     </section>
     <section class="card">
       <div class="section-tag">Definície</div>

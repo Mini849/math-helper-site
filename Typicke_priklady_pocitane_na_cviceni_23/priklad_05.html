@@ -163,6 +163,22 @@ th {
   margin-top: 0.35rem;
 }
 
+.worked-panel {
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  background: #fffaf2;
+  padding: 18px 20px;
+  margin: 0 0 20px;
+}
+
+.worked-panel h3:first-child {
+  margin-top: 0;
+}
+
+.worked-panel table {
+  background: #fffdf9;
+}
+
 .index-list {
   list-style: none;
   padding: 0;
@@ -264,8 +280,8 @@ code {
     </section>
     <section class="card"><div class="section-tag">Ako to riešiť</div><p>Najprv si úlohu rozdeľ na malé rozhodnutia. Pri skúške je dôležitejšie vedieť, ktorý postup použiť, než si pamätať výsledok.</p><ol class="guide-list"><li>Najprv skontroluj rozmery rovnako ako pri obyčajnom násobení matíc.</li><li>Každý prvok výsledku počítaj ako riadok krát stĺpec.</li><li>Rozdiel je iba v tom, že po každom sčítaní a násobení berieš výsledok modulo \(2\).</li><li>V \(GF(2)\) platí \(1+1=0\), takže párny počet jednotiek dá \(0\) a nepárny počet jednotiek dá \(1\).</li></ol><div class="note"><p><strong>Kontrola:</strong> Vo výslednej matici nad \(GF(2)\) sa smú objaviť iba hodnoty \(0\) a \(1\).</p></div></section>
     <section class="card">
-      <div class="section-tag">Vypracovanie</div>
-      <p>Postup je rovnaký ako pri obyčajných maticiach, ale všetko sa počíta modulo \(2\). To znamená, že:</p><ul><li>\(1+1=0\),</li><li>\(1+0=1\),</li><li>\(1\cdot1=1\).</li></ul><p>Ukážka na jednom prvku:</p><div class="math-block">\[\begin{bmatrix}1 & 0 & 1 & 1\end{bmatrix}\cdot\begin{bmatrix}1\\0\\1\\1\end{bmatrix}=1+0+1+1\equiv1\pmod 2\]</div><p>Keď pri sčítaní vyjde párny počet jednotiek, výsledok je \(0\). Keď nepárny, výsledok je \(1\).</p>
+      <div class="section-tag">Riešenie krok za krokom</div>
+      <div class="worked-panel"><h3>Postup výpočtu</h3><p>Toto je rozpis výpočtu pred finálnym výsledkom. Čítaj ho zhora nadol a po každom kroku si skontroluj, čo sa práve zmenilo.</p><ol class="guide-list"><li>Najprv napíš množinu prvkov poľa a pravidlo redukcie.</li><li>Pri \(GF(p)\) redukuj čísla modulo \(p\); pri \(GF(2^m)\) redukuj mocniny \(\alpha\) podľa daného polynómu.</li><li>Pri sčítaní v charakteristike \(2\) sa rovnaké členy rušia.</li><li>Pri delení nenulových mocnín odčítaj exponenty modulo \(q-1\).</li></ol><p><strong>Kontrola na konci:</strong> Výsledok v \(GF(2^m)\) musí byť zapísaný pomocou mocnín nižších ako \(m\).</p></div><h3>Výsledok a kontrola</h3><p>Postup je rovnaký ako pri obyčajných maticiach, ale všetko sa počíta modulo \(2\). To znamená, že:</p><ul><li>\(1+1=0\),</li><li>\(1+0=1\),</li><li>\(1\cdot1=1\).</li></ul><p>Ukážka na jednom prvku:</p><div class="math-block">\[\begin{bmatrix}1 & 0 & 1 & 1\end{bmatrix}\cdot\begin{bmatrix}1\\0\\1\\1\end{bmatrix}=1+0+1+1\equiv1\pmod 2\]</div><p>Keď pri sčítaní vyjde párny počet jednotiek, výsledok je \(0\). Keď nepárny, výsledok je \(1\).</p>
     </section>
     <section class="card">
       <div class="section-tag">Definície</div>

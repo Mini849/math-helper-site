@@ -163,6 +163,22 @@ th {
   margin-top: 0.35rem;
 }
 
+.worked-panel {
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  background: #fffaf2;
+  padding: 18px 20px;
+  margin: 0 0 20px;
+}
+
+.worked-panel h3:first-child {
+  margin-top: 0;
+}
+
+.worked-panel table {
+  background: #fffdf9;
+}
+
 .index-list {
   list-style: none;
   padding: 0;
@@ -294,8 +310,8 @@ code {
     </section>
     <section class="card"><div class="section-tag">Ako to riešiť</div><p>Najprv si úlohu rozdeľ na malé rozhodnutia. Pri skúške je dôležitejšie vedieť, ktorý postup použiť, než si pamätať výsledok.</p><ol class="guide-list"><li>Najprv urč dĺžku slova \(n\), počet informačných symbolov \(k\) a spôsob, akým vznikajú paritné symboly.</li><li>Ak máš generujúcu maticu, kódové slová vznikajú ako \(uG\). Ak máš kontrolnú maticu, platné slová spĺňajú \(cH^T=0\).</li><li>Minimálnu vzdialenosť pri lineárnom kóde hľadaj cez najmenšiu nenulovú Hammingovu váhu kódového slova.</li><li>Pri syndróme násob prijaté slovo kontrolnou maticou. Nulový syndróm znamená, že prijaté slovo patrí do kódu.</li></ol><div class="note"><p><strong>Kontrola:</strong> Počet kódových slov lineárneho binárneho kódu je \(2^k\); okolitý priestor má \(2^n\) slov.</p><p><strong>Pozor:</strong> Nulový syndróm nemusí dokazovať, že pri prenose určite nenastala nezistiteľná viacbitová chyba.</p></div></section>
     <section class="card">
-      <div class="section-tag">Vypracovanie</div>
-      <p>Zo schémy sú informačné symboly \(i_1,i_2,i_3\), teda \(k=3\). Celé kódové slovo má sedem symbolov \(c_6\) až \(c_0\), teda \(n=7\).</p><div class="math-block">\[n=7,\qquad k=3\]</div><p>Kód je binárny a lineárny, preto počet kódových slov je \(2^k\):</p><div class="math-block">\[|C|=2^3=8\]</div><p>Tvorí trojrozmerný podpriestor sedemrozmerného priestoru \(GF(2)^7\). V celom priestore je</p><div class="math-block">\[|GF(2)^7|=2^7=128\]</div><p>Paritné vzťahy čítame ako \(p_1=i_1\), \(p_2=i_2\), \(p_3=i_3\) a \(p_4=i_1+i_2+i_3\). Generujúca matica je</p><div class="math-block">\[G=\begin{bmatrix}1 & 0 & 0 & 1 & 0 & 0 & 1 \\\\ 0 & 1 & 0 & 0 & 1 & 0 & 1 \\\\ 0 & 0 & 1 & 0 & 0 & 1 & 1\end{bmatrix}\]</div><p>Kontrolná matica môže kontrolovať rovnosti \(c_6+c_3=0\), \(c_5+c_2=0\), \(c_4+c_1=0\) a \(c_6+c_5+c_4+c_0=0\):</p><div class="math-block">\[H=\begin{bmatrix}1 & 0 & 0 & 1 & 0 & 0 & 0 \\\\ 0 & 1 & 0 & 0 & 1 & 0 & 0 \\\\ 0 & 0 & 1 & 0 & 0 & 1 & 0 \\\\ 1 & 1 & 1 & 0 & 0 & 0 & 1\end{bmatrix}\]</div><p>Váhové spektrum vyjde</p><div class="math-block">\[A(y)=1+3y^3+3y^4+y^7\]</div><p>Najmenšia nenulová váha je \(3\), takže kódová vzdialenosť je</p><div class="math-block">\[d=3\]</div>
+      <div class="section-tag">Riešenie krok za krokom</div>
+      <div class="worked-panel"><h3>Postup výpočtu</h3><p>Váhové spektrum dostaneme až po vygenerovaní všetkých kódových slov \(c=uG\). Pri poradí \((c_6,\ldots,c_0)\) vyjde:</p><div class="table-scroll"><table class="compact"><thead><tr><th>u</th><th>c = uG</th><th>w(c)</th></tr></thead><tbody><tr><td>000</td><td>0000000</td><td>0</td></tr><tr><td>001</td><td>0010011</td><td>3</td></tr><tr><td>010</td><td>0100101</td><td>3</td></tr><tr><td>011</td><td>0110110</td><td>4</td></tr><tr><td>100</td><td>1001001</td><td>3</td></tr><tr><td>101</td><td>1011010</td><td>4</td></tr><tr><td>110</td><td>1101100</td><td>4</td></tr><tr><td>111</td><td>1111111</td><td>7</td></tr></tbody></table></div><p>V tabuľke je jedno slovo váhy \(0\), tri slová váhy \(3\), tri slová váhy \(4\) a jedno slovo váhy \(7\). Preto \(A(y)=1+3y^3+3y^4+y^7\) a \(d_{min}=3\).</p></div><h3>Výsledok a kontrola</h3><p>Zo schémy sú informačné symboly \(i_1,i_2,i_3\), teda \(k=3\). Celé kódové slovo má sedem symbolov \(c_6\) až \(c_0\), teda \(n=7\).</p><div class="math-block">\[n=7,\qquad k=3\]</div><p>Kód je binárny a lineárny, preto počet kódových slov je \(2^k\):</p><div class="math-block">\[|C|=2^3=8\]</div><p>Tvorí trojrozmerný podpriestor sedemrozmerného priestoru \(GF(2)^7\). V celom priestore je</p><div class="math-block">\[|GF(2)^7|=2^7=128\]</div><p>Paritné vzťahy čítame ako \(p_1=i_1\), \(p_2=i_2\), \(p_3=i_3\) a \(p_4=i_1+i_2+i_3\). Generujúca matica je</p><div class="math-block">\[G=\begin{bmatrix}1 & 0 & 0 & 1 & 0 & 0 & 1 \\\\ 0 & 1 & 0 & 0 & 1 & 0 & 1 \\\\ 0 & 0 & 1 & 0 & 0 & 1 & 1\end{bmatrix}\]</div><p>Kontrolná matica môže kontrolovať rovnosti \(c_6+c_3=0\), \(c_5+c_2=0\), \(c_4+c_1=0\) a \(c_6+c_5+c_4+c_0=0\):</p><div class="math-block">\[H=\begin{bmatrix}1 & 0 & 0 & 1 & 0 & 0 & 0 \\\\ 0 & 1 & 0 & 0 & 1 & 0 & 0 \\\\ 0 & 0 & 1 & 0 & 0 & 1 & 0 \\\\ 1 & 1 & 1 & 0 & 0 & 0 & 1\end{bmatrix}\]</div><p>Váhové spektrum vyjde</p><div class="math-block">\[A(y)=1+3y^3+3y^4+y^7\]</div><p>Najmenšia nenulová váha je \(3\), takže kódová vzdialenosť je</p><div class="math-block">\[d=3\]</div>
     </section>
     <section class="card">
       <div class="section-tag">Definície</div>

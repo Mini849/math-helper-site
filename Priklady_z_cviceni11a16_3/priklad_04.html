@@ -163,6 +163,22 @@ th {
   margin-top: 0.35rem;
 }
 
+.worked-panel {
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  background: #fffaf2;
+  padding: 18px 20px;
+  margin: 0 0 20px;
+}
+
+.worked-panel h3:first-child {
+  margin-top: 0;
+}
+
+.worked-panel table {
+  background: #fffdf9;
+}
+
 .index-list {
   list-style: none;
   padding: 0;
@@ -264,8 +280,8 @@ code {
     </section>
     <section class="card"><div class="section-tag">Ako to riešiť</div><p>Najprv si úlohu rozdeľ na malé rozhodnutia. Pri skúške je dôležitejšie vedieť, ktorý postup použiť, než si pamätať výsledok.</p><ol class="guide-list"><li>Najprv urč dĺžku slova \(n\), počet informačných symbolov \(k\) a spôsob, akým vznikajú paritné symboly.</li><li>Ak máš generujúcu maticu, kódové slová vznikajú ako \(uG\). Ak máš kontrolnú maticu, platné slová spĺňajú \(cH^T=0\).</li><li>Minimálnu vzdialenosť pri lineárnom kóde hľadaj cez najmenšiu nenulovú Hammingovu váhu kódového slova.</li><li>Pri syndróme násob prijaté slovo kontrolnou maticou. Nulový syndróm znamená, že prijaté slovo patrí do kódu.</li></ol><div class="note"><p><strong>Kontrola:</strong> Počet kódových slov lineárneho binárneho kódu je \(2^k\); okolitý priestor má \(2^n\) slov.</p><p><strong>Pozor:</strong> Nulový syndróm nemusí dokazovať, že pri prenose určite nenastala nezistiteľná viacbitová chyba.</p></div></section>
     <section class="card">
-      <div class="section-tag">Vypracovanie</div>
-      <p>Kód \([8,7,2]\) je štandardný SPC kód s jednou paritnou kontrolou. Sedem bitov je informačných a ôsmy bit je paritný.</p><p>Praktický systematický tvar je</p><div class="math-block">\[G = \begin{bmatrix}1 & 0 & 0 & 0 & 0 & 0 & 0 & 1 \\\\ 0 & 1 & 0 & 0 & 0 & 0 & 0 & 1 \\\\ 0 & 0 & 1 & 0 & 0 & 0 & 0 & 1 \\\\ 0 & 0 & 0 & 1 & 0 & 0 & 0 & 1 \\\\ 0 & 0 & 0 & 0 & 1 & 0 & 0 & 1 \\\\ 0 & 0 & 0 & 0 & 0 & 1 & 0 & 1 \\\\ 0 & 0 & 0 & 0 & 0 & 0 & 1 & 1\end{bmatrix}\]</div><p>Kontrolná matica je jediný riadok, ktorý kontroluje párnosť všetkých ôsmich bitov:</p><div class="math-block">\[H = \begin{bmatrix}1 & 1 & 1 & 1 & 1 & 1 & 1 & 1\end{bmatrix}\]</div><p>Platí, že kódové slovo patrí do kódu práve vtedy, keď súčet všetkých jeho bitov je \(0\) modulo \(2\).</p>
+      <div class="section-tag">Riešenie krok za krokom</div>
+      <div class="worked-panel"><h3>Postup výpočtu</h3><p>SPC kód má jednu kontrolu parity. Ak je informačný vektor \(u=(u_1,\ldots,u_7)\), paritný bit je</p><div class="math-block">\[p=u_1+u_2+\cdots+u_7\pmod 2\]</div><p>Kódové slovo teda vyzerá</p><div class="math-block">\[c=(u_1,u_2,\ldots,u_7,p)\]</div><p>Riadky matice \(G\) vzniknú tak, že postupne zapneme iba jeden informačný bit:</p><div class="table-scroll"><table class="compact"><thead><tr><th>Zapnutý bit</th><th>informačný vektor</th><th>riadok v G</th></tr></thead><tbody><tr><td>\(u_1\)</td><td><code>1000000</code></td><td><code>10000001</code></td></tr><tr><td>\(u_2\)</td><td><code>0100000</code></td><td><code>01000001</code></td></tr><tr><td>\(u_3\)</td><td><code>0010000</code></td><td><code>00100001</code></td></tr><tr><td>\(u_4\)</td><td><code>0001000</code></td><td><code>00010001</code></td></tr><tr><td>\(u_5\)</td><td><code>0000100</code></td><td><code>00001001</code></td></tr><tr><td>\(u_6\)</td><td><code>0000010</code></td><td><code>00000101</code></td></tr><tr><td>\(u_7\)</td><td><code>0000001</code></td><td><code>00000011</code></td></tr></tbody></table></div><p>Kontrola funguje, lebo</p><div class="math-block">\[cH^T=u_1+\cdots+u_7+p=(u_1+\cdots+u_7)+(u_1+\cdots+u_7)=0\]</div></div><h3>Výsledok a kontrola</h3><p>Kód \([8,7,2]\) je štandardný SPC kód s jednou paritnou kontrolou. Sedem bitov je informačných a ôsmy bit je paritný.</p><p>Praktický systematický tvar je</p><div class="math-block">\[G = \begin{bmatrix}1 & 0 & 0 & 0 & 0 & 0 & 0 & 1 \\\\ 0 & 1 & 0 & 0 & 0 & 0 & 0 & 1 \\\\ 0 & 0 & 1 & 0 & 0 & 0 & 0 & 1 \\\\ 0 & 0 & 0 & 1 & 0 & 0 & 0 & 1 \\\\ 0 & 0 & 0 & 0 & 1 & 0 & 0 & 1 \\\\ 0 & 0 & 0 & 0 & 0 & 1 & 0 & 1 \\\\ 0 & 0 & 0 & 0 & 0 & 0 & 1 & 1\end{bmatrix}\]</div><p>Kontrolná matica je jediný riadok, ktorý kontroluje párnosť všetkých ôsmich bitov:</p><div class="math-block">\[H = \begin{bmatrix}1 & 1 & 1 & 1 & 1 & 1 & 1 & 1\end{bmatrix}\]</div><p>Platí, že kódové slovo patrí do kódu práve vtedy, keď súčet všetkých jeho bitov je \(0\) modulo \(2\).</p>
     </section>
     <section class="card">
       <div class="section-tag">Definície</div>

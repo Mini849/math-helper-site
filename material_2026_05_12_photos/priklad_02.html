@@ -163,6 +163,22 @@ th {
   margin-top: 0.35rem;
 }
 
+.worked-panel {
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  background: #fffaf2;
+  padding: 18px 20px;
+  margin: 0 0 20px;
+}
+
+.worked-panel h3:first-child {
+  margin-top: 0;
+}
+
+.worked-panel table {
+  background: #fffdf9;
+}
+
 .index-list {
   list-style: none;
   padding: 0;
@@ -264,8 +280,8 @@ code {
     </section>
     <section class="card"><div class="section-tag">Ako to riešiť</div><p>Najprv si úlohu rozdeľ na malé rozhodnutia. Pri skúške je dôležitejšie vedieť, ktorý postup použiť, než si pamätať výsledok.</p><ol class="guide-list"><li>Najprv urč dĺžku slova \(n\), počet informačných symbolov \(k\) a spôsob, akým vznikajú paritné symboly.</li><li>Ak máš generujúcu maticu, kódové slová vznikajú ako \(uG\). Ak máš kontrolnú maticu, platné slová spĺňajú \(cH^T=0\).</li><li>Minimálnu vzdialenosť pri lineárnom kóde hľadaj cez najmenšiu nenulovú Hammingovu váhu kódového slova.</li><li>Pri syndróme násob prijaté slovo kontrolnou maticou. Nulový syndróm znamená, že prijaté slovo patrí do kódu.</li></ol><div class="note"><p><strong>Kontrola:</strong> Počet kódových slov lineárneho binárneho kódu je \(2^k\); okolitý priestor má \(2^n\) slov.</p><p><strong>Pozor:</strong> Nulový syndróm nemusí dokazovať, že pri prenose určite nenastala nezistiteľná viacbitová chyba.</p></div></section>
     <section class="card">
-      <div class="section-tag">Vypracovanie</div>
-      <p>Kód s opakovaním dĺžky 5 má jedno informačné miesto. Bit \(u\) zakóduje ako \((u,u,u,u,u)\). Preto</p><div class="math-block">\[G=\begin{bmatrix}1 & 1 & 1 & 1 & 1\end{bmatrix}\]</div><p>Kontrolná matica môže porovnávať každú ďalšiu súradnicu s prvou. Nad \(GF(2)\) znamená rovnosť \(c_1=c_j\) rovnicu \(c_1+c_j=0\):</p><div class="math-block">\[H=\begin{bmatrix}1 & 1 & 0 & 0 & 0 \\\\ 1 & 0 & 1 & 0 & 0 \\\\ 1 & 0 & 0 & 1 & 0 \\\\ 1 & 0 & 0 & 0 & 1\end{bmatrix}\]</div><p>Každé platné kódové slovo je buď \((0,0,0,0,0)\), alebo \((1,1,1,1,1)\), a pre obe platí \(cH^T=0\).</p>
+      <div class="section-tag">Riešenie krok za krokom</div>
+      <div class="worked-panel"><h3>Postup výpočtu</h3><p>Opakovací kód dĺžky \(5\) má iba jeden informačný bit \(u\). Kódové slovo je päťkrát ten istý bit:</p><div class="math-block">\[c=(u,u,u,u,u)\]</div><p>Preto generujúca matica obsahuje jeden riadok samých jednotiek:</p><div class="math-block">\[G=\begin{bmatrix}1&1&1&1&1\end{bmatrix}\]</div><p>Kontrolná matica môže porovnávať každú ďalšiu súradnicu s prvou:</p><div class="table-scroll"><table class="compact"><thead><tr><th>Kontrola</th><th>rovnica</th></tr></thead><tbody><tr><td>1</td><td>\(c_1+c_2=0\)</td></tr><tr><td>2</td><td>\(c_1+c_3=0\)</td></tr><tr><td>3</td><td>\(c_1+c_4=0\)</td></tr><tr><td>4</td><td>\(c_1+c_5=0\)</td></tr></tbody></table></div><p>Ak všetky štyri rovnice platia, všetky súradnice sú rovnaké, teda slovo je buď \(00000\), alebo \(11111\).</p></div><h3>Výsledok a kontrola</h3><p>Kód s opakovaním dĺžky 5 má jedno informačné miesto. Bit \(u\) zakóduje ako \((u,u,u,u,u)\). Preto</p><div class="math-block">\[G=\begin{bmatrix}1 & 1 & 1 & 1 & 1\end{bmatrix}\]</div><p>Kontrolná matica môže porovnávať každú ďalšiu súradnicu s prvou. Nad \(GF(2)\) znamená rovnosť \(c_1=c_j\) rovnicu \(c_1+c_j=0\):</p><div class="math-block">\[H=\begin{bmatrix}1 & 1 & 0 & 0 & 0 \\\\ 1 & 0 & 1 & 0 & 0 \\\\ 1 & 0 & 0 & 1 & 0 \\\\ 1 & 0 & 0 & 0 & 1\end{bmatrix}\]</div><p>Každé platné kódové slovo je buď \((0,0,0,0,0)\), alebo \((1,1,1,1,1)\), a pre obe platí \(cH^T=0\).</p>
     </section>
     <section class="card">
       <div class="section-tag">Definície</div>

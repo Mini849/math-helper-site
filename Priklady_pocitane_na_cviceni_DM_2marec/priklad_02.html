@@ -163,6 +163,22 @@ th {
   margin-top: 0.35rem;
 }
 
+.worked-panel {
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  background: #fffaf2;
+  padding: 18px 20px;
+  margin: 0 0 20px;
+}
+
+.worked-panel h3:first-child {
+  margin-top: 0;
+}
+
+.worked-panel table {
+  background: #fffdf9;
+}
+
 .index-list {
   list-style: none;
   padding: 0;
@@ -264,8 +280,8 @@ code {
     </section>
     <section class="card"><div class="section-tag">Ako to riešiť</div><p>Najprv si úlohu rozdeľ na malé rozhodnutia. Pri skúške je dôležitejšie vedieť, ktorý postup použiť, než si pamätať výsledok.</p><ol class="guide-list"><li>Zostroj \(GF(p)\) ako množinu \(\{0,1,\ldots,p-1\}\). Všetky výsledky sčítania a násobenia redukuj modulo \(p\).</li><li>Ak sa pýta na grupu vzhľadom na \(+\), over uzavretosť, neutrálny prvok \(0\), opačný prvok ku každému prvku a asociativitu.</li><li>Opačný prvok hľadáš tak, aby \(a+b\equiv0\pmod p\). Napríklad v \(GF(5)\) je opačný prvok k \(2\) číslo \(3\).</li><li>Asociativitu pri sčítaní modulo \(p\) môžeš zdediť zo sčítania celých čísel; nemusíš skúšať všetky trojice.</li></ol><div class="note"><p><strong>Kontrola:</strong> Tabuľka sčítania obsahuje iba prvky poľa a v každom riadku aj stĺpci sa objaví neutrálny prvok \(0\).</p></div></section>
     <section class="card">
-      <div class="section-tag">Vypracovanie</div>
-      <p>Áno. Množina GF(5) = {0,1,2,3,4} so sčítaním modulo 5 spĺňa všetky vlastnosti grupy:</p><ul><li>uzavretosť, lebo súčet modulo 5 je opäť prvok z GF(5),</li><li>asociativitu,</li><li>neutrálny prvok 0,</li><li>inverzy: 0 ↔ 0, 1 ↔ 4, 2 ↔ 3.</li></ul><p>Navyše sčítanie modulo 5 je komutatívne, takže ide o ábelovskú grupu.</p>
+      <div class="section-tag">Riešenie krok za krokom</div>
+      <div class="worked-panel"><h3>Postup výpočtu</h3><p>Pri sčítaní modulo \(5\) hľadáme ku každému prvku opačný prvok, teda číslo \(b\), pre ktoré \(a+b\equiv0\pmod5\).</p><div class="table-scroll"><table class="compact"><thead><tr><th>a</th><th>hľadáme b</th><th>kontrola</th></tr></thead><tbody><tr><td>0</td><td>0</td><td>\(0+0=0\)</td></tr><tr><td>1</td><td>4</td><td>\(1+4=5\equiv0\)</td></tr><tr><td>2</td><td>3</td><td>\(2+3=5\equiv0\)</td></tr><tr><td>3</td><td>2</td><td>\(3+2=5\equiv0\)</td></tr><tr><td>4</td><td>1</td><td>\(4+1=5\equiv0\)</td></tr></tbody></table></div><p>Neutrálny prvok je \(0\) a všetky inverzy existujú, takže spolu s asociativitou a uzavretosťou máme grupu.</p></div><h3>Výsledok a kontrola</h3><p>Áno. Množina GF(5) = {0,1,2,3,4} so sčítaním modulo 5 spĺňa všetky vlastnosti grupy:</p><ul><li>uzavretosť, lebo súčet modulo 5 je opäť prvok z GF(5),</li><li>asociativitu,</li><li>neutrálny prvok 0,</li><li>inverzy: 0 ↔ 0, 1 ↔ 4, 2 ↔ 3.</li></ul><p>Navyše sčítanie modulo 5 je komutatívne, takže ide o ábelovskú grupu.</p>
     </section>
     <section class="card">
       <div class="section-tag">Definície</div>

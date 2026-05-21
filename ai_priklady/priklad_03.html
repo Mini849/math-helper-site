@@ -163,6 +163,22 @@ th {
   margin-top: 0.35rem;
 }
 
+.worked-panel {
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  background: #fffaf2;
+  padding: 18px 20px;
+  margin: 0 0 20px;
+}
+
+.worked-panel h3:first-child {
+  margin-top: 0;
+}
+
+.worked-panel table {
+  background: #fffdf9;
+}
+
 .index-list {
   list-style: none;
   padding: 0;
@@ -264,8 +280,8 @@ code {
     </section>
     <section class="card"><div class="section-tag">Ako to riešiť</div><p>Najprv si úlohu rozdeľ na malé rozhodnutia. Pri skúške je dôležitejšie vedieť, ktorý postup použiť, než si pamätať výsledok.</p><ol class="guide-list"><li>Najprv pri každej podúlohe pomenuj typ: register, delenie, systematické kódovanie, \(GF\) aritmetika, RS parametre alebo syndróm.</li><li>Pre register hľadaj stupeň polynómu a tapy. Pre delenie hľadaj najvyšší člen a XOR-uj posunutý deliteľ.</li><li>Pre systematické kódovanie posuň správu o stupeň \(g(x)\), vypočítaj zvyšok a pripočítaj ho späť.</li><li>Pre RS parametre najprv urč \(2t\), potom korene, \(n=q-1\), \(k=n-2t\) a počet slov.</li></ol><div class="note"><p><strong>Kontrola:</strong> Nemiešaj postupy: každá podúloha má iný prvý krok.</p></div></section>
     <section class="card">
-      <div class="section-tag">Vypracovanie</div>
-      <h3>1. Hardvér pre \(g(x)=x^4+x+1\)</h3><p>Stupeň je \(4\), takže potrebujeme registre \(R_3,R_2,R_1,R_0\). Nenulové nižšie členy sú pri \(x\) a \(1\):</p><figure class="source-figure">
+      <div class="section-tag">Riešenie krok za krokom</div>
+      <div class="worked-panel"><h3>Postup výpočtu</h3><p>V poslednej podúlohe mini testu je dobré vidieť, ako vznikol syndróm, nie iba výsledok:</p><div class="table-scroll"><table class="compact"><thead><tr><th>Aktuálny zvyšok</th><th>Pripočítame posunuté \(g(x)\)</th><th>Nový zvyšok</th></tr></thead><tbody><tr><td>\(x^5 + x^2 + 1\)</td><td>\(x^{2}\cdot g(x)=x^5 + x^3 + x^2\)</td><td>\(x^3 + 1\)</td></tr><tr><td>\(x^3 + 1\)</td><td>\(x^{0}\cdot g(x)=x^3 + x + 1\)</td><td>\(x\)</td></tr></tbody></table></div><p>Preto \(s(x)=x\). V syndrómovej tabuľke zodpovedá chyba \(e(x)=x\).</p></div><h3>Výsledok a kontrola</h3><h3>1. Hardvér pre \(g(x)=x^4+x+1\)</h3><p>Stupeň je \(4\), takže potrebujeme registre \(R_3,R_2,R_1,R_0\). Nenulové nižšie členy sú pri \(x\) a \(1\):</p><figure class="source-figure">
 <svg class="diagram-svg hardware-svg" viewBox="0 0 940 390" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Sériový delič polynómov pre g(x)=x^4+x+1">
   <defs>
     <marker id="arrow-hw4" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">

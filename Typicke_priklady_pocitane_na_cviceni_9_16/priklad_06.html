@@ -163,6 +163,22 @@ th {
   margin-top: 0.35rem;
 }
 
+.worked-panel {
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  background: #fffaf2;
+  padding: 18px 20px;
+  margin: 0 0 20px;
+}
+
+.worked-panel h3:first-child {
+  margin-top: 0;
+}
+
+.worked-panel table {
+  background: #fffdf9;
+}
+
 .index-list {
   list-style: none;
   padding: 0;
@@ -264,8 +280,8 @@ code {
     </section>
     <section class="card"><div class="section-tag">Ako to riešiť</div><p>Najprv si úlohu rozdeľ na malé rozhodnutia. Pri skúške je dôležitejšie vedieť, ktorý postup použiť, než si pamätať výsledok.</p><ol class="guide-list"><li>Rieš ako bežnú sústavu rovníc, ale všetko počítaj modulo \(2\).</li><li>Pamätaj si pravidlá \(1+1=0\), \(1+0=1\), a odčítanie je rovnaké ako sčítanie.</li><li>Z jednoduchších rovníc vyjadri premenné a dosaď do zvyšnej rovnice, alebo použi Gaussovu elimináciu nad \(GF(2)\).</li><li>Po každom riadkovom alebo algebraickom kroku zredukuj výsledky na \(0\) alebo \(1\).</li></ol><div class="note"><p><strong>Kontrola:</strong> Dosadením výsledku do všetkých rovníc musí vyjsť pravá strana modulo \(2\).</p></div></section>
     <section class="card">
-      <div class="section-tag">Vypracovanie</div>
-      <p>Z druhej rovnice dostaneme \(y=x\). Z tretej rovnice dostaneme \(z=1+x\).</p><p>Dosadíme do prvej rovnice:</p><div class="math-block">\[x+x+(1+x)=1\]</div><p>V \(GF(2)\) platí \(x+x=0\), teda</p><div class="math-block">\[1+x=1 \Rightarrow x=0\]</div><p>Potom</p><div class="math-block">\[y=x=0,\qquad z=1+x=1\]</div><p>Riešenie sústavy je \((x,y,z)=(0,0,1)\).</p>
+      <div class="section-tag">Riešenie krok za krokom</div>
+      <div class="worked-panel"><h3>Postup výpočtu</h3><p>Toto je rozpis výpočtu pred finálnym výsledkom. Čítaj ho zhora nadol a po každom kroku si skontroluj, čo sa práve zmenilo.</p><ol class="guide-list"><li>Najprv napíš množinu prvkov poľa a pravidlo redukcie.</li><li>Pri \(GF(p)\) redukuj čísla modulo \(p\); pri \(GF(2^m)\) redukuj mocniny \(\alpha\) podľa daného polynómu.</li><li>Pri sčítaní v charakteristike \(2\) sa rovnaké členy rušia.</li><li>Pri delení nenulových mocnín odčítaj exponenty modulo \(q-1\).</li></ol><p><strong>Kontrola na konci:</strong> Výsledok v \(GF(2^m)\) musí byť zapísaný pomocou mocnín nižších ako \(m\).</p></div><h3>Výsledok a kontrola</h3><p>Z druhej rovnice dostaneme \(y=x\). Z tretej rovnice dostaneme \(z=1+x\).</p><p>Dosadíme do prvej rovnice:</p><div class="math-block">\[x+x+(1+x)=1\]</div><p>V \(GF(2)\) platí \(x+x=0\), teda</p><div class="math-block">\[1+x=1 \Rightarrow x=0\]</div><p>Potom</p><div class="math-block">\[y=x=0,\qquad z=1+x=1\]</div><p>Riešenie sústavy je \((x,y,z)=(0,0,1)\).</p>
     </section>
     <section class="card">
       <div class="section-tag">Definície</div>

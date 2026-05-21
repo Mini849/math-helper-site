@@ -163,6 +163,22 @@ th {
   margin-top: 0.35rem;
 }
 
+.worked-panel {
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  background: #fffaf2;
+  padding: 18px 20px;
+  margin: 0 0 20px;
+}
+
+.worked-panel h3:first-child {
+  margin-top: 0;
+}
+
+.worked-panel table {
+  background: #fffdf9;
+}
+
 .index-list {
   list-style: none;
   padding: 0;
@@ -264,8 +280,8 @@ code {
     </section>
     <section class="card"><div class="section-tag">Ako to riešiť</div><p>Najprv si úlohu rozdeľ na malé rozhodnutia. Pri skúške je dôležitejšie vedieť, ktorý postup použiť, než si pamätať výsledok.</p><ol class="guide-list"><li>Hľadaj koeficienty \(\alpha,\beta\), aby platilo \(\alpha x_1+\beta x_2=v\).</li><li>Rovnosť rozpíš po súradniciach; z každého riadku vznikne jedna obyčajná rovnica nad reálnymi číslami.</li><li>Vyrieš vzniknutú sústavu pre \(\alpha\) a \(\beta\).</li><li>Výsledné koeficienty dosaď späť do všetkých súradníc, nielen do prvej.</li></ol><div class="note"><p><strong>Kontrola:</strong> Po dosadení musí vyjsť presne zadaný vektor \(v\).</p></div></section>
     <section class="card">
-      <div class="section-tag">Vypracovanie</div>
-      <p>Hľadáme \(\alpha,\beta\) tak, aby</p><div class="math-block">\[\alpha x_1 + \beta x_2 = v\]</div><p>Po rozpísaní do súradníc dostaneme sústavu</p><div class="math-block">\[\begin{aligned}\alpha - 2\beta &= 3 \\ \frac{\alpha}{3} + \frac{2\beta}{5} &= 5\end{aligned}\]</div><p>Z prvej rovnice:</p><div class="math-block">\[\alpha = 3 + 2\beta\]</div><p>Dosadíme do druhej:</p><div class="math-block">\[\frac{3+2\beta}{3} + \frac{2\beta}{5} = 5\]</div><div class="math-block">\[1 + \frac{2\beta}{3} + \frac{2\beta}{5} = 5\]</div><div class="math-block">\[\frac{16\beta}{15} = 4 \Rightarrow \beta = \frac{15}{4}\]</div><p>Potom</p><div class="math-block">\[\alpha = 3 + 2\cdot\frac{15}{4} = \frac{21}{2}\]</div><p>Vektor teda vyjadriť <strong>možno</strong> a platí</p><div class="math-block">\[v = \frac{21}{2}x_1 + \frac{15}{4}x_2\]</div>
+      <div class="section-tag">Riešenie krok za krokom</div>
+      <div class="worked-panel"><h3>Postup výpočtu</h3><p>Toto je rozpis výpočtu pred finálnym výsledkom. Čítaj ho zhora nadol a po každom kroku si skontroluj, čo sa práve zmenilo.</p><ol class="guide-list"><li>Prepíš zadanie do symbolov a označ, čo hľadáš.</li><li>Vyber definíciu alebo vzorec podľa typu úlohy.</li><li>Urob výpočet po malých krokoch, nie skokom na výsledok.</li><li>Na konci dosaď výsledok späť alebo ho over príslušnou kontrolou.</li></ol><p><strong>Kontrola na konci:</strong> Výsledok musí spĺňať všetky podmienky zo zadania.</p></div><h3>Výsledok a kontrola</h3><p>Hľadáme \(\alpha,\beta\) tak, aby</p><div class="math-block">\[\alpha x_1 + \beta x_2 = v\]</div><p>Po rozpísaní do súradníc dostaneme sústavu</p><div class="math-block">\[\begin{aligned}\alpha - 2\beta &= 3 \\ \frac{\alpha}{3} + \frac{2\beta}{5} &= 5\end{aligned}\]</div><p>Z prvej rovnice:</p><div class="math-block">\[\alpha = 3 + 2\beta\]</div><p>Dosadíme do druhej:</p><div class="math-block">\[\frac{3+2\beta}{3} + \frac{2\beta}{5} = 5\]</div><div class="math-block">\[1 + \frac{2\beta}{3} + \frac{2\beta}{5} = 5\]</div><div class="math-block">\[\frac{16\beta}{15} = 4 \Rightarrow \beta = \frac{15}{4}\]</div><p>Potom</p><div class="math-block">\[\alpha = 3 + 2\cdot\frac{15}{4} = \frac{21}{2}\]</div><p>Vektor teda vyjadriť <strong>možno</strong> a platí</p><div class="math-block">\[v = \frac{21}{2}x_1 + \frac{15}{4}x_2\]</div>
     </section>
     <section class="card">
       <div class="section-tag">Definície</div>

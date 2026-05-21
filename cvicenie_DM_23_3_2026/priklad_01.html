@@ -163,6 +163,22 @@ th {
   margin-top: 0.35rem;
 }
 
+.worked-panel {
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  background: #fffaf2;
+  padding: 18px 20px;
+  margin: 0 0 20px;
+}
+
+.worked-panel h3:first-child {
+  margin-top: 0;
+}
+
+.worked-panel table {
+  background: #fffdf9;
+}
+
 .index-list {
   list-style: none;
   padding: 0;
@@ -264,8 +280,8 @@ code {
     </section>
     <section class="card"><div class="section-tag">Ako to riešiť</div><p>Najprv si úlohu rozdeľ na malé rozhodnutia. Pri skúške je dôležitejšie vedieť, ktorý postup použiť, než si pamätať výsledok.</p><ol class="guide-list"><li>Porovnaj vektory po súradniciach.</li><li>Hammingova vzdialenosť počíta pozície, na ktorých sa dva vektory líšia.</li><li>V \(GF(2)\) platí, že rovnaké bity dávajú v súčte \(0\), kým rôzne bity dávajú \(1\).</li><li>Preto počet jednotiek vo vektore \(x+y\) je presne počet pozícií, kde sa \(x\) a \(y\) líšia.</li></ol><div class="note"><p><strong>Kontrola:</strong> Vyjde rovnosť \(d(x,y)=w(x+y)\), kde \(w\) je Hammingova váha.</p></div></section>
     <section class="card">
-      <div class="section-tag">Vypracovanie</div>
-      <p>Porovnáme súradnice vektorov:</p><div class="table-scroll"><table class="compact"><thead><tr><th>Pozícia</th><th>v₁</th><th>v₂</th><th>Líšia sa?</th></tr></thead><tbody><tr><td>1</td><td>1</td><td>1</td><td>nie</td></tr><tr><td>2</td><td>0</td><td>1</td><td>áno</td></tr><tr><td>3</td><td>1</td><td>1</td><td>nie</td></tr><tr><td>4</td><td>1</td><td>0</td><td>áno</td></tr><tr><td>5</td><td>1</td><td>0</td><td>áno</td></tr><tr><td>6</td><td>0</td><td>1</td><td>áno</td></tr></tbody></table></div><p>Líšia sa na štyroch miestach, preto</p><div class="math-block">\[d(v_1,v_2)=4\]</div><p>Súčet nad \(GF(2)\):</p><div class="math-block">\[v_3=v_1+v_2=(0,1,0,1,1,1)\]</div><p>Hammingova váha vektora \(v_3\) je počet jednotiek, teda</p><div class="math-block">\[w(v_3)=4\]</div><p>Rovnosť \(w(v_1+v_2)=d(v_1,v_2)\) platí preto, že v binárnom poli je na každej pozícii v súčte jednotka práve vtedy, keď sa pôvodné dve súradnice líšili.</p>
+      <div class="section-tag">Riešenie krok za krokom</div>
+      <div class="worked-panel"><h3>Postup výpočtu</h3><p>Toto je rozpis výpočtu pred finálnym výsledkom. Čítaj ho zhora nadol a po každom kroku si skontroluj, čo sa práve zmenilo.</p><ol class="guide-list"><li>Urči \(n\), \(k\), pole a spôsob tvorby paritných symbolov.</li><li>Ak máš \(G\), kódové slová vznikajú ako \(uG\). Ak máš \(H\), platné slová spĺňajú \(cH^T=0\).</li><li>Počet slov lineárneho binárneho kódu je \(2^k\), celý priestor má \(2^n\) slov.</li><li>Minimálnu vzdialenosť lineárneho kódu hľadaj ako najmenšiu nenulovú váhu kódového slova.</li></ol><p><strong>Kontrola na konci:</strong> Každý uvedený výsledok musí sedieť s paritnými rovnicami alebo s maticou \(H\).</p></div><h3>Výsledok a kontrola</h3><p>Porovnáme súradnice vektorov:</p><div class="table-scroll"><table class="compact"><thead><tr><th>Pozícia</th><th>v₁</th><th>v₂</th><th>Líšia sa?</th></tr></thead><tbody><tr><td>1</td><td>1</td><td>1</td><td>nie</td></tr><tr><td>2</td><td>0</td><td>1</td><td>áno</td></tr><tr><td>3</td><td>1</td><td>1</td><td>nie</td></tr><tr><td>4</td><td>1</td><td>0</td><td>áno</td></tr><tr><td>5</td><td>1</td><td>0</td><td>áno</td></tr><tr><td>6</td><td>0</td><td>1</td><td>áno</td></tr></tbody></table></div><p>Líšia sa na štyroch miestach, preto</p><div class="math-block">\[d(v_1,v_2)=4\]</div><p>Súčet nad \(GF(2)\):</p><div class="math-block">\[v_3=v_1+v_2=(0,1,0,1,1,1)\]</div><p>Hammingova váha vektora \(v_3\) je počet jednotiek, teda</p><div class="math-block">\[w(v_3)=4\]</div><p>Rovnosť \(w(v_1+v_2)=d(v_1,v_2)\) platí preto, že v binárnom poli je na každej pozícii v súčte jednotka práve vtedy, keď sa pôvodné dve súradnice líšili.</p>
     </section>
     <section class="card">
       <div class="section-tag">Definície</div>

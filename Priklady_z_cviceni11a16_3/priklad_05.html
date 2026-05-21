@@ -163,6 +163,22 @@ th {
   margin-top: 0.35rem;
 }
 
+.worked-panel {
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  background: #fffaf2;
+  padding: 18px 20px;
+  margin: 0 0 20px;
+}
+
+.worked-panel h3:first-child {
+  margin-top: 0;
+}
+
+.worked-panel table {
+  background: #fffdf9;
+}
+
 .index-list {
   list-style: none;
   padding: 0;
@@ -303,8 +319,8 @@ code {
     </section>
     <section class="card"><div class="section-tag">Ako to riešiť</div><p>Najprv si úlohu rozdeľ na malé rozhodnutia. Pri skúške je dôležitejšie vedieť, ktorý postup použiť, než si pamätať výsledok.</p><ol class="guide-list"><li>Najprv urč dĺžku slova \(n\), počet informačných symbolov \(k\) a spôsob, akým vznikajú paritné symboly.</li><li>Ak máš generujúcu maticu, kódové slová vznikajú ako \(uG\). Ak máš kontrolnú maticu, platné slová spĺňajú \(cH^T=0\).</li><li>Minimálnu vzdialenosť pri lineárnom kóde hľadaj cez najmenšiu nenulovú Hammingovu váhu kódového slova.</li><li>Pri syndróme násob prijaté slovo kontrolnou maticou. Nulový syndróm znamená, že prijaté slovo patrí do kódu.</li></ol><div class="note"><p><strong>Kontrola:</strong> Počet kódových slov lineárneho binárneho kódu je \(2^k\); okolitý priestor má \(2^n\) slov.</p><p><strong>Pozor:</strong> Nulový syndróm nemusí dokazovať, že pri prenose určite nenastala nezistiteľná viacbitová chyba.</p></div></section>
     <section class="card">
-      <div class="section-tag">Vypracovanie</div>
-      <p>Zo schémy čítame paritné rovnice:</p><ul><li>\(c_5=c_{11}+c_{10}\), \(c_4=c_9+c_8\), \(c_3=c_7+c_6\),</li><li>\(c_2=c_{11}+c_9+c_7\), \(c_1=c_{10}+c_8+c_6\),</li><li>\(c_0=c_{11}+c_{10}+c_9+c_8+c_7+c_6\).</li></ul><p>Systematická generujúca matica je preto</p><div class="math-block">\[G = \begin{bmatrix}1 & 0 & 0 & 0 & 0 & 0 & 1 & 0 & 0 & 1 & 0 & 1 \\\\ 0 & 1 & 0 & 0 & 0 & 0 & 1 & 0 & 0 & 0 & 1 & 1 \\\\ 0 & 0 & 1 & 0 & 0 & 0 & 0 & 1 & 0 & 1 & 0 & 1 \\\\ 0 & 0 & 0 & 1 & 0 & 0 & 0 & 1 & 0 & 0 & 1 & 1 \\\\ 0 & 0 & 0 & 0 & 1 & 0 & 0 & 0 & 1 & 1 & 0 & 1 \\\\ 0 & 0 & 0 & 0 & 0 & 1 & 0 & 0 & 1 & 0 & 1 & 1\end{bmatrix}\]</div><p>Z nej zostrojíme kontrolnú maticu</p><div class="math-block">\[H = \begin{bmatrix}1 & 1 & 0 & 0 & 0 & 0 & 1 & 0 & 0 & 0 & 0 & 0 \\\\ 0 & 0 & 1 & 1 & 0 & 0 & 0 & 1 & 0 & 0 & 0 & 0 \\\\ 0 & 0 & 0 & 0 & 1 & 1 & 0 & 0 & 1 & 0 & 0 & 0 \\\\ 1 & 0 & 1 & 0 & 1 & 0 & 0 & 0 & 0 & 1 & 0 & 0 \\\\ 0 & 1 & 0 & 1 & 0 & 1 & 0 & 0 & 0 & 0 & 1 & 0 \\\\ 1 & 1 & 1 & 1 & 1 & 1 & 0 & 0 & 0 & 0 & 0 & 1\end{bmatrix}\]</div><p>Keďže \(H=[P^T\mid I]\) a \(G=[I\mid P]\), všeobecne platí \(GH^T = P + P = 0\) nad \(GF(2)\). Konkrétne teda</p><div class="math-block">\[GH^T = 0\]</div><p>Kód má dĺžku \(n=12\) a dimenziu \(k=6\), takže</p><div class="math-block">\[|C| = 2^6 = 64\]</div><div class="math-block">\[|GF(2)^{12}| = 2^{12} = 4096\]</div>
+      <div class="section-tag">Riešenie krok za krokom</div>
+      <div class="worked-panel"><h3>Postup výpočtu</h3><p>Najprv si zvolíme informačný vektor \(u=(c_{11},c_{10},c_9,c_8,c_7,c_6)=(u_1,\ldots,u_6)\). Paritné bity potom vyzerajú takto:</p><div class="math-block">\[c=(u_1,u_2,u_3,u_4,u_5,u_6,u_1+u_2,u_3+u_4,u_5+u_6,u_1+u_3+u_5,u_2+u_4+u_6,u_1+u_2+u_3+u_4+u_5+u_6)\]</div><p>Prvý riadok generujúcej matice vznikne tak, že nastavíme \(u=(1,0,0,0,0,0)\):</p><div class="math-block">\[c=(1,0,0,0,0,0,1,0,0,1,0,1)\]</div><p>To je presne prvý riadok \(G\). Ostatné riadky vzniknú rovnako zapnutím jedného informačného bitu.</p><p>Kontrolná matica \(H\) sa skladá z paritných rovníc prepísaných do tvaru súčet = 0:</p><div class="table-scroll"><table class="compact"><thead><tr><th>Paritný bit</th><th>kontrolná rovnica</th></tr></thead><tbody><tr><td>\(c_5\)</td><td>\(c_{11}+c_{10}+c_5=0\)</td></tr><tr><td>\(c_4\)</td><td>\(c_9+c_8+c_4=0\)</td></tr><tr><td>\(c_3\)</td><td>\(c_7+c_6+c_3=0\)</td></tr><tr><td>\(c_2\)</td><td>\(c_{11}+c_9+c_7+c_2=0\)</td></tr><tr><td>\(c_1\)</td><td>\(c_{10}+c_8+c_6+c_1=0\)</td></tr><tr><td>\(c_0\)</td><td>\(c_{11}+c_{10}+c_9+c_8+c_7+c_6+c_0=0\)</td></tr></tbody></table></div><p>Preto \(G=[I_6\mid P]\), \(H=[P^T\mid I_6]\) a nad \(GF(2)\) platí \(GH^T=P+P=0\).</p></div><h3>Výsledok a kontrola</h3><p>Zo schémy čítame paritné rovnice:</p><ul><li>\(c_5=c_{11}+c_{10}\), \(c_4=c_9+c_8\), \(c_3=c_7+c_6\),</li><li>\(c_2=c_{11}+c_9+c_7\), \(c_1=c_{10}+c_8+c_6\),</li><li>\(c_0=c_{11}+c_{10}+c_9+c_8+c_7+c_6\).</li></ul><p>Systematická generujúca matica je preto</p><div class="math-block">\[G = \begin{bmatrix}1 & 0 & 0 & 0 & 0 & 0 & 1 & 0 & 0 & 1 & 0 & 1 \\\\ 0 & 1 & 0 & 0 & 0 & 0 & 1 & 0 & 0 & 0 & 1 & 1 \\\\ 0 & 0 & 1 & 0 & 0 & 0 & 0 & 1 & 0 & 1 & 0 & 1 \\\\ 0 & 0 & 0 & 1 & 0 & 0 & 0 & 1 & 0 & 0 & 1 & 1 \\\\ 0 & 0 & 0 & 0 & 1 & 0 & 0 & 0 & 1 & 1 & 0 & 1 \\\\ 0 & 0 & 0 & 0 & 0 & 1 & 0 & 0 & 1 & 0 & 1 & 1\end{bmatrix}\]</div><p>Z nej zostrojíme kontrolnú maticu</p><div class="math-block">\[H = \begin{bmatrix}1 & 1 & 0 & 0 & 0 & 0 & 1 & 0 & 0 & 0 & 0 & 0 \\\\ 0 & 0 & 1 & 1 & 0 & 0 & 0 & 1 & 0 & 0 & 0 & 0 \\\\ 0 & 0 & 0 & 0 & 1 & 1 & 0 & 0 & 1 & 0 & 0 & 0 \\\\ 1 & 0 & 1 & 0 & 1 & 0 & 0 & 0 & 0 & 1 & 0 & 0 \\\\ 0 & 1 & 0 & 1 & 0 & 1 & 0 & 0 & 0 & 0 & 1 & 0 \\\\ 1 & 1 & 1 & 1 & 1 & 1 & 0 & 0 & 0 & 0 & 0 & 1\end{bmatrix}\]</div><p>Keďže \(H=[P^T\mid I]\) a \(G=[I\mid P]\), všeobecne platí \(GH^T = P + P = 0\) nad \(GF(2)\). Konkrétne teda</p><div class="math-block">\[GH^T = 0\]</div><p>Kód má dĺžku \(n=12\) a dimenziu \(k=6\), takže</p><div class="math-block">\[|C| = 2^6 = 64\]</div><div class="math-block">\[|GF(2)^{12}| = 2^{12} = 4096\]</div>
     </section>
     <section class="card">
       <div class="section-tag">Definície</div>

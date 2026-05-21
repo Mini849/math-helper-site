@@ -163,6 +163,22 @@ th {
   margin-top: 0.35rem;
 }
 
+.worked-panel {
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  background: #fffaf2;
+  padding: 18px 20px;
+  margin: 0 0 20px;
+}
+
+.worked-panel h3:first-child {
+  margin-top: 0;
+}
+
+.worked-panel table {
+  background: #fffdf9;
+}
+
 .index-list {
   list-style: none;
   padding: 0;
@@ -264,8 +280,8 @@ code {
     </section>
     <section class="card"><div class="section-tag">Ako to riešiť</div><p>Najprv si úlohu rozdeľ na malé rozhodnutia. Pri skúške je dôležitejšie vedieť, ktorý postup použiť, než si pamätať výsledok.</p><ol class="guide-list"><li>Pracuj nad \(GF(2)\), takže rovnaké členy sa rušia: \(x^i+x^i=0\).</li><li>V každom kroku porovnaj najvyšší člen aktuálneho zvyšku s najvyšším členom deliteľa.</li><li>Rozdiel stupňov dá člen podielu; týmto členom vynásob deliteľ.</li><li>Výsledok pripočítaj XOR-om k aktuálnemu zvyšku a pokračuj, kým stupeň zvyšku nebude menší ako stupeň deliteľa.</li></ol><div class="note"><p><strong>Kontrola:</strong> Výsledok musí spĺňať \(f(x)=q(x)g(x)+r(x)\) a zvyšok musí mať menší stupeň ako deliteľ.</p></div></section>
     <section class="card">
-      <div class="section-tag">Vypracovanie</div>
-      <p>Pri delení nad \(GF(2)\) neodčítavame klasicky. Odčítanie je rovnaké ako sčítanie, teda rovnaké členy sa vyrušia: \(x^i+x^i=0\).</p><p>Postup je vždy rovnaký: pozrieme sa na najvyšší člen aktuálneho zvyšku, porovnáme ho s najvyšším členom deliteľa a podľa rozdielu stupňov určíme posun. Tento posun si zapamätáme do podielu.</p><p>V prvom kroku je najvyšší člen \(x^7\) a deliteľ má najvyšší člen \(x^4\). Preto použijeme posun \(x^{7-4}=x^3\), teda do podielu pribudne \(x^3\). Potom XOR-om pripočítame \(x^3g(x)\). Rovnaký postup opakujeme, kým zvyšok nemá stupeň menší ako \(4\).</p><div class="table-scroll"><table class="compact"><thead><tr><th>Aktuálny zvyšok</th><th>Pripočítame posunuté \(g(x)\)</th><th>Nový zvyšok</th></tr></thead><tbody><tr><td>\(x^7 + x^5 + x^4 + x^2 + 1\)</td><td>\(x^{3}\cdot g(x)=x^7 + x^4 + x^3\)</td><td>\(x^5 + x^3 + x^2 + 1\)</td></tr><tr><td>\(x^5 + x^3 + x^2 + 1\)</td><td>\(x^{1}\cdot g(x)=x^5 + x^2 + x\)</td><td>\(x^3 + x + 1\)</td></tr></tbody></table></div><p>Posuny v tabuľke boli \(x^3\) a \(x\), preto je podiel \(x^3+x\). Posledný zvyšok má stupeň \(3\), čo je menej ako stupeň deliteľa \(4\), takže delenie končí.</p><div class="math-block">\[q(x)=x^3 + x\]</div><div class="math-block">\[r(x)=x^3 + x + 1\]</div><p>Výsledok teda je</p><div class="math-block">\[x^7 + x^5 + x^4 + x^2 + 1=(x^3 + x)(x^4 + x + 1)+(x^3 + x + 1)\]</div>
+      <div class="section-tag">Riešenie krok za krokom</div>
+      <div class="worked-panel"><h3>Postup výpočtu</h3><p>Toto je rozpis výpočtu pred finálnym výsledkom. Čítaj ho zhora nadol a po každom kroku si skontroluj, čo sa práve zmenilo.</p><ol class="guide-list"><li>Zapíš bity alebo slovo ako polynóm v správnom poradí.</li><li>Pri delení vždy zruš najvyšší člen aktuálneho zvyšku posunutým \(g(x)\).</li><li>Nad \(GF(2)\) je odčítanie XOR, takže rovnaké členy sa vyrušia.</li><li>Pri kódovaní over, že výsledné \(c(x)\) má nulový zvyšok; pri dekódovaní porovnaj syndróm s tabuľkou chýb.</li></ol><p><strong>Kontrola na konci:</strong> Zvyšok po delení musí mať menší stupeň ako \(g(x)\).</p></div><h3>Výsledok a kontrola</h3><p>Pri delení nad \(GF(2)\) neodčítavame klasicky. Odčítanie je rovnaké ako sčítanie, teda rovnaké členy sa vyrušia: \(x^i+x^i=0\).</p><p>Postup je vždy rovnaký: pozrieme sa na najvyšší člen aktuálneho zvyšku, porovnáme ho s najvyšším členom deliteľa a podľa rozdielu stupňov určíme posun. Tento posun si zapamätáme do podielu.</p><p>V prvom kroku je najvyšší člen \(x^7\) a deliteľ má najvyšší člen \(x^4\). Preto použijeme posun \(x^{7-4}=x^3\), teda do podielu pribudne \(x^3\). Potom XOR-om pripočítame \(x^3g(x)\). Rovnaký postup opakujeme, kým zvyšok nemá stupeň menší ako \(4\).</p><div class="table-scroll"><table class="compact"><thead><tr><th>Aktuálny zvyšok</th><th>Pripočítame posunuté \(g(x)\)</th><th>Nový zvyšok</th></tr></thead><tbody><tr><td>\(x^7 + x^5 + x^4 + x^2 + 1\)</td><td>\(x^{3}\cdot g(x)=x^7 + x^4 + x^3\)</td><td>\(x^5 + x^3 + x^2 + 1\)</td></tr><tr><td>\(x^5 + x^3 + x^2 + 1\)</td><td>\(x^{1}\cdot g(x)=x^5 + x^2 + x\)</td><td>\(x^3 + x + 1\)</td></tr></tbody></table></div><p>Posuny v tabuľke boli \(x^3\) a \(x\), preto je podiel \(x^3+x\). Posledný zvyšok má stupeň \(3\), čo je menej ako stupeň deliteľa \(4\), takže delenie končí.</p><div class="math-block">\[q(x)=x^3 + x\]</div><div class="math-block">\[r(x)=x^3 + x + 1\]</div><p>Výsledok teda je</p><div class="math-block">\[x^7 + x^5 + x^4 + x^2 + 1=(x^3 + x)(x^4 + x + 1)+(x^3 + x + 1)\]</div>
     </section>
     <section class="card">
       <div class="section-tag">Definície</div>

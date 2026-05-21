@@ -163,6 +163,22 @@ th {
   margin-top: 0.35rem;
 }
 
+.worked-panel {
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  background: #fffaf2;
+  padding: 18px 20px;
+  margin: 0 0 20px;
+}
+
+.worked-panel h3:first-child {
+  margin-top: 0;
+}
+
+.worked-panel table {
+  background: #fffdf9;
+}
+
 .index-list {
   list-style: none;
   padding: 0;
@@ -264,8 +280,34 @@ code {
     </section>
     <section class="card"><div class="section-tag">Ako to riešiť</div><p>Najprv si úlohu rozdeľ na malé rozhodnutia. Pri skúške je dôležitejšie vedieť, ktorý postup použiť, než si pamätať výsledok.</p><ol class="guide-list"><li>Z rovnosti \(p(\alpha)=0\) najprv vyjadri redukčné pravidlo, tu \(\alpha^2=\alpha+1\).</li><li>Prvky \(GF(4)\) sú \(0,1,\alpha,\alpha+1\); vyššie mocniny redukuj pomocou pravidla pre \(\alpha^2\).</li><li>Pri kvadratickom polynóme nad \(GF(2)\) stačí na ireducibilitu overiť, že nemá korene \(0\) ani \(1\).</li><li>Primitívnosť overíš tak, že mocniny \(\alpha\) prejdú všetky nenulové prvky poľa; v \(GF(4)\) má mať \(\alpha\) rád \(3\).</li></ol><div class="note"><p><strong>Kontrola:</strong> Ak \(\alpha^3=1\) a predtým sa objavili \(\alpha\) aj \(\alpha^2\), prvok \(\alpha\) prešiel všetky tri nenulové prvky.</p></div></section>
     <section class="card">
-      <div class="section-tag">Vypracovanie</div>
-      <p>Z rovnosti \(p(\alpha)=0\) dostaneme \(\alpha^2+\alpha+1=0\), teda v charakteristike 2</p><div class="math-block">\[\alpha^2=\alpha+1\]</div><p>Prvky poľa sú \(0,1,\alpha,\alpha+1\). Mocniny \(\alpha\) sú:</p><div class="table-scroll"><table class="compact"><thead><tr><th>Mocnina</th><th>Hodnota</th></tr></thead><tbody><tr><td>\(\alpha^0\)</td><td>\(1\)</td></tr><tr><td>\(\alpha^1\)</td><td>\(\alpha\)</td></tr><tr><td>\(\alpha^2\)</td><td>\(\alpha+1\)</td></tr><tr><td>\(\alpha^3\)</td><td>\(1\)</td></tr></tbody></table></div><p>Pre delenie platí</p><div class="math-block">\[\frac{\alpha}{\alpha^2}=\alpha^{1-2}=\alpha^{-1}=\alpha^2=\alpha+1\]</div><p>Ireducibilitu kvadratického polynómu nad \(GF(2)\) stačí overiť dosadením \(0\) a \(1\):</p><div class="math-block">\[p(0)=1\ne0,\qquad p(1)=1+1+1=1\ne0\]</div><p>Nemá koreň v \(GF(2)\), preto je ireducibilný. Primitívny je preto, že \(\alpha\) má multiplikatívny rád \(3=2^2-1\):</p><div class="math-block">\[\alpha,\ \alpha^2=\alpha+1,\ \alpha^3=1\]</div>
+      <div class="section-tag">Riešenie krok za krokom</div>
+      <div class="worked-panel"><h3>Postup výpočtu</h3><p>Z rovnosti \(\alpha^2=\alpha+1\) dopočítame cyklus nenulových prvkov:</p><div class="math-block">\[\alpha^3=\alpha\alpha^2=\alpha(\alpha+1)=\alpha^2+\alpha=(\alpha+1)+\alpha=1\]</div><figure class="source-figure">
+<svg class="diagram-svg" viewBox="0 0 620 190" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Cyklus nenulových prvkov GF(4)">
+  <defs>
+    <marker id="arrow-gf4" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#1f1f1f"/>
+    </marker>
+  </defs>
+  <rect x="0" y="0" width="620" height="190" fill="#fffdfa"/>
+  <style>
+    .gf4-box { fill: #fff; stroke: #1f1f1f; stroke-width: 2.5; rx: 8; }
+    .gf4-arrow { fill: none; stroke: #8a4b08; stroke-width: 2.8; marker-end: url(#arrow-gf4); }
+    .gf4-label { font: 19px serif; fill: #1f1f1f; dominant-baseline: middle; text-anchor: middle; }
+    .gf4-small { font: 15px serif; fill: #5f564a; dominant-baseline: middle; text-anchor: middle; }
+  </style>
+  <text class="gf4-label" x="310" y="28">Cyklus prvkov v GF(4)</text>
+  <text class="gf4-small" x="310" y="50">šíp = násobenie α</text>
+  <rect class="gf4-box" x="70" y="75" width="110" height="54"/><text class="gf4-label" x="125" y="103">1</text>
+  <rect class="gf4-box" x="255" y="75" width="110" height="54"/><text class="gf4-label" x="310" y="103">α</text>
+  <rect class="gf4-box" x="440" y="75" width="110" height="54"/><text class="gf4-label" x="495" y="103">α+1</text>
+  <path class="gf4-arrow" d="M180 102 L250 102"/>
+  <path class="gf4-arrow" d="M365 102 L435 102"/>
+  <path class="gf4-arrow" d="M495 130 C495 170 125 170 125 134"/>
+  <text class="gf4-small" x="215" y="88">·α</text>
+  <text class="gf4-small" x="400" y="88">·α</text>
+  <text class="gf4-small" x="310" y="166">·α, lebo α(α+1)=1</text>
+</svg>
+<figcaption>V GF(4) sa nenulové prvky po násobení prvkom α opakujú s periódou 3.</figcaption></figure><p>Delenie \(\alpha/\alpha^2\) môžeme čítať cez inverz. Keďže \(\alpha^2\cdot\alpha=\alpha^3=1\), inverz k \(\alpha^2\) je \(\alpha\).</p><div class="math-block">\[\frac{\alpha}{\alpha^2}=\alpha\cdot(\alpha^2)^{-1}=\alpha\cdot\alpha=\alpha^2=\alpha+1\]</div></div><h3>Výsledok a kontrola</h3><p>Z rovnosti \(p(\alpha)=0\) dostaneme \(\alpha^2+\alpha+1=0\), teda v charakteristike 2</p><div class="math-block">\[\alpha^2=\alpha+1\]</div><p>Prvky poľa sú \(0,1,\alpha,\alpha+1\). Mocniny \(\alpha\) sú:</p><div class="table-scroll"><table class="compact"><thead><tr><th>Mocnina</th><th>Hodnota</th></tr></thead><tbody><tr><td>\(\alpha^0\)</td><td>\(1\)</td></tr><tr><td>\(\alpha^1\)</td><td>\(\alpha\)</td></tr><tr><td>\(\alpha^2\)</td><td>\(\alpha+1\)</td></tr><tr><td>\(\alpha^3\)</td><td>\(1\)</td></tr></tbody></table></div><p>Pre delenie platí</p><div class="math-block">\[\frac{\alpha}{\alpha^2}=\alpha^{1-2}=\alpha^{-1}=\alpha^2=\alpha+1\]</div><p>Ireducibilitu kvadratického polynómu nad \(GF(2)\) stačí overiť dosadením \(0\) a \(1\):</p><div class="math-block">\[p(0)=1\ne0,\qquad p(1)=1+1+1=1\ne0\]</div><p>Nemá koreň v \(GF(2)\), preto je ireducibilný. Primitívny je preto, že \(\alpha\) má multiplikatívny rád \(3=2^2-1\):</p><div class="math-block">\[\alpha,\ \alpha^2=\alpha+1,\ \alpha^3=1\]</div>
     </section>
     <section class="card">
       <div class="section-tag">Definície</div>

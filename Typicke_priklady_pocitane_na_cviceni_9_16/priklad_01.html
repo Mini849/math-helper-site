@@ -163,6 +163,22 @@ th {
   margin-top: 0.35rem;
 }
 
+.worked-panel {
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  background: #fffaf2;
+  padding: 18px 20px;
+  margin: 0 0 20px;
+}
+
+.worked-panel h3:first-child {
+  margin-top: 0;
+}
+
+.worked-panel table {
+  background: #fffdf9;
+}
+
 .index-list {
   list-style: none;
   padding: 0;
@@ -264,8 +280,8 @@ code {
     </section>
     <section class="card"><div class="section-tag">Ako to riešiť</div><p>Najprv si úlohu rozdeľ na malé rozhodnutia. Pri skúške je dôležitejšie vedieť, ktorý postup použiť, než si pamätať výsledok.</p><ol class="guide-list"><li>Použi definíciu \(\log_2(x)=y\) práve vtedy, keď \(2^y=x\).</li><li>Do náčrtu vyznač jednoduché body: \((1,0)\), \((2,1)\), \((4,2)\), \((1/2,-1)\).</li><li>Graf je definovaný iba pre \(x>0\), rastie a má zvislú asymptotu \(x=0\).</li><li>Body spoj hladkou rastúcou krivkou, ktorá sa smerom k osi \(y\) približuje, ale nedotkne sa jej.</li></ol><div class="note"><p><strong>Kontrola:</strong> Krivka nikdy nepretne os \(y\), lebo \(\log_2(x)\) nie je definovaný pre \(x\le0\).</p></div></section>
     <section class="card">
-      <div class="section-tag">Vypracovanie</div>
-      <p>Funkcia \(y=\log_2(x)\) je definovaná len pre \(x>0\), rastie a pretína os \(x\) v bode \((1,0)\).</p><ul><li>pre \(x\to0^+\) ide \(y\to-\infty\),</li><li>má vertikálnu asymptotu \(x=0\),</li><li>prechádza bodmi \((2,1)\), \((4,2)\), \((8,3)\).</li></ul>
+      <div class="section-tag">Riešenie krok za krokom</div>
+      <div class="worked-panel"><h3>Postup výpočtu</h3><p>Na náčrt logaritmu si najprv vyrobíme body z definície \(\log_2(x)=y\iff 2^y=x\):</p><div class="table-scroll"><table class="compact"><thead><tr><th>x</th><th>výpočet</th><th>bod grafu</th></tr></thead><tbody><tr><td>\(\tfrac12\)</td><td>\(2^{-1}=\tfrac12\Rightarrow \log_2(\tfrac12)=-1\)</td><td>\((\tfrac12,-1)\)</td></tr><tr><td>\(1\)</td><td>\(2^0=1\Rightarrow \log_2(1)=0\)</td><td>\((1,0)\)</td></tr><tr><td>\(2\)</td><td>\(2^1=2\Rightarrow \log_2(2)=1\)</td><td>\((2,1)\)</td></tr><tr><td>\(4\)</td><td>\(2^2=4\Rightarrow \log_2(4)=2\)</td><td>\((4,2)\)</td></tr></tbody></table></div><p>Potom body spojíme rastúcou krivkou. Vľavo sa krivka približuje k osi \(y\), ale nedotkne sa jej, lebo \(x=0\) nie je dovolené.</p></div><h3>Výsledok a kontrola</h3><p>Funkcia \(y=\log_2(x)\) je definovaná len pre \(x>0\), rastie a pretína os \(x\) v bode \((1,0)\).</p><ul><li>pre \(x\to0^+\) ide \(y\to-\infty\),</li><li>má vertikálnu asymptotu \(x=0\),</li><li>prechádza bodmi \((2,1)\), \((4,2)\), \((8,3)\).</li></ul>
 <svg class="plot" viewBox="0 0 520 320" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Graf funkcie y = log_2(x)">
   <rect x="0" y="0" width="520" height="320" fill="#fffdfa"/>
   <g stroke="#d9ccb8" stroke-width="1">
