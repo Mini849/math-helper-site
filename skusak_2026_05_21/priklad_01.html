@@ -1,0 +1,309 @@
+<!doctype html>
+<html lang="sk">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Úloha 1: Parametre lineárneho blokového kódu [15,7,5]</title>
+  <style>
+:root {
+  --bg: #f6f1e8;
+  --card: #fffdf9;
+  --ink: #1f1f1f;
+  --muted: #5f564a;
+  --line: #d9ccb8;
+  --accent: #8a4b08;
+  --accent-soft: #f5e6d4;
+  --shadow: 0 18px 40px rgba(54, 39, 20, 0.08);
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: "Iowan Old Style", "Palatino Linotype", "Book Antiqua", serif;
+  background:
+    radial-gradient(circle at top right, rgba(138, 75, 8, 0.12), transparent 28%),
+    linear-gradient(180deg, #faf6ef 0%, var(--bg) 100%);
+  color: var(--ink);
+}
+
+.page {
+  max-width: 1040px;
+  margin: 0 auto;
+  padding: 48px 20px 72px;
+}
+
+.hero {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 28px;
+  padding: 28px 32px;
+  box-shadow: var(--shadow);
+  margin-bottom: 24px;
+}
+
+.eyebrow {
+  color: var(--accent);
+  font-size: 0.95rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin: 0 0 10px;
+}
+
+h1, h2, h3 {
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin: 0 0 14px;
+}
+
+h1 { font-size: clamp(2rem, 3.5vw, 3rem); }
+h2 { font-size: 1.45rem; }
+h3 { font-size: 1.12rem; margin-top: 18px; }
+
+.card h2,
+.index-list a {
+  overflow-wrap: anywhere;
+}
+
+p, li {
+  font-size: 1.05rem;
+  line-height: 1.72;
+}
+
+.lead {
+  color: var(--muted);
+  margin: 0;
+}
+
+.backlink {
+  display: inline-flex;
+  gap: 0.45rem;
+  align-items: center;
+  text-decoration: none;
+  color: var(--accent);
+  font-weight: 700;
+  margin-bottom: 18px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 22px;
+}
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 24px;
+  padding: 24px 26px;
+  box-shadow: var(--shadow);
+}
+
+.card + .card {
+  margin-top: 24px;
+}
+
+.section-tag {
+  display: inline-block;
+  padding: 0.25rem 0.65rem;
+  border-radius: 999px;
+  background: var(--accent-soft);
+  color: var(--accent);
+  font-size: 0.88rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+
+.math-block {
+  overflow-x: auto;
+  padding: 10px 0;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 16px 0;
+  background: rgba(255, 255, 255, 0.7);
+}
+
+.table-scroll {
+  overflow-x: auto;
+  margin: 16px 0;
+}
+
+.table-scroll table {
+  margin: 0;
+  min-width: 520px;
+}
+
+th, td {
+  border: 1px solid var(--line);
+  padding: 10px 12px;
+  vertical-align: top;
+  text-align: left;
+}
+
+th {
+  background: #f5ede1;
+}
+
+.compact td, .compact th {
+  padding: 8px 10px;
+  font-size: 0.98rem;
+}
+
+.guide-list {
+  margin: 8px 0 14px;
+  padding-left: 1.35rem;
+}
+
+.guide-list li + li {
+  margin-top: 0.35rem;
+}
+
+.worked-panel {
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  background: #fffaf2;
+  padding: 18px 20px;
+  margin: 0 0 20px;
+}
+
+.worked-panel h3:first-child {
+  margin-top: 0;
+}
+
+.worked-panel table {
+  background: #fffdf9;
+}
+
+.operation-box {
+  border-left: 4px solid var(--accent);
+  background: #fffdf9;
+  border-radius: 0 14px 14px 0;
+  padding: 12px 14px;
+  margin: 14px 0 18px;
+}
+
+.operation-box p {
+  margin: 0 0 6px;
+}
+
+.operation-box .math-block {
+  padding: 4px 0;
+}
+
+.index-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 10px;
+}
+
+.index-list a {
+  color: var(--ink);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+}
+
+.index-list a:hover {
+  border-bottom-color: var(--accent);
+}
+
+.note {
+  border-left: 4px solid var(--accent);
+  padding: 14px 16px;
+  background: #fff7ed;
+  border-radius: 0 16px 16px 0;
+}
+
+.small {
+  color: var(--muted);
+  font-size: 0.96rem;
+}
+
+.plot {
+  width: 100%;
+  max-width: 520px;
+  margin: 18px auto 6px;
+  display: block;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  background: #fffdfa;
+}
+
+.source-figure {
+  margin: 18px auto 8px;
+  text-align: center;
+}
+
+.source-figure figcaption {
+  color: var(--muted);
+  font-size: 0.96rem;
+  margin-top: 8px;
+}
+
+.diagram-svg {
+  width: 100%;
+  max-width: 680px;
+  display: block;
+  margin: 0 auto;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  background: #fffdfa;
+}
+
+.hardware-svg {
+  max-width: 840px;
+}
+
+code {
+  font-family: "SFMono-Regular", Menlo, Monaco, Consolas, monospace;
+  font-size: 0.92em;
+  background: #f4ede4;
+  padding: 0.1rem 0.3rem;
+  border-radius: 0.35rem;
+}
+
+@media print {
+  body { background: white; }
+  .page { padding: 0; }
+  .hero, .card { box-shadow: none; }
+}
+</style>
+  <script>
+    window.MathJax = {
+      tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]']] },
+      svg: { fontCache: 'global' }
+    };
+  </script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+</head>
+<body>
+  <main class="page">
+    <a class="backlink" href="../index.html">← Späť na index helperov</a>
+    <section class="hero">
+      <p class="eyebrow">Skusak 21.05</p>
+      <h1>Úloha 1: Parametre lineárneho blokového kódu [15,7,5]</h1>
+      <p class="lead">Samostatné vypracovanie jednej číslovanej úlohy so zhrnutím použitých definícií.</p>
+    </section>
+    <section class="card">
+      <div class="section-tag">Zadanie</div>
+      <p>Pre lineárny blokový kód \([15,7,5]\) zostrojený nad \(GF(2)\) odpovedzte na otázky zo zadania:</p><ol><li>Aká je dĺžka kódového slova \(n\)?</li><li>Aký je počet informačných symbolov \(k\)?</li><li>Koľko kódových slov obsahuje daný kód?</li><li>Koľkorozmerný podpriestor koľkorozmerného priestoru tvorí?</li><li>Koľko je v priestore, ktorého je kód podpriestorom, vektorov?</li><li>Koľko chýb v kódovom slove garantovane dokáže opraviť?</li></ol>
+    </section>
+    <section class="card"><div class="section-tag">Ako to riešiť</div><p>Najprv si úlohu rozdeľ na malé rozhodnutia. Pri skúške je dôležitejšie vedieť, ktorý postup použiť, než si pamätať výsledok.</p><ol class="guide-list"><li>Z parametrov \([15,7,5]\) priamo čítaj \(n=15\), \(k=7\), \(d=5\).</li><li>Kód je nad \(GF(2)\), takže počet kódových slov je \(|C|=2^k\).</li><li>Ako lineárny kód tvorí \(k\)-rozmerný podpriestor priestoru \(GF(2)^n\).</li><li>Celý priestor obsahuje všetky binárne vektory dĺžky \(n\), teda \(2^n\) vektorov.</li><li>Počet garantovane opraviteľných chýb je \(t=\left\lfloor\frac{d-1}{2}\right\rfloor\).</li></ol><div class="note"><p><strong>Kontrola:</strong> Nemýľ si počet kódových slov \(2^k\) s počtom všetkých vektorov v priestore \(2^n\).</p></div></section>
+    <section class="card">
+      <div class="section-tag">Riešenie krok za krokom</div>
+      <div class="worked-panel"><h3>Postup výpočtu</h3><p>Pri zápise \([15,7,5]\) sú tri čísla vždy v poradí \([n,k,d]\):</p><div class="table-scroll"><table class="compact"><thead><tr><th>Symbol</th><th>Čo znamená</th><th>Hodnota</th></tr></thead><tbody><tr><td>\(n\)</td><td>dĺžka kódového slova</td><td>15</td></tr><tr><td>\(k\)</td><td>počet informačných symbolov</td><td>7</td></tr><tr><td>\(d\)</td><td>minimálna vzdialenosť</td><td>5</td></tr></tbody></table></div><p>Keďže kód je lineárny a binárny, každé informačné slovo má \(7\) bitov. Počet možností je teda:</p><div class="math-block">\[|C|=2^k=2^7=128\]</div><p>Lineárny blokový kód je podpriestor. Jeho dimenzia je \(k\), okolitý priestor má dimenziu \(n\):</p><div class="math-block">\[C\le GF(2)^{15},\qquad \dim C=7\]</div><p>Preto tvorí sedemrozmerný podpriestor pätnásťrozmerného priestoru.</p><p>V celom priestore \(GF(2)^{15}\) sú všetky binárne vektory dĺžky \(15\):</p><div class="math-block">\[|GF(2)^{15}|=2^{15}=32768\]</div><p>Garantovaná oprava chýb závisí od minimálnej vzdialenosti. Použijeme vzorec:</p><div class="math-block">\[t=\left\lfloor\dfrac{d-1}{2}\right\rfloor=\left\lfloor\dfrac{5-1}{2}\right\rfloor=2\]</div><p>Kód teda garantovane opraví \(2\) chyby v jednom kódovom slove.</p></div><h3>Výsledok a kontrola</h3><p>Zápis \([15,7,5]\) znamená \([n,k,d]\), teda</p><div class="math-block">\[n=15,\qquad k=7,\qquad d=5\]</div><p>Počet kódových slov lineárneho binárneho kódu je</p><div class="math-block">\[|C|=2^k=2^7=128\]</div><p>Keďže \(k=7\) a \(n=15\), kód tvorí</p><div class="math-block">\[7\text{-rozmerný podpriestor }15\text{-rozmerného priestoru }GF(2)^{15}\]</div><p>Celý priestor \(GF(2)^{15}\) má</p><div class="math-block">\[2^{15}=32768\text{ vektorov}\]</div><p>Počet garantovane opraviteľných chýb je</p><div class="math-block">\[t=\left\lfloor\dfrac{d-1}{2}\right\rfloor=\left\lfloor\dfrac{4}{2}\right\rfloor=2\]</div><p><strong>Odpovede do políčok:</strong> \(n=15\), \(k=7\), \(|C|=128\), sedemrozmerný podpriestor pätnásťrozmerného priestoru, \(32768\) vektorov, \(2\) chyby.</p>
+    </section>
+    <section class="card">
+      <div class="section-tag">Definície</div>
+      <ul><li><strong>Kód \([n,k,d]\):</strong> dĺžka slova je \(n\), dimenzia je \(k\), minimálna vzdialenosť je \(d\).</li><li><strong>Lineárny blokový kód:</strong> podpriestor priestoru \(GF(q)^n\).</li><li><strong>Opravná schopnosť:</strong> \(t=\left\lfloor\frac{d-1}{2}\right\rfloor\).</li></ul>
+    </section>
+    
+  </main>
+</body>
+</html>
