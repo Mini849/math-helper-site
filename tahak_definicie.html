@@ -268,10 +268,219 @@ code {
   border-radius: 0.35rem;
 }
 
+.help-trigger {
+  position: fixed;
+  top: max(16px, env(safe-area-inset-top));
+  right: max(16px, env(safe-area-inset-right));
+  z-index: 30;
+  border: 1px solid rgba(138, 75, 8, 0.38);
+  border-radius: 999px;
+  background: #fffdf9;
+  color: var(--accent);
+  box-shadow: 0 10px 26px rgba(54, 39, 20, 0.16);
+  cursor: pointer;
+  font: 700 0.98rem/1 "Iowan Old Style", "Palatino Linotype", "Book Antiqua", serif;
+  padding: 0.78rem 1rem;
+  transition: transform 180ms ease, box-shadow 180ms ease, background 180ms ease;
+}
+
+.help-trigger:hover,
+.help-trigger:focus-visible {
+  background: #fff7ed;
+  box-shadow: 0 14px 32px rgba(54, 39, 20, 0.22);
+  transform: translateY(-1px) rotate(-1deg);
+}
+
+.help-trigger:focus-visible {
+  outline: 3px solid rgba(212, 41, 41, 0.32);
+  outline-offset: 4px;
+}
+
+.help-trigger:active {
+  transform: translateY(1px) scale(0.98);
+}
+
+.help-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 40;
+  display: grid;
+  place-items: center;
+  padding: 28px;
+  background: rgba(31, 31, 31, 0.38);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  cursor: zoom-out;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 220ms ease, visibility 220ms ease;
+}
+
+.help-overlay.is-open {
+  opacity: 1;
+  visibility: visible;
+}
+
+.help-stage {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: min(76vw, 620px);
+  max-width: 100%;
+  pointer-events: none;
+}
+
+.help-portrait {
+  width: auto;
+  max-width: min(76vw, 620px);
+  max-height: min(84vh, 720px);
+  object-fit: contain;
+  filter: drop-shadow(0 26px 42px rgba(0, 0, 0, 0.42));
+  opacity: 0;
+  transform-origin: 62% 82%;
+}
+
+.help-overlay.is-open .help-portrait {
+  animation:
+    help-enter 820ms cubic-bezier(0.18, 0.92, 0.28, 1.18) both,
+    help-wobble 1800ms ease-in-out 920ms infinite;
+}
+
+.help-burst {
+  position: absolute;
+  z-index: 1;
+  display: grid;
+  place-items: center;
+  min-width: 46px;
+  height: 46px;
+  padding: 0 12px;
+  border: 2px solid #d42929;
+  border-radius: 999px;
+  background: #fffdf9;
+  color: #d42929;
+  box-shadow: 0 14px 30px rgba(54, 39, 20, 0.2);
+  font: 800 1.05rem/1 "SFMono-Regular", Menlo, Monaco, Consolas, monospace;
+  opacity: 0;
+  transform: scale(0.5) rotate(-14deg);
+}
+
+.help-overlay.is-open .help-burst {
+  animation: help-pop 740ms cubic-bezier(0.2, 1.35, 0.3, 1) both;
+}
+
+.help-burst-one {
+  top: 9%;
+  left: 0;
+  animation-delay: 260ms;
+}
+
+.help-burst-two {
+  top: 22%;
+  right: -2%;
+  animation-delay: 360ms;
+}
+
+.help-burst-three {
+  bottom: 18%;
+  left: 5%;
+  animation-delay: 460ms;
+}
+
+@keyframes help-enter {
+  0% {
+    opacity: 0;
+    transform: translate3d(74vw, 14vh, 0) rotate(15deg) scale(0.22);
+  }
+  54% {
+    opacity: 1;
+    transform: translate3d(-3vw, -1vh, 0) rotate(-5deg) scale(1.08);
+  }
+  74% {
+    transform: translate3d(1.2vw, 0, 0) rotate(2deg) scale(0.98);
+  }
+  100% {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) rotate(0) scale(1);
+  }
+}
+
+@keyframes help-wobble {
+  0%, 100% { transform: rotate(0) scale(1); }
+  35% { transform: rotate(-1.2deg) scale(1.012); }
+  70% { transform: rotate(1deg) scale(1); }
+}
+
+@keyframes help-pop {
+  0% {
+    opacity: 0;
+    transform: scale(0.35) rotate(-22deg);
+  }
+  58% {
+    opacity: 1;
+    transform: scale(1.12) rotate(7deg);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) rotate(-4deg);
+  }
+}
+
+@media (max-width: 620px) {
+  .page {
+    padding-top: 78px;
+  }
+
+  .help-trigger {
+    top: max(12px, env(safe-area-inset-top));
+    right: max(12px, env(safe-area-inset-right));
+    padding: 0.72rem 0.88rem;
+  }
+
+  .help-stage,
+  .help-portrait {
+    max-width: 84vw;
+  }
+
+  .help-burst {
+    min-width: 38px;
+    height: 38px;
+    font-size: 0.9rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .help-trigger,
+  .help-overlay {
+    transition: none;
+  }
+
+  .help-overlay.is-open .help-portrait {
+    animation: help-calm-enter 180ms ease-out both;
+  }
+
+  .help-overlay.is-open .help-burst {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+
+  @keyframes help-calm-enter {
+    from {
+      opacity: 0;
+      transform: scale(0.96);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+}
+
 @media print {
   body { background: white; }
   .page { padding: 0; }
   .hero, .card { box-shadow: none; }
+  .help-trigger, .help-overlay { display: none; }
 }
 </style>
   <script>
@@ -292,5 +501,50 @@ code {
     </section>
     <section class="card"><div class="section-tag">Základné pojmy</div><ul><li><strong>Logaritmus:</strong> číslo \(y\), pre ktoré platí \(a^y=x\).</li><li><strong>Bit:</strong> binárny symbol, teda \(0\) alebo \(1\).</li><li><strong>Modulo \(n\):</strong> počítanie so zvyškami po delení číslom \(n\).</li><li><strong>Pixel:</strong> jeden obrazový bod digitálneho obrázka.</li><li><strong>Kompresia:</strong> spôsob zmenšenia objemu dát pri ukladaní alebo prenose.</li></ul></section><section class="card"><div class="section-tag">Grupy a konečné polia</div><ul><li><strong>Binárna operácia:</strong> operácia, ktorá dvom prvkom množiny priradí opäť prvok tej istej množiny.</li><li><strong>Grupa:</strong> množina s uzavretou, asociatívnou operáciou, s neutrálnym prvkom a inverzom ku každému prvku.</li><li><strong>Ábelovská grupa:</strong> grupa, v ktorej navyše platí komutativita.</li><li><strong>Neutrálny prvok:</strong> prvok <em>e</em>, pre ktorý platí a ∗ e = e ∗ a = a.</li><li><strong>Inverzný prvok:</strong> prvok a<sup>−1</sup>, pre ktorý platí a ∗ a<sup>−1</sup> = e.</li><li><strong>Konečné pole \(GF(p)\):</strong> pole s konečným počtom prvkov; pri prvočíselnom \(p\) je to \(\{0,1,\dots,p-1\}\) s operáciami modulo \(p\).</li></ul></section><section class="card"><div class="section-tag">Matice a lineárna algebra</div><ul><li><strong>Matica:</strong> obdĺžnikové usporiadanie prvkov do riadkov a stĺpcov.</li><li><strong>Rozmery matice:</strong> počet riadkov krát počet stĺpcov.</li><li><strong>Skalárny súčin:</strong> súčet súčinov zodpovedajúcich si zložiek dvoch rovnako dlhých vektorov.</li><li><strong>Determinant:</strong> číslo priradené štvorcovej matici, ktoré okrem iného hovorí, či je matica invertibilná.</li><li><strong>Invertibilná matica:</strong> matica, ku ktorej existuje inverzná matica.</li><li><strong>Singulárna matica:</strong> matica bez inverzu.</li><li><strong>Lineárna kombinácia:</strong> súčet násobkov daných vektorov.</li><li><strong>Lineárna nezávislosť:</strong> žiadny vektor sa nedá vyjadriť ako lineárna kombinácia ostatných.</li><li><strong>Podpriestor:</strong> podmnožina vektorového priestoru uzavretá na sčítanie a násobenie skalárom.</li></ul></section><section class="card"><div class="section-tag">Teória kódovania</div><ul><li><strong>Blokový kód:</strong> kód, ktorý správy mapuje na kódové slová pevnej dĺžky.</li><li><strong>Lineárny blokový kód:</strong> podpriestor priestoru \(GF(q)^n\).</li><li><strong>Kód \([n,k,d]\):</strong> kód dĺžky \(n\), dimenzie \(k\) a minimálnej vzdialenosti \(d\).</li><li><strong>Kódové slovo:</strong> vektor patriaci do kódu.</li><li><strong>Rýchlosť kódu:</strong> pomer \(\frac{k}{n}\), teda informačná účinnosť kódu.</li><li><strong>Generujúca matica \(G\):</strong> matica, ktorej riadky generujú všetky kódové slová.</li><li><strong>Kontrolná matica \(H\):</strong> matica, pre ktorú platí \(cH^T=0\) pre každé kódové slovo \(c\).</li><li><strong>Systematický kód:</strong> kód, v ktorom sa informačné symboly objavujú priamo v kódovom slove.</li><li><strong>SPC kód:</strong> kód s jednoduchou kontrolou parity.</li><li><strong>Hammingov kód:</strong> špeciálny lineárny kód, typicky s minimálnou vzdialenosťou 3 a opravou jednej chyby.</li></ul></section><section class="card"><div class="section-tag">Hammingova metrika a odvodené pojmy</div><ul><li><strong>Hammingova váha \(w(c)\):</strong> počet nenulových súradníc vektora \(c\).</li><li><strong>Hammingova vzdialenosť \(d(x,y)\):</strong> počet pozícií, na ktorých sa vektory \(x\) a \(y\) líšia.</li><li><strong>Minimálna vzdialenosť \(d_{\min}\):</strong> najmenšia vzdialenosť dvoch rôznych kódových slov.</li><li><strong>Váhové spektrum:</strong> rozdelenie počtu kódových slov podľa ich Hammingovej váhy.</li><li><strong>Opravná schopnosť kódu:</strong> maximálny počet chýb, ktoré vie kód opraviť v jednom slove.</li></ul></section><section class="card"><div class="section-tag">Cyklické kódy a dekódovanie</div><ul><li><strong>Cyklický kód:</strong> lineárny kód, v ktorom cyklický posun kódového slova zostáva kódovým slovom.</li><li><strong>Generujúci polynóm \(g(x)\):</strong> polynóm, ktorým sa generujú kódové slová cyklického kódu.</li><li><strong>Informačný polynóm \(m(x)\):</strong> polynóm reprezentujúci informačnú správu.</li><li><strong>Syndróm:</strong> zvyšok po delení prijatého slova generujúcim polynómom alebo ekvivalentne hodnota \(rH^T\).</li><li><strong>Chybový vzor \(e(x)\):</strong> polynóm alebo vektor opisujúci, na ktorých pozíciách nastala chyba.</li><li><strong>Líder kosetu:</strong> reprezentant triedy chýb zodpovedajúci danému syndrómu, typicky najľahší chybový vzor.</li><li><strong>Dekódovanie syndrómami:</strong> postup, kde sa zo syndrómu určí chyba a následne sa opraví prijaté slovo.</li></ul></section><section class="card"><div class="section-tag">Polynómy a Reed-Solomon</div><ul><li><strong>Ireducibilný polynóm:</strong> polynóm, ktorý sa nad daným poľom nedá rozložiť na súčin polynómov nižšieho stupňa.</li><li><strong>Primitívny polynóm:</strong> ireducibilný polynóm, pri ktorom zvolený prvok \(\alpha\) postupne vygeneruje všetky nenulové prvky poľa.</li><li><strong>Rozšírené pole \(GF(2^m)\):</strong> pole vytvorené z polynómov modulo ireducibilný polynóm stupňa \(m\).</li><li><strong>Koreň generujúceho polynómu RS kódu:</strong> prvok \(\alpha^i\), pre ktorý platí \(g(\alpha^i)=0\).</li><li><strong>RS kód:</strong> Reed-Solomonov kód nad \(GF(q)\), ktorého plná štandardná dĺžka je \(q-1\).</li><li><strong>Symbol RS kódu:</strong> jeden prvok poľa; nad \(GF(256)=GF(2^8)\) má jeden symbol 8 bitov.</li></ul></section>
   </main>
+  
+  <button class="help-trigger" type="button" data-help-open aria-haspopup="dialog" aria-controls="help-focus" aria-expanded="false">Help</button>
+  <div class="help-overlay" id="help-focus" data-help-overlay role="dialog" aria-modal="true" aria-label="Help" tabindex="-1" hidden>
+    <div class="help-stage" aria-hidden="true">
+      <span class="help-burst help-burst-one">?</span>
+      <span class="help-burst help-burst-two">f(x)</span>
+      <span class="help-burst help-burst-three">FX</span>
+      <img class="help-portrait" src="assets/help-fx.png" alt="">
+    </div>
+  </div>
+  <script>
+    (() => {
+      const button = document.querySelector('[data-help-open]');
+      const overlay = document.querySelector('[data-help-overlay]');
+      if (!button || !overlay) return;
+
+      const openHelp = () => {
+        overlay.hidden = false;
+        requestAnimationFrame(() => {
+          overlay.classList.add('is-open');
+          button.setAttribute('aria-expanded', 'true');
+          overlay.focus({ preventScroll: true });
+        });
+      };
+
+      const closeHelp = () => {
+        if (overlay.hidden) return;
+        overlay.classList.remove('is-open');
+        button.setAttribute('aria-expanded', 'false');
+        window.setTimeout(() => {
+          if (!overlay.classList.contains('is-open')) {
+            overlay.hidden = true;
+            button.focus({ preventScroll: true });
+          }
+        }, 240);
+      };
+
+      button.addEventListener('click', openHelp);
+      overlay.addEventListener('click', closeHelp);
+      document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape' && !overlay.hidden) closeHelp();
+      });
+    })();
+  </script>
+
 </body>
 </html>

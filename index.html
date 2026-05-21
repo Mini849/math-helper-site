@@ -268,10 +268,219 @@ code {
   border-radius: 0.35rem;
 }
 
+.help-trigger {
+  position: fixed;
+  top: max(16px, env(safe-area-inset-top));
+  right: max(16px, env(safe-area-inset-right));
+  z-index: 30;
+  border: 1px solid rgba(138, 75, 8, 0.38);
+  border-radius: 999px;
+  background: #fffdf9;
+  color: var(--accent);
+  box-shadow: 0 10px 26px rgba(54, 39, 20, 0.16);
+  cursor: pointer;
+  font: 700 0.98rem/1 "Iowan Old Style", "Palatino Linotype", "Book Antiqua", serif;
+  padding: 0.78rem 1rem;
+  transition: transform 180ms ease, box-shadow 180ms ease, background 180ms ease;
+}
+
+.help-trigger:hover,
+.help-trigger:focus-visible {
+  background: #fff7ed;
+  box-shadow: 0 14px 32px rgba(54, 39, 20, 0.22);
+  transform: translateY(-1px) rotate(-1deg);
+}
+
+.help-trigger:focus-visible {
+  outline: 3px solid rgba(212, 41, 41, 0.32);
+  outline-offset: 4px;
+}
+
+.help-trigger:active {
+  transform: translateY(1px) scale(0.98);
+}
+
+.help-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 40;
+  display: grid;
+  place-items: center;
+  padding: 28px;
+  background: rgba(31, 31, 31, 0.38);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  cursor: zoom-out;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 220ms ease, visibility 220ms ease;
+}
+
+.help-overlay.is-open {
+  opacity: 1;
+  visibility: visible;
+}
+
+.help-stage {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: min(76vw, 620px);
+  max-width: 100%;
+  pointer-events: none;
+}
+
+.help-portrait {
+  width: auto;
+  max-width: min(76vw, 620px);
+  max-height: min(84vh, 720px);
+  object-fit: contain;
+  filter: drop-shadow(0 26px 42px rgba(0, 0, 0, 0.42));
+  opacity: 0;
+  transform-origin: 62% 82%;
+}
+
+.help-overlay.is-open .help-portrait {
+  animation:
+    help-enter 820ms cubic-bezier(0.18, 0.92, 0.28, 1.18) both,
+    help-wobble 1800ms ease-in-out 920ms infinite;
+}
+
+.help-burst {
+  position: absolute;
+  z-index: 1;
+  display: grid;
+  place-items: center;
+  min-width: 46px;
+  height: 46px;
+  padding: 0 12px;
+  border: 2px solid #d42929;
+  border-radius: 999px;
+  background: #fffdf9;
+  color: #d42929;
+  box-shadow: 0 14px 30px rgba(54, 39, 20, 0.2);
+  font: 800 1.05rem/1 "SFMono-Regular", Menlo, Monaco, Consolas, monospace;
+  opacity: 0;
+  transform: scale(0.5) rotate(-14deg);
+}
+
+.help-overlay.is-open .help-burst {
+  animation: help-pop 740ms cubic-bezier(0.2, 1.35, 0.3, 1) both;
+}
+
+.help-burst-one {
+  top: 9%;
+  left: 0;
+  animation-delay: 260ms;
+}
+
+.help-burst-two {
+  top: 22%;
+  right: -2%;
+  animation-delay: 360ms;
+}
+
+.help-burst-three {
+  bottom: 18%;
+  left: 5%;
+  animation-delay: 460ms;
+}
+
+@keyframes help-enter {
+  0% {
+    opacity: 0;
+    transform: translate3d(74vw, 14vh, 0) rotate(15deg) scale(0.22);
+  }
+  54% {
+    opacity: 1;
+    transform: translate3d(-3vw, -1vh, 0) rotate(-5deg) scale(1.08);
+  }
+  74% {
+    transform: translate3d(1.2vw, 0, 0) rotate(2deg) scale(0.98);
+  }
+  100% {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) rotate(0) scale(1);
+  }
+}
+
+@keyframes help-wobble {
+  0%, 100% { transform: rotate(0) scale(1); }
+  35% { transform: rotate(-1.2deg) scale(1.012); }
+  70% { transform: rotate(1deg) scale(1); }
+}
+
+@keyframes help-pop {
+  0% {
+    opacity: 0;
+    transform: scale(0.35) rotate(-22deg);
+  }
+  58% {
+    opacity: 1;
+    transform: scale(1.12) rotate(7deg);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) rotate(-4deg);
+  }
+}
+
+@media (max-width: 620px) {
+  .page {
+    padding-top: 78px;
+  }
+
+  .help-trigger {
+    top: max(12px, env(safe-area-inset-top));
+    right: max(12px, env(safe-area-inset-right));
+    padding: 0.72rem 0.88rem;
+  }
+
+  .help-stage,
+  .help-portrait {
+    max-width: 84vw;
+  }
+
+  .help-burst {
+    min-width: 38px;
+    height: 38px;
+    font-size: 0.9rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .help-trigger,
+  .help-overlay {
+    transition: none;
+  }
+
+  .help-overlay.is-open .help-portrait {
+    animation: help-calm-enter 180ms ease-out both;
+  }
+
+  .help-overlay.is-open .help-burst {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+
+  @keyframes help-calm-enter {
+    from {
+      opacity: 0;
+      transform: scale(0.96);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+}
+
 @media print {
   body { background: white; }
   .page { padding: 0; }
   .hero, .card { box-shadow: none; }
+  .help-trigger, .help-overlay { display: none; }
 }
 </style>
 </head>
@@ -287,5 +496,50 @@ code {
       <section class="card"><h2>Typicke_priklady_pocitane_na_cviceni_23.pdf</h2><p class="small">Počet helperov: 7</p><ul class="index-list"><li><a href="Typicke_priklady_pocitane_na_cviceni_23/priklad_01.html">Úloha 1: Úloha 1: GF(2) a grupa modulo 2</a></li><li><a href="Typicke_priklady_pocitane_na_cviceni_23/priklad_02.html">Úloha 2: Úloha 2: GF(3) a grupa modulo 3</a></li><li><a href="Typicke_priklady_pocitane_na_cviceni_23/priklad_03.html">Úloha 3: Úloha 3: Ako násobiť matice s celými číslami</a></li><li><a href="Typicke_priklady_pocitane_na_cviceni_23/priklad_04.html">Úloha 4: Úloha 4: Násobenie celočíselných matíc</a></li><li><a href="Typicke_priklady_pocitane_na_cviceni_23/priklad_05.html">Úloha 5: Úloha 5: Ako násobiť matice nad GF(2)</a></li><li><a href="Typicke_priklady_pocitane_na_cviceni_23/priklad_06.html">Úloha 6: Úloha 6: Násobenie matíc nad GF(2)</a></li><li><a href="Typicke_priklady_pocitane_na_cviceni_23/priklad_07.html">Úloha 7: Úloha 7: Tvoria všetky matice 2×2 nad GF(2) grupu?</a></li></ul></section><section class="card"><h2>Typicke_priklady_pocitane_na_cviceni_9_16.pdf</h2><p class="small">Počet helperov: 6</p><ul class="index-list"><li><a href="Typicke_priklady_pocitane_na_cviceni_9_16/priklad_01.html">Úloha 1: Úloha 1: Náčrt funkcie y = log₂(x)</a></li><li><a href="Typicke_priklady_pocitane_na_cviceni_9_16/priklad_02.html">Úloha 2: Úloha 2: Hodnoty logaritmov</a></li><li><a href="Typicke_priklady_pocitane_na_cviceni_9_16/priklad_03.html">Úloha 3: Úloha 3: Počet bitov pre 1024 správ</a></li><li><a href="Typicke_priklady_pocitane_na_cviceni_9_16/priklad_04.html">Úloha 4: Úloha 4: Veľkosť nekomprimovanej fotografie</a></li><li><a href="Typicke_priklady_pocitane_na_cviceni_9_16/priklad_05.html">Úloha 5: Úloha 5: Grupa transformácií trojuholníka</a></li><li><a href="Typicke_priklady_pocitane_na_cviceni_9_16/priklad_06.html">Úloha 6: Úloha 6: Sústava rovníc nad GF(2)</a></li></ul></section><section class="card"><h2>Priklady_pocitane_na_cviceni_DM_2marec.pdf</h2><p class="small">Počet helperov: 5</p><ul class="index-list"><li><a href="Priklady_pocitane_na_cviceni_DM_2marec/priklad_01.html">Úloha 1: Úloha 1: Konštrukcia GF(5)</a></li><li><a href="Priklady_pocitane_na_cviceni_DM_2marec/priklad_02.html">Úloha 2: Úloha 2: Je GF(5) grupa vzhľadom na +?</a></li><li><a href="Priklady_pocitane_na_cviceni_DM_2marec/priklad_03.html">Úloha 3: Úloha 3: Je GF(5) grupa vzhľadom na ×?</a></li><li><a href="Priklady_pocitane_na_cviceni_DM_2marec/priklad_04.html">Úloha 4: Úloha 4: Determinant 2×2 matice nad celými číslami</a></li><li><a href="Priklady_pocitane_na_cviceni_DM_2marec/priklad_05.html">Úloha 5: Úloha 5: Determinant 3×3 matice nad GF(2)</a></li></ul></section><section class="card"><h2>Priklady_z_cviceni11a16_3.pdf</h2><p class="small">Počet helperov: 7</p><ul class="index-list"><li><a href="Priklady_z_cviceni11a16_3/priklad_01.html">Úloha 1: Úloha 1: Prečo je Hammingova vzdialenosť rovná váhe súčtu</a></li><li><a href="Priklady_z_cviceni11a16_3/priklad_02.html">Úloha 2: Úloha 2: Vyjadrenie vektora ako lineárnej kombinácie</a></li><li><a href="Priklady_z_cviceni11a16_3/priklad_03.html">Úloha 3: Úloha 3: Parametre lineárneho blokového kódu [15,11,3]</a></li><li><a href="Priklady_z_cviceni11a16_3/priklad_04.html">Úloha 4: Úloha 4: Generujúca a kontrolná matica kódu [8,7,2]</a></li><li><a href="Priklady_z_cviceni11a16_3/priklad_05.html">Úloha 5: Úloha 5: Kód násobok</a></li><li><a href="Priklady_z_cviceni11a16_3/priklad_06.html">Úloha 6: Úloha 6: Uzavretosť lineárneho blokového kódu na sčítanie</a></li><li><a href="Priklady_z_cviceni11a16_3/priklad_07.html">Úloha 7: Úloha 7: Ako využiť uzavretosť pri výpočte minimálnej vzdialenosti</a></li></ul></section><section class="card"><h2>cvicenie_DM_23_3_2026.pdf</h2><p class="small">Počet helperov: 4</p><ul class="index-list"><li><a href="cvicenie_DM_23_3_2026/priklad_01.html">Úloha 1: Úloha 1: Hammingova vzdialenosť a váha konkrétnych vektorov</a></li><li><a href="cvicenie_DM_23_3_2026/priklad_02.html">Úloha 2: Úloha 2: Lineárna kombinácia dvoch reálnych vektorov</a></li><li><a href="cvicenie_DM_23_3_2026/priklad_03.html">Úloha 3: Úloha 3: Hammingov kód [7,4,3] z generujúcej matice</a></li><li><a href="cvicenie_DM_23_3_2026/priklad_04.html">Úloha 4: Úloha 4: SPC kód [8,7,2]</a></li></ul></section><section class="card"><h2>cvicenie_DM_30_3_2026.pdf</h2><p class="small">Počet helperov: 2</p><ul class="index-list"><li><a href="cvicenie_DM_30_3_2026/priklad_01.html">Úloha 1: Úloha 1: Úprava generujúcej matice do systematického tvaru</a></li><li><a href="cvicenie_DM_30_3_2026/priklad_02.html">Úloha 2: Úloha 2: Kódové slová a váhové spektrum Hammingovho kódu</a></li></ul></section><section class="card"><h2>Cvicenie_DM_13_4_2026.pdf</h2><p class="small">Počet helperov: 2</p><ul class="index-list"><li><a href="Cvicenie_DM_13_4_2026/priklad_01.html">Úloha 1: Úloha 1: Dekódovanie cyklického kódu pomocou syndrómov</a></li><li><a href="Cvicenie_DM_13_4_2026/priklad_02.html">Úloha 2: Úloha 2: Nonsystematické a systematické kódovanie polynómami</a></li></ul></section><section class="card"><h2>2. 5. 2026 - 1.pdf</h2><p class="small">Počet helperov: 3</p><ul class="index-list"><li><a href="material_2026_05_02_1/priklad_01.html">Úloha 1: Úloha 1: Lineárny blokový kód zo schémy</a></li><li><a href="material_2026_05_02_1/priklad_02.html">Úloha 2: Úloha 2: Hammingov [15,11,3] kód zo syndrómov</a></li><li><a href="material_2026_05_02_1/priklad_03.html">Úloha 3: Úloha 3: Vlastnosti grupy</a></li></ul></section><section class="card"><h2>2. 5. 2026 - 2.pdf</h2><p class="small">Počet helperov: 2</p><ul class="index-list"><li><a href="material_2026_05_02_2/priklad_01.html">Úloha 1: Úloha 1: Systematické kódovanie polynómom</a></li><li><a href="material_2026_05_02_2/priklad_02.html">Úloha 2: Úloha 2: Syndrómové dekódovanie polynómom</a></li></ul></section><section class="card"><h2>5. 5. 2026 - 3.pdf</h2><p class="small">Počet helperov: 3</p><ul class="index-list"><li><a href="material_2026_05_05_3/priklad_01.html">Úloha 1: Úloha 1: GF(8) a delenie mocnín</a></li><li><a href="material_2026_05_05_3/priklad_02.html">Úloha 2: Úloha 2: Lineárny blokový kód a systematický tvar</a></li><li><a href="material_2026_05_05_3/priklad_03.html">Úloha 3: Úloha 3: Reed-Solomonov kód nad GF(8)</a></li></ul></section><section class="card"><h2>12. 5. 2026 - fotky</h2><p class="small">Počet helperov: 3</p><ul class="index-list"><li><a href="material_2026_05_12_photos/priklad_01.html">Úloha 1: Úloha 1: GF(4), ireducibilita a primitívnosť</a></li><li><a href="material_2026_05_12_photos/priklad_02.html">Úloha 2: Úloha 2: Kód s opakovaním dĺžky 5</a></li><li><a href="material_2026_05_12_photos/priklad_03.html">Úloha 3: Úloha 3: Reed-Solomonov kód nad GF(256)</a></li></ul></section><section class="card"><h2>Skusak 21.05</h2><p class="small">Počet helperov: 2</p><ul class="index-list"><li><a href="skusak_2026_05_21/priklad_01.html">Úloha 1: Úloha 1: Parametre lineárneho blokového kódu [15,7,5]</a></li><li><a href="skusak_2026_05_21/priklad_02.html">Úloha 2: Úloha 2: Zostrojenie GF(3) a výpočty v poli</a></li></ul></section><section class="card"><h2>ai priklady</h2><p class="small">Počet helperov: 6</p><ul class="index-list"><li><a href="ai_priklady/priklad_01.html">Úloha 1: Úloha 1: Ako navrhnúť hardvér z polynómu</a></li><li><a href="ai_priklady/priklad_02.html">Úloha 2: Úloha 2: Delenie polynómov nad GF(2)</a></li><li><a href="ai_priklady/priklad_03.html">Úloha 3: Úloha 3: Mini test na precvičenie</a></li><li><a href="ai_priklady/priklad_04.html">Úloha 4: Úloha 4: Hardvér, zvyšok a oprava chyby</a></li><li><a href="ai_priklady/priklad_05.html">Úloha 5: Úloha 5: GF(8) bez paniky</a></li><li><a href="ai_priklady/priklad_06.html">Úloha 6: Úloha 6: RS parametre nad GF(32)</a></li></ul></section>
     </div>
   </main>
+  
+  <button class="help-trigger" type="button" data-help-open aria-haspopup="dialog" aria-controls="help-focus" aria-expanded="false">Help</button>
+  <div class="help-overlay" id="help-focus" data-help-overlay role="dialog" aria-modal="true" aria-label="Help" tabindex="-1" hidden>
+    <div class="help-stage" aria-hidden="true">
+      <span class="help-burst help-burst-one">?</span>
+      <span class="help-burst help-burst-two">f(x)</span>
+      <span class="help-burst help-burst-three">FX</span>
+      <img class="help-portrait" src="assets/help-fx.png" alt="">
+    </div>
+  </div>
+  <script>
+    (() => {
+      const button = document.querySelector('[data-help-open]');
+      const overlay = document.querySelector('[data-help-overlay]');
+      if (!button || !overlay) return;
+
+      const openHelp = () => {
+        overlay.hidden = false;
+        requestAnimationFrame(() => {
+          overlay.classList.add('is-open');
+          button.setAttribute('aria-expanded', 'true');
+          overlay.focus({ preventScroll: true });
+        });
+      };
+
+      const closeHelp = () => {
+        if (overlay.hidden) return;
+        overlay.classList.remove('is-open');
+        button.setAttribute('aria-expanded', 'false');
+        window.setTimeout(() => {
+          if (!overlay.classList.contains('is-open')) {
+            overlay.hidden = true;
+            button.focus({ preventScroll: true });
+          }
+        }, 240);
+      };
+
+      button.addEventListener('click', openHelp);
+      overlay.addEventListener('click', closeHelp);
+      document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape' && !overlay.hidden) closeHelp();
+      });
+    })();
+  </script>
+
 </body>
 </html>
