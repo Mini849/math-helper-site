@@ -179,6 +179,22 @@ th {
   background: #fffdf9;
 }
 
+.operation-box {
+  border-left: 4px solid var(--accent);
+  background: #fffdf9;
+  border-radius: 0 14px 14px 0;
+  padding: 12px 14px;
+  margin: 14px 0 18px;
+}
+
+.operation-box p {
+  margin: 0 0 6px;
+}
+
+.operation-box .math-block {
+  padding: 4px 0;
+}
+
 .index-list {
   list-style: none;
   padding: 0;
@@ -281,7 +297,7 @@ code {
     <section class="card"><div class="section-tag">Ako to riešiť</div><p>Najprv si úlohu rozdeľ na malé rozhodnutia. Pri skúške je dôležitejšie vedieť, ktorý postup použiť, než si pamätať výsledok.</p><ol class="guide-list"><li>Hľadaj koeficienty \(\alpha,\beta\), aby platilo \(\alpha x_1+\beta x_2=v\).</li><li>Rovnosť rozpíš po súradniciach; z každého riadku vznikne jedna obyčajná rovnica nad reálnymi číslami.</li><li>Vyrieš vzniknutú sústavu pre \(\alpha\) a \(\beta\).</li><li>Výsledné koeficienty dosaď späť do všetkých súradníc, nielen do prvej.</li></ol><div class="note"><p><strong>Kontrola:</strong> Po dosadení musí vyjsť presne zadaný vektor \(v\).</p></div></section>
     <section class="card">
       <div class="section-tag">Riešenie krok za krokom</div>
-      <div class="worked-panel"><h3>Postup výpočtu</h3><p>Z rovnosti \(\alpha x_1+\beta x_2=v\) dostaneme dve rovnice:</p><div class="math-block">\[\alpha-2\beta=3\]</div><div class="math-block">\[\frac{\alpha}{3}+\frac{2\beta}{5}=5\]</div><p>Z prvej rovnice je \(\alpha=3+2\beta\). Dosadíme do druhej:</p><div class="math-block">\[\frac{3+2\beta}{3}+\frac{2\beta}{5}=5\]</div><div class="math-block">\[1+\frac{2\beta}{3}+\frac{2\beta}{5}=5\]</div><div class="math-block">\[\frac{10\beta}{15}+\frac{6\beta}{15}=4\]</div><div class="math-block">\[\frac{16\beta}{15}=4\Rightarrow \beta=\frac{15}{4}\]</div><div class="math-block">\[\alpha=3+2\cdot\frac{15}{4}=\frac{21}{2}\]</div><p>Kontrola druhej súradnice: \(\alpha/3+2\beta/5=7/2+3/2=5\).</p></div><h3>Výsledok a kontrola</h3><p>Postup je rovnaký ako v analogickej úlohe z iného cvičenia. Hľadáme \(\alpha,\beta\) so vzťahom \(\alpha x_1 + \beta x_2 = v\).</p><div class="math-block">\[\alpha - 2\beta = 3\]</div><div class="math-block">\[\frac{\alpha}{3} + \frac{2\beta}{5} = 5\]</div><p>Po vyriešení sústavy dostaneme</p><div class="math-block">\[\alpha = \frac{21}{2},\qquad \beta = \frac{15}{4}\]</div><p>Teda vektor \(v\) je lineárnou kombináciou týchto dvoch vektorov:</p><div class="math-block">\[v = \frac{21}{2}x_1 + \frac{15}{4}x_2\]</div>
+      <div class="worked-panel"><h3>Postup výpočtu</h3><p>Z rovnosti \(\alpha x_1+\beta x_2=v\) dostaneme dve rovnice:</p><div class="math-block">\[\alpha-2\beta=3\]</div><div class="math-block">\[\frac{\alpha}{3}+\frac{2\beta}{5}=5\]</div><p>Z prvej rovnice je \(\alpha=3+2\beta\). Dosadíme do druhej:</p><div class="math-block">\[\frac{3+2\beta}{3}+\frac{2\beta}{5}=5\]</div><div class="math-block">\[1+\frac{2\beta}{3}+\frac{2\beta}{5}=5\]</div><div class="math-block">\[\frac{10\beta}{15}+\frac{6\beta}{15}=4\]</div><div class="math-block">\[\frac{16\beta}{15}=4\Rightarrow \beta=\frac{15}{4}\]</div><div class="math-block">\[\alpha=3+2\cdot\frac{15}{4}=\frac{21}{2}\]</div><p>Kontrola druhej súradnice: \(\frac{\alpha}{3}+\frac{2\beta}{5}=\frac{7}{2}+\frac{3}{2}=5\).</p></div><h3>Výsledok a kontrola</h3><p>Postup je rovnaký ako v analogickej úlohe z iného cvičenia. Hľadáme \(\alpha,\beta\) so vzťahom \(\alpha x_1 + \beta x_2 = v\).</p><div class="math-block">\[\alpha - 2\beta = 3\]</div><div class="math-block">\[\frac{\alpha}{3} + \frac{2\beta}{5} = 5\]</div><p>Po vyriešení sústavy dostaneme</p><div class="math-block">\[\alpha = \frac{21}{2},\qquad \beta = \frac{15}{4}\]</div><p>Teda vektor \(v\) je lineárnou kombináciou týchto dvoch vektorov:</p><div class="math-block">\[v = \frac{21}{2}x_1 + \frac{15}{4}x_2\]</div>
     </section>
     <section class="card">
       <div class="section-tag">Definície</div>

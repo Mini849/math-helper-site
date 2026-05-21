@@ -179,6 +179,22 @@ th {
   background: #fffdf9;
 }
 
+.operation-box {
+  border-left: 4px solid var(--accent);
+  background: #fffdf9;
+  border-radius: 0 14px 14px 0;
+  padding: 12px 14px;
+  margin: 14px 0 18px;
+}
+
+.operation-box p {
+  margin: 0 0 6px;
+}
+
+.operation-box .math-block {
+  padding: 4px 0;
+}
+
 .index-list {
   list-style: none;
   padding: 0;
@@ -276,7 +292,7 @@ code {
     </section>
     <section class="card">
       <div class="section-tag">Zadanie</div>
-      <p>Vydeľte nad \(GF(2)\)</p><div class="math-block">\[\frac{x^7 + x^5 + x^4 + x^2 + 1}{x^4 + x + 1}\]</div><p>Určte podiel aj zvyšok.</p>
+      <p>Vydeľte nad \(GF(2)\)</p><div class="operation-box"><p><strong>Delenie polynómov</strong></p><div class="math-block">\[\dfrac{x^7 + x^5 + x^4 + x^2 + 1}{x^4 + x + 1}\]</div></div><p>Určte podiel aj zvyšok.</p>
     </section>
     <section class="card"><div class="section-tag">Ako to riešiť</div><p>Najprv si úlohu rozdeľ na malé rozhodnutia. Pri skúške je dôležitejšie vedieť, ktorý postup použiť, než si pamätať výsledok.</p><ol class="guide-list"><li>Pracuj nad \(GF(2)\), takže rovnaké členy sa rušia: \(x^i+x^i=0\).</li><li>V každom kroku porovnaj najvyšší člen aktuálneho zvyšku s najvyšším členom deliteľa.</li><li>Rozdiel stupňov dá člen podielu; týmto členom vynásob deliteľ.</li><li>Výsledok pripočítaj XOR-om k aktuálnemu zvyšku a pokračuj, kým stupeň zvyšku nebude menší ako stupeň deliteľa.</li></ol><div class="note"><p><strong>Kontrola:</strong> Výsledok musí spĺňať \(f(x)=q(x)g(x)+r(x)\) a zvyšok musí mať menší stupeň ako deliteľ.</p></div></section>
     <section class="card">

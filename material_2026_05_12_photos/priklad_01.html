@@ -179,6 +179,22 @@ th {
   background: #fffdf9;
 }
 
+.operation-box {
+  border-left: 4px solid var(--accent);
+  background: #fffdf9;
+  border-radius: 0 14px 14px 0;
+  padding: 12px 14px;
+  margin: 14px 0 18px;
+}
+
+.operation-box p {
+  margin: 0 0 6px;
+}
+
+.operation-box .math-block {
+  padding: 4px 0;
+}
+
 .index-list {
   list-style: none;
   padding: 0;
@@ -307,7 +323,7 @@ code {
   <text class="gf4-small" x="400" y="88">·α</text>
   <text class="gf4-small" x="310" y="166">·α, lebo α(α+1)=1</text>
 </svg>
-<figcaption>V GF(4) sa nenulové prvky po násobení prvkom α opakujú s periódou 3.</figcaption></figure><p>Delenie \(\alpha/\alpha^2\) môžeme čítať cez inverz. Keďže \(\alpha^2\cdot\alpha=\alpha^3=1\), inverz k \(\alpha^2\) je \(\alpha\).</p><div class="math-block">\[\frac{\alpha}{\alpha^2}=\alpha\cdot(\alpha^2)^{-1}=\alpha\cdot\alpha=\alpha^2=\alpha+1\]</div></div><h3>Výsledok a kontrola</h3><p>Z rovnosti \(p(\alpha)=0\) dostaneme \(\alpha^2+\alpha+1=0\), teda v charakteristike 2</p><div class="math-block">\[\alpha^2=\alpha+1\]</div><p>Prvky poľa sú \(0,1,\alpha,\alpha+1\). Mocniny \(\alpha\) sú:</p><div class="table-scroll"><table class="compact"><thead><tr><th>Mocnina</th><th>Hodnota</th></tr></thead><tbody><tr><td>\(\alpha^0\)</td><td>\(1\)</td></tr><tr><td>\(\alpha^1\)</td><td>\(\alpha\)</td></tr><tr><td>\(\alpha^2\)</td><td>\(\alpha+1\)</td></tr><tr><td>\(\alpha^3\)</td><td>\(1\)</td></tr></tbody></table></div><p>Pre delenie platí</p><div class="math-block">\[\frac{\alpha}{\alpha^2}=\alpha^{1-2}=\alpha^{-1}=\alpha^2=\alpha+1\]</div><p>Ireducibilitu kvadratického polynómu nad \(GF(2)\) stačí overiť dosadením \(0\) a \(1\):</p><div class="math-block">\[p(0)=1\ne0,\qquad p(1)=1+1+1=1\ne0\]</div><p>Nemá koreň v \(GF(2)\), preto je ireducibilný. Primitívny je preto, že \(\alpha\) má multiplikatívny rád \(3=2^2-1\):</p><div class="math-block">\[\alpha,\ \alpha^2=\alpha+1,\ \alpha^3=1\]</div>
+<figcaption>V GF(4) sa nenulové prvky po násobení prvkom α opakujú s periódou 3.</figcaption></figure><p>Delenie \(\frac{\alpha}{\alpha^2}\) môžeme čítať cez inverz. Keďže \(\alpha^2\cdot\alpha=\alpha^3=1\), inverz k \(\alpha^2\) je \(\alpha\).</p><div class="operation-box"><p><strong>Delenie v GF(4)</strong></p><div class="math-block">\[\dfrac{\alpha}{\alpha^2}=\alpha\cdot(\alpha^2)^{-1}=\alpha\cdot\alpha=\alpha^2=\alpha+1\]</div></div></div><h3>Výsledok a kontrola</h3><p>Z rovnosti \(p(\alpha)=0\) dostaneme \(\alpha^2+\alpha+1=0\), teda v charakteristike 2</p><div class="math-block">\[\alpha^2=\alpha+1\]</div><p>Prvky poľa sú \(0,1,\alpha,\alpha+1\). Mocniny \(\alpha\) sú:</p><div class="table-scroll"><table class="compact"><thead><tr><th>Mocnina</th><th>Hodnota</th></tr></thead><tbody><tr><td>\(\alpha^0\)</td><td>\(1\)</td></tr><tr><td>\(\alpha^1\)</td><td>\(\alpha\)</td></tr><tr><td>\(\alpha^2\)</td><td>\(\alpha+1\)</td></tr><tr><td>\(\alpha^3\)</td><td>\(1\)</td></tr></tbody></table></div><p>Pre delenie platí</p><div class="math-block">\[\dfrac{\alpha}{\alpha^2}=\alpha^{1-2}=\alpha^{-1}=\alpha^2=\alpha+1\]</div><p>Ireducibilitu kvadratického polynómu nad \(GF(2)\) stačí overiť dosadením \(0\) a \(1\):</p><div class="math-block">\[p(0)=1\ne0,\qquad p(1)=1+1+1=1\ne0\]</div><p>Nemá koreň v \(GF(2)\), preto je ireducibilný. Primitívny je preto, že \(\alpha\) má multiplikatívny rád \(3=2^2-1\):</p><div class="math-block">\[\alpha,\ \alpha^2=\alpha+1,\ \alpha^3=1\]</div>
     </section>
     <section class="card">
       <div class="section-tag">Definície</div>

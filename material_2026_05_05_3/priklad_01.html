@@ -179,6 +179,22 @@ th {
   background: #fffdf9;
 }
 
+.operation-box {
+  border-left: 4px solid var(--accent);
+  background: #fffdf9;
+  border-radius: 0 14px 14px 0;
+  padding: 12px 14px;
+  margin: 14px 0 18px;
+}
+
+.operation-box p {
+  margin: 0 0 6px;
+}
+
+.operation-box .math-block {
+  padding: 4px 0;
+}
+
 .index-list {
   list-style: none;
   padding: 0;
@@ -281,7 +297,7 @@ code {
     <section class="card"><div class="section-tag">Ako to riešiť</div><p>Najprv si úlohu rozdeľ na malé rozhodnutia. Pri skúške je dôležitejšie vedieť, ktorý postup použiť, než si pamätať výsledok.</p><ol class="guide-list"><li>Najprv si napíš, v akom poli sa počíta. V \(GF(p)\) berieš zvyšky modulo \(p\); v \(GF(2^m)\) redukuješ podľa daného polynómu.</li><li>Pri rozšírenom poli polož \(p(\alpha)=0\) a z toho vyjadri najvyššiu mocninu \(\alpha^m\).</li><li>Pri sčítaní nad charakteristikou \(2\) sa rovnaké členy zrušia. Pri násobení najprv roznásob a potom zredukuj vyššie mocniny.</li><li>Pri delení nenulových mocnín odčítaj exponenty modulo \(q-1\), alebo nájdi prvok, ktorý po vynásobení dá čitateľ.</li></ol><div class="note"><p><strong>Kontrola:</strong> Výsledok v \(GF(2^m)\) musí mať stupeň menší ako \(m\); inak ešte nie je zredukovaný.</p></div></section>
     <section class="card">
       <div class="section-tag">Riešenie krok za krokom</div>
-      <div class="worked-panel"><h3>Postup výpočtu</h3><p>Z polynómu \(p(\alpha)=0\) máme \(\alpha^3=\alpha+1\). Potom vyššie mocniny vyrábame násobením predchádzajúceho riadku prvkom \(\alpha\):</p><div class="table-scroll"><table class="compact"><thead><tr><th>Mocnina</th><th>výpočet</th><th>zredukovaný tvar</th></tr></thead><tbody><tr><td>\(\alpha^4\)</td><td>\(\alpha\alpha^3=\alpha(\alpha+1)=\alpha^2+\alpha\)</td><td>\(\alpha^2+\alpha\)</td></tr><tr><td>\(\alpha^5\)</td><td>\(\alpha(\alpha^2+\alpha)=\alpha^3+\alpha^2=(\alpha+1)+\alpha^2\)</td><td>\(\alpha^2+\alpha+1\)</td></tr><tr><td>\(\alpha^6\)</td><td>\(\alpha(\alpha^2+\alpha+1)=\alpha^3+\alpha^2+\alpha=(\alpha+1)+\alpha^2+\alpha\)</td><td>\(\alpha^2+1\)</td></tr><tr><td>\(\alpha^7\)</td><td>\(\alpha(\alpha^2+1)=\alpha^3+\alpha=(\alpha+1)+\alpha\)</td><td>\(1\)</td></tr></tbody></table></div><p>Pri delení \(\alpha/\alpha^3\) odčítame exponenty: \(\alpha^{1-3}=\alpha^{-2}\). Keďže \(\alpha^7=1\), pripočítame \(7\): \(\alpha^{-2}=\alpha^5\).</p></div><h3>Výsledok a kontrola</h3><p>V poli \(GF(8)\) pracujeme modulo polynóm \(x^3+x+1\). Preto platí \(\alpha^3+\alpha+1=0\), čiže</p><div class="math-block">\[\alpha^3=\alpha+1\]</div><p>Postupne dopočítame mocniny primitívneho prvku:</p><div class="table-scroll"><table class="compact"><thead><tr><th>Mocnina</th><th>Tvar v báze \(1,\alpha,\alpha^2\)</th></tr></thead><tbody><tr><td>\(\alpha^0\)</td><td>\(1\)</td></tr><tr><td>\(\alpha^1\)</td><td>\(\alpha\)</td></tr><tr><td>\(\alpha^2\)</td><td>\(\alpha^2\)</td></tr><tr><td>\(\alpha^3\)</td><td>\(\alpha+1\)</td></tr><tr><td>\(\alpha^4\)</td><td>\(\alpha^2+\alpha\)</td></tr><tr><td>\(\alpha^5\)</td><td>\(\alpha^2+\alpha+1\)</td></tr><tr><td>\(\alpha^6\)</td><td>\(\alpha^2+1\)</td></tr><tr><td>\(\alpha^7\)</td><td>\(1\)</td></tr></tbody></table></div><p>Delenie mocnín robíme odčítaním exponentov modulo \(7\), lebo nenulové prvky v \(GF(8)\) majú cyklus dĺžky \(7\):</p><div class="math-block">\[\frac{\alpha}{\alpha^3}=\alpha^{1-3}=\alpha^{-2}=\alpha^5\]</div><div class="math-block">\[\alpha^5=\alpha^2+\alpha+1\]</div>
+      <div class="worked-panel"><h3>Postup výpočtu</h3><p>Z polynómu \(p(\alpha)=0\) máme \(\alpha^3=\alpha+1\). Potom vyššie mocniny vyrábame násobením predchádzajúceho riadku prvkom \(\alpha\):</p><div class="table-scroll"><table class="compact"><thead><tr><th>Mocnina</th><th>výpočet</th><th>zredukovaný tvar</th></tr></thead><tbody><tr><td>\(\alpha^4\)</td><td>\(\alpha\alpha^3=\alpha(\alpha+1)=\alpha^2+\alpha\)</td><td>\(\alpha^2+\alpha\)</td></tr><tr><td>\(\alpha^5\)</td><td>\(\alpha(\alpha^2+\alpha)=\alpha^3+\alpha^2=(\alpha+1)+\alpha^2\)</td><td>\(\alpha^2+\alpha+1\)</td></tr><tr><td>\(\alpha^6\)</td><td>\(\alpha(\alpha^2+\alpha+1)=\alpha^3+\alpha^2+\alpha=(\alpha+1)+\alpha^2+\alpha\)</td><td>\(\alpha^2+1\)</td></tr><tr><td>\(\alpha^7\)</td><td>\(\alpha(\alpha^2+1)=\alpha^3+\alpha=(\alpha+1)+\alpha\)</td><td>\(1\)</td></tr></tbody></table></div><div class="operation-box"><p><strong>Delenie mocnín</strong></p><div class="math-block">\[\dfrac{\alpha}{\alpha^3}=\alpha^{1-3}=\alpha^{-2}=\alpha^5\]</div><p class="small">Záporný exponent prepočítame modulo 7, lebo v GF(8) platí \(\alpha^7=1\).</p></div></div><h3>Výsledok a kontrola</h3><p>V poli \(GF(8)\) pracujeme modulo polynóm \(x^3+x+1\). Preto platí \(\alpha^3+\alpha+1=0\), čiže</p><div class="math-block">\[\alpha^3=\alpha+1\]</div><p>Postupne dopočítame mocniny primitívneho prvku:</p><div class="table-scroll"><table class="compact"><thead><tr><th>Mocnina</th><th>Tvar v báze \(1,\alpha,\alpha^2\)</th></tr></thead><tbody><tr><td>\(\alpha^0\)</td><td>\(1\)</td></tr><tr><td>\(\alpha^1\)</td><td>\(\alpha\)</td></tr><tr><td>\(\alpha^2\)</td><td>\(\alpha^2\)</td></tr><tr><td>\(\alpha^3\)</td><td>\(\alpha+1\)</td></tr><tr><td>\(\alpha^4\)</td><td>\(\alpha^2+\alpha\)</td></tr><tr><td>\(\alpha^5\)</td><td>\(\alpha^2+\alpha+1\)</td></tr><tr><td>\(\alpha^6\)</td><td>\(\alpha^2+1\)</td></tr><tr><td>\(\alpha^7\)</td><td>\(1\)</td></tr></tbody></table></div><p>Delenie mocnín robíme odčítaním exponentov modulo \(7\), lebo nenulové prvky v \(GF(8)\) majú cyklus dĺžky \(7\):</p><div class="math-block">\[\dfrac{\alpha}{\alpha^3}=\alpha^{1-3}=\alpha^{-2}=\alpha^5\]</div><div class="math-block">\[\alpha^5=\alpha^2+\alpha+1\]</div>
     </section>
     <section class="card">
       <div class="section-tag">Definície</div>

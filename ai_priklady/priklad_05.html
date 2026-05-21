@@ -179,6 +179,22 @@ th {
   background: #fffdf9;
 }
 
+.operation-box {
+  border-left: 4px solid var(--accent);
+  background: #fffdf9;
+  border-radius: 0 14px 14px 0;
+  padding: 12px 14px;
+  margin: 14px 0 18px;
+}
+
+.operation-box p {
+  margin: 0 0 6px;
+}
+
+.operation-box .math-block {
+  padding: 4px 0;
+}
+
 .index-list {
   list-style: none;
   padding: 0;
@@ -276,16 +292,16 @@ code {
     </section>
     <section class="card">
       <div class="section-tag">Zadanie</div>
-      <p>V poli \(GF(8)\) danom polynómom \(p(x)=x^3+x+1\) zostavte tabuľku mocnín \(\alpha\). Potom vypočítajte</p><div class="math-block">\[(\alpha^2+\alpha)(\alpha^2+1)\]</div><div class="math-block">\[\frac{\alpha^2+1}{\alpha+1}\]</div>
+      <p>V poli \(GF(8)\) danom polynómom \(p(x)=x^3+x+1\) zostavte tabuľku mocnín \(\alpha\). Potom vypočítajte</p><div class="math-block">\[(\alpha^2+\alpha)(\alpha^2+1)\]</div><div class="math-block">\[\dfrac{\alpha^2+1}{\alpha+1}\]</div>
     </section>
     <section class="card"><div class="section-tag">Ako to riešiť</div><p>Najprv si úlohu rozdeľ na malé rozhodnutia. Pri skúške je dôležitejšie vedieť, ktorý postup použiť, než si pamätať výsledok.</p><ol class="guide-list"><li>Najprv si napíš, v akom poli sa počíta. V \(GF(p)\) berieš zvyšky modulo \(p\); v \(GF(2^m)\) redukuješ podľa daného polynómu.</li><li>Pri rozšírenom poli polož \(p(\alpha)=0\) a z toho vyjadri najvyššiu mocninu \(\alpha^m\).</li><li>Pri sčítaní nad charakteristikou \(2\) sa rovnaké členy zrušia. Pri násobení najprv roznásob a potom zredukuj vyššie mocniny.</li><li>Pri delení nenulových mocnín odčítaj exponenty modulo \(q-1\), alebo nájdi prvok, ktorý po vynásobení dá čitateľ.</li></ol><div class="note"><p><strong>Kontrola:</strong> Výsledok v \(GF(2^m)\) musí mať stupeň menší ako \(m\); inak ešte nie je zredukovaný.</p></div></section>
     <section class="card">
       <div class="section-tag">Riešenie krok za krokom</div>
-      <div class="worked-panel"><h3>Postup výpočtu</h3><p>Toto je rozpis výpočtu pred finálnym výsledkom. Čítaj ho zhora nadol a po každom kroku si skontroluj, čo sa práve zmenilo.</p><ol class="guide-list"><li>Najprv napíš množinu prvkov poľa a pravidlo redukcie.</li><li>Pri \(GF(p)\) redukuj čísla modulo \(p\); pri \(GF(2^m)\) redukuj mocniny \(\alpha\) podľa daného polynómu.</li><li>Pri sčítaní v charakteristike \(2\) sa rovnaké členy rušia.</li><li>Pri delení nenulových mocnín odčítaj exponenty modulo \(q-1\).</li></ol><p><strong>Kontrola na konci:</strong> Výsledok v \(GF(2^m)\) musí byť zapísaný pomocou mocnín nižších ako \(m\).</p></div><h3>Výsledok a kontrola</h3><p>Z rovnosti \(p(\alpha)=0\) máme \(\alpha^3+\alpha+1=0\). V charakteristike \(2\) je mínus to isté ako plus, preto</p><div class="math-block">\[\alpha^3=\alpha+1\]</div><p>Vyššie mocniny vždy znižujeme cez túto rovnosť:</p><div class="table-scroll"><table class="compact"><thead><tr><th>Mocnina</th><th>Hodnota</th></tr></thead><tbody><tr><td>\(\alpha^0\)</td><td>\(1\)</td></tr><tr><td>\(\alpha^1\)</td><td>\(\alpha\)</td></tr><tr><td>\(\alpha^2\)</td><td>\(\alpha^2\)</td></tr><tr><td>\(\alpha^3\)</td><td>\(\alpha + 1\)</td></tr><tr><td>\(\alpha^4\)</td><td>\(\alpha^2 + \alpha\)</td></tr><tr><td>\(\alpha^5\)</td><td>\(\alpha^2 + \alpha + 1\)</td></tr><tr><td>\(\alpha^6\)</td><td>\(\alpha^2 + 1\)</td></tr></tbody></table></div><p>Pri násobení najprv roznásobíme ako obyčajné polynómy a potom zredukujeme mocniny \(\alpha^3\) a vyššie:</p><div class="math-block">\[(\alpha^2+\alpha)(\alpha^2+1)=\alpha^4+\alpha^3+\alpha^2+\alpha\]</div><div class="math-block">\[\alpha^4=\alpha\alpha^3=\alpha(\alpha+1)=\alpha^2+\alpha\]</div><div class="math-block">\[(\alpha^2+\alpha)+(\alpha+1)+\alpha^2+\alpha=\alpha + 1\]</div><p>Pri delení je najľahšie prepísať oba prvky ako mocniny \(\alpha\):</p><div class="math-block">\[\alpha^2+1=\alpha^6,\qquad \alpha+1=\alpha^3\]</div><div class="math-block">\[\frac{\alpha^2+1}{\alpha+1}=\frac{\alpha^6}{\alpha^3}=\alpha^{6-3}=\alpha^3=\alpha + 1\]</div><p>Exponenty počítame modulo \(7\), lebo v \(GF(8)\) je \(7\) nenulových prvkov a \(\alpha^7=1\).</p>
+      <div class="worked-panel"><h3>Postup výpočtu</h3><p>Toto je rozpis výpočtu pred finálnym výsledkom. Čítaj ho zhora nadol a po každom kroku si skontroluj, čo sa práve zmenilo.</p><ol class="guide-list"><li>Najprv napíš množinu prvkov poľa a pravidlo redukcie.</li><li>Pri \(GF(p)\) redukuj čísla modulo \(p\); pri \(GF(2^m)\) redukuj mocniny \(\alpha\) podľa daného polynómu.</li><li>Pri sčítaní v charakteristike \(2\) sa rovnaké členy rušia.</li><li>Pri delení nenulových mocnín odčítaj exponenty modulo \(q-1\).</li></ol><p><strong>Kontrola na konci:</strong> Výsledok v \(GF(2^m)\) musí byť zapísaný pomocou mocnín nižších ako \(m\).</p></div><h3>Výsledok a kontrola</h3><p>Z rovnosti \(p(\alpha)=0\) máme \(\alpha^3+\alpha+1=0\). V charakteristike \(2\) je mínus to isté ako plus, preto</p><div class="math-block">\[\alpha^3=\alpha+1\]</div><p>Vyššie mocniny vždy znižujeme cez túto rovnosť:</p><div class="table-scroll"><table class="compact"><thead><tr><th>Mocnina</th><th>Hodnota</th></tr></thead><tbody><tr><td>\(\alpha^0\)</td><td>\(1\)</td></tr><tr><td>\(\alpha^1\)</td><td>\(\alpha\)</td></tr><tr><td>\(\alpha^2\)</td><td>\(\alpha^2\)</td></tr><tr><td>\(\alpha^3\)</td><td>\(\alpha + 1\)</td></tr><tr><td>\(\alpha^4\)</td><td>\(\alpha^2 + \alpha\)</td></tr><tr><td>\(\alpha^5\)</td><td>\(\alpha^2 + \alpha + 1\)</td></tr><tr><td>\(\alpha^6\)</td><td>\(\alpha^2 + 1\)</td></tr></tbody></table></div><p>Pri násobení najprv roznásobíme ako obyčajné polynómy a potom zredukujeme mocniny \(\alpha^3\) a vyššie:</p><div class="math-block">\[(\alpha^2+\alpha)(\alpha^2+1)=\alpha^4+\alpha^3+\alpha^2+\alpha\]</div><div class="math-block">\[\alpha^4=\alpha\alpha^3=\alpha(\alpha+1)=\alpha^2+\alpha\]</div><div class="math-block">\[(\alpha^2+\alpha)+(\alpha+1)+\alpha^2+\alpha=\alpha + 1\]</div><p>Pri delení je najľahšie prepísať oba prvky ako mocniny \(\alpha\):</p><div class="math-block">\[\alpha^2+1=\alpha^6,\qquad \alpha+1=\alpha^3\]</div><div class="math-block">\[\dfrac{\alpha^2+1}{\alpha+1}=\dfrac{\alpha^6}{\alpha^3}=\alpha^{6-3}=\alpha^3=\alpha + 1\]</div><p>Exponenty počítame modulo \(7\), lebo v \(GF(8)\) je \(7\) nenulových prvkov a \(\alpha^7=1\).</p>
     </section>
     <section class="card">
       <div class="section-tag">Definície</div>
-      <ul><li><strong>Redukcia v \(GF(8)\):</strong> každú mocninu \(\alpha^3\) nahradíme výrazom \(\alpha+1\).</li><li><strong>Delenie mocnín:</strong> \(\alpha^a/\alpha^b=\alpha^{a-b}\), exponenty berieme modulo \(7\).</li><li><strong>Sčítanie v charakteristike 2:</strong> rovnaké členy sa zrušia, napríklad \(\alpha^2+\alpha^2=0\).</li></ul>
+      <ul><li><strong>Redukcia v \(GF(8)\):</strong> každú mocninu \(\alpha^3\) nahradíme výrazom \(\alpha+1\).</li><li><strong>Delenie mocnín:</strong> \(\frac{\alpha^a}{\alpha^b}=\alpha^{a-b}\), exponenty berieme modulo \(7\).</li><li><strong>Sčítanie v charakteristike 2:</strong> rovnaké členy sa zrušia, napríklad \(\alpha^2+\alpha^2=0\).</li></ul>
     </section>
     
   </main>

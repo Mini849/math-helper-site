@@ -179,6 +179,22 @@ th {
   background: #fffdf9;
 }
 
+.operation-box {
+  border-left: 4px solid var(--accent);
+  background: #fffdf9;
+  border-radius: 0 14px 14px 0;
+  padding: 12px 14px;
+  margin: 14px 0 18px;
+}
+
+.operation-box p {
+  margin: 0 0 6px;
+}
+
+.operation-box .math-block {
+  padding: 4px 0;
+}
+
 .index-list {
   list-style: none;
   padding: 0;
@@ -278,7 +294,7 @@ code {
       <div class="section-tag">Zadanie</div>
       <p>Vypočítajte \(\log_2(8)\), \(\log_2(16)\), \(\log_2(256)\).</p>
     </section>
-    <section class="card"><div class="section-tag">Ako to riešiť</div><p>Najprv si úlohu rozdeľ na malé rozhodnutia. Pri skúške je dôležitejšie vedieť, ktorý postup použiť, než si pamätať výsledok.</p><ol class="guide-list"><li>Pre každý príklad hľadaj exponent \(k\), pre ktorý platí \(2^k\) rovná sa zadanému číslu.</li><li>Napríklad \(8=2^3\), preto \(\log_2(8)=3\).</li><li>Rovnakým spôsobom prepíš \(16\), \(256\) alebo zlomky ako mocniny dvojky.</li><li>Ak je číslo zlomok, exponent bude záporný, napríklad \(1/2=2^{-1}\).</li></ol><div class="note"><p><strong>Kontrola:</strong> Po umocnení dvojky výsledným exponentom sa musíš dostať späť k pôvodnému číslu.</p></div></section>
+    <section class="card"><div class="section-tag">Ako to riešiť</div><p>Najprv si úlohu rozdeľ na malé rozhodnutia. Pri skúške je dôležitejšie vedieť, ktorý postup použiť, než si pamätať výsledok.</p><ol class="guide-list"><li>Pre každý príklad hľadaj exponent \(k\), pre ktorý platí \(2^k\) rovná sa zadanému číslu.</li><li>Napríklad \(8=2^3\), preto \(\log_2(8)=3\).</li><li>Rovnakým spôsobom prepíš \(16\), \(256\) alebo zlomky ako mocniny dvojky.</li><li>Ak je číslo zlomok, exponent bude záporný, napríklad \(\frac{1}{2}=2^{-1}\).</li></ol><div class="note"><p><strong>Kontrola:</strong> Po umocnení dvojky výsledným exponentom sa musíš dostať späť k pôvodnému číslu.</p></div></section>
     <section class="card">
       <div class="section-tag">Riešenie krok za krokom</div>
       <div class="worked-panel"><h3>Postup výpočtu</h3><p>Toto je rozpis výpočtu pred finálnym výsledkom. Čítaj ho zhora nadol a po každom kroku si skontroluj, čo sa práve zmenilo.</p><ol class="guide-list"><li>Prepíš zadanie do symbolov a označ, čo hľadáš.</li><li>Vyber definíciu alebo vzorec podľa typu úlohy.</li><li>Urob výpočet po malých krokoch, nie skokom na výsledok.</li><li>Na konci dosaď výsledok späť alebo ho over príslušnou kontrolou.</li></ol><p><strong>Kontrola na konci:</strong> Výsledok musí spĺňať všetky podmienky zo zadania.</p></div><h3>Výsledok a kontrola</h3><p>Hľadáme exponenty pri základe \(2\):</p><div class="math-block">\[2^3 = 8 \Rightarrow \log_2(8)=3\]</div><div class="math-block">\[2^4 = 16 \Rightarrow \log_2(16)=4\]</div><div class="math-block">\[2^8 = 256 \Rightarrow \log_2(256)=8\]</div><p>Výsledky sú \(3\), \(4\) a \(8\).</p>
