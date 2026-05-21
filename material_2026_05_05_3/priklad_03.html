@@ -154,6 +154,15 @@ th {
   font-size: 0.98rem;
 }
 
+.guide-list {
+  margin: 8px 0 14px;
+  padding-left: 1.35rem;
+}
+
+.guide-list li + li {
+  margin-top: 0.35rem;
+}
+
 .index-list {
   list-style: none;
   padding: 0;
@@ -253,6 +262,7 @@ code {
       <div class="section-tag">Zadanie</div>
       <p>A) Nájdite generujúci polynóm Reed-Solomonovho kódu nad \(GF(8)\), ktorý opraví 2 chyby.</p><p>B) Zakódujte nesystematicky informáciu \(m(x)=\alpha^3x+\alpha^5\).</p>
     </section>
+    <section class="card"><div class="section-tag">Ako to riešiť</div><p>Najprv si úlohu rozdeľ na malé rozhodnutia. Pri skúške je dôležitejšie vedieť, ktorý postup použiť, než si pamätať výsledok.</p><ol class="guide-list"><li>Najprv urč pole \(GF(q)\), opraviteľnosť \(t\) a prvý koreň, ak je v zadaní uvedený.</li><li>Na opravu \(t\) chýb potrebuje RS kód \(2t\) po sebe idúcich koreňov. Posledný exponent je prvý exponent plus \(2t-1\).</li><li>Pri plnom štandardnom RS kóde platí \(n=q-1\). Potom \(k=n-2t\) a minimálna vzdialenosť je aspoň \(2t+1\).</li><li>Ak sa pýta na počet slov, použi \(|C|=q^k\). Ak sa pýta na okolité vektory, použi \(q^n\).</li></ol><div class="note"><p><strong>Kontrola:</strong> Skontroluj, že počet kontrolných symbolov je presne počet koreňov, teda \(2t\).</p><p><strong>Pozor:</strong> RS symbol nie je bit. V \(GF(2^m)\) má jeden symbol \(m\) bitov.</p></div></section>
     <section class="card">
       <div class="section-tag">Vypracovanie</div>
       <p>Ak má RS kód opraviť \(t=2\) chyby, generujúci polynóm má \(2t=4\) po sebe idúce korene. Podľa zvoleného predpokladu berieme úzky štandardný tvar s koreňmi \(\alpha,\alpha^2,\alpha^3,\alpha^4\).</p><div class="math-block">\[g(x)=(x+\alpha)(x+\alpha^2)(x+\alpha^3)(x+\alpha^4)\]</div><p>Po vynásobení v \(GF(8)\), kde \(\alpha^3=\alpha+1\), dostaneme</p><div class="math-block">\[g(x)=x^4+\alpha^3x^3+x^2+\alpha x+\alpha^3\]</div><p>Nesystematické kódovanie je priame násobenie \(c(x)=m(x)g(x)\):</p><div class="math-block">\[m(x)=\alpha^3x+\alpha^5\]</div><div class="math-block">\[c(x)=(\alpha^3x+\alpha^5)g(x)\]</div><div class="math-block">\[c(x)=\alpha^3x^5+\alpha x^4+x^3+x^2+\alpha\]</div>

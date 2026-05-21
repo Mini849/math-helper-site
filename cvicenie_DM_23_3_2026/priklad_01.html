@@ -154,6 +154,15 @@ th {
   font-size: 0.98rem;
 }
 
+.guide-list {
+  margin: 8px 0 14px;
+  padding-left: 1.35rem;
+}
+
+.guide-list li + li {
+  margin-top: 0.35rem;
+}
+
 .index-list {
   list-style: none;
   padding: 0;
@@ -253,6 +262,7 @@ code {
       <div class="section-tag">Zadanie</div>
       <p>Nech \(v_1=(1,0,1,1,1,0)\) a \(v_2=(1,1,1,0,0,1)\) nad \(GF(2)\). Vypočítajte ich vzdialenosť, súčet, váhu súčtu a vysvetlite, prečo v tomto príklade platí \(w(v_1+v_2)=d(v_1,v_2)\).</p>
     </section>
+    <section class="card"><div class="section-tag">Ako to riešiť</div><p>Najprv si úlohu rozdeľ na malé rozhodnutia. Pri skúške je dôležitejšie vedieť, ktorý postup použiť, než si pamätať výsledok.</p><ol class="guide-list"><li>Najprv urč dĺžku slova \(n\), počet informačných symbolov \(k\) a spôsob, akým vznikajú paritné symboly.</li><li>Ak máš generujúcu maticu, kódové slová vznikajú ako \(uG\). Ak máš kontrolnú maticu, platné slová spĺňajú \(cH^T=0\).</li><li>Minimálnu vzdialenosť pri lineárnom kóde hľadaj cez najmenšiu nenulovú Hammingovu váhu kódového slova.</li><li>Pri syndróme násob prijaté slovo kontrolnou maticou. Nulový syndróm znamená, že slovo už prešlo kontrolou.</li></ol><div class="note"><p><strong>Kontrola:</strong> Počet kódových slov lineárneho binárneho kódu je \(2^k\); okolitý priestor má \(2^n\) slov.</p></div></section>
     <section class="card">
       <div class="section-tag">Vypracovanie</div>
       <p>Porovnáme súradnice vektorov:</p><div class="table-scroll"><table class="compact"><thead><tr><th>Pozícia</th><th>v₁</th><th>v₂</th><th>Líšia sa?</th></tr></thead><tbody><tr><td>1</td><td>1</td><td>1</td><td>nie</td></tr><tr><td>2</td><td>0</td><td>1</td><td>áno</td></tr><tr><td>3</td><td>1</td><td>1</td><td>nie</td></tr><tr><td>4</td><td>1</td><td>0</td><td>áno</td></tr><tr><td>5</td><td>1</td><td>0</td><td>áno</td></tr><tr><td>6</td><td>0</td><td>1</td><td>áno</td></tr></tbody></table></div><p>Líšia sa na štyroch miestach, preto</p><div class="math-block">\[d(v_1,v_2)=4\]</div><p>Súčet nad \(GF(2)\):</p><div class="math-block">\[v_3=v_1+v_2=(0,1,0,1,1,1)\]</div><p>Hammingova váha vektora \(v_3\) je počet jednotiek, teda</p><div class="math-block">\[w(v_3)=4\]</div><p>Rovnosť \(w(v_1+v_2)=d(v_1,v_2)\) platí preto, že v binárnom poli je na každej pozícii v súčte jednotka práve vtedy, keď sa pôvodné dve súradnice líšili.</p>

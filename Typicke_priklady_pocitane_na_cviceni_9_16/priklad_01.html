@@ -154,6 +154,15 @@ th {
   font-size: 0.98rem;
 }
 
+.guide-list {
+  margin: 8px 0 14px;
+  padding-left: 1.35rem;
+}
+
+.guide-list li + li {
+  margin-top: 0.35rem;
+}
+
 .index-list {
   list-style: none;
   padding: 0;
@@ -253,6 +262,7 @@ code {
       <div class="section-tag">Zadanie</div>
       <p>Načrtnite funkciu \(y = \log_2(x)\).</p>
     </section>
+    <section class="card"><div class="section-tag">Ako to riešiť</div><p>Najprv si úlohu rozdeľ na malé rozhodnutia. Pri skúške je dôležitejšie vedieť, ktorý postup použiť, než si pamätať výsledok.</p><ol class="guide-list"><li>Najprv si premenuj slovné zadanie na počet možností, počet bitov alebo veľkosť dát.</li><li>Pri počte binárnych slov používaj \(2^n\). Pri minimálnom počte bitov použi \(\lceil\log_2 M\rceil\).</li><li>Pri obrázkoch násob počet pixelov počtom kanálov a počtom bitov na kanál.</li><li>Na konci preveď jednotky pomaly: bity na bajty delíš \(8\), väčšie jednotky delíš príslušnou mocninou.</li></ol><div class="note"><p><strong>Kontrola:</strong> Odpoveď musí mať jednotku: bit, bajt, počet slov alebo konkrétnu hodnotu logaritmu.</p></div></section>
     <section class="card">
       <div class="section-tag">Vypracovanie</div>
       <p>Funkcia \(y=\log_2(x)\) je definovaná len pre \(x>0\), rastie a pretína os \(x\) v bode \((1,0)\).</p><ul><li>pre \(x\to0^+\) ide \(y\to-\infty\),</li><li>má vertikálnu asymptotu \(x=0\),</li><li>prechádza bodmi \((2,1)\), \((4,2)\), \((8,3)\).</li></ul>

@@ -154,6 +154,15 @@ th {
   font-size: 0.98rem;
 }
 
+.guide-list {
+  margin: 8px 0 14px;
+  padding-left: 1.35rem;
+}
+
+.guide-list li + li {
+  margin-top: 0.35rem;
+}
+
 .index-list {
   list-style: none;
   padding: 0;
@@ -253,6 +262,7 @@ code {
       <div class="section-tag">Zadanie</div>
       <p>Hammingov \([15,11,3]\) kód nad \(GF(2)\) je daný kontrolnou maticou \(H\). Zostrojte syndrómovú tabuľku a dekódujte vektor \(v=(1,0,1,0,1,0,1,0,1,0,1,0,1,0,1)\).</p><div class="math-block">\[H=\begin{bmatrix}0 & 0 & 0 & 0 & 0 & 0 & 0 & 1 & 1 & 1 & 1 & 1 & 1 & 1 & 1 \\\\ 0 & 0 & 0 & 1 & 1 & 1 & 1 & 0 & 0 & 0 & 0 & 1 & 1 & 1 & 1 \\\\ 0 & 1 & 1 & 0 & 0 & 1 & 1 & 0 & 0 & 1 & 1 & 0 & 0 & 1 & 1 \\\\ 1 & 0 & 1 & 0 & 1 & 0 & 1 & 0 & 1 & 0 & 1 & 0 & 1 & 0 & 1\end{bmatrix}\]</div>
     </section>
+    <section class="card"><div class="section-tag">Ako to riešiť</div><p>Najprv si úlohu rozdeľ na malé rozhodnutia. Pri skúške je dôležitejšie vedieť, ktorý postup použiť, než si pamätať výsledok.</p><ol class="guide-list"><li>Najprv urč dĺžku slova \(n\), počet informačných symbolov \(k\) a spôsob, akým vznikajú paritné symboly.</li><li>Ak máš generujúcu maticu, kódové slová vznikajú ako \(uG\). Ak máš kontrolnú maticu, platné slová spĺňajú \(cH^T=0\).</li><li>Minimálnu vzdialenosť pri lineárnom kóde hľadaj cez najmenšiu nenulovú Hammingovu váhu kódového slova.</li><li>Pri syndróme násob prijaté slovo kontrolnou maticou. Nulový syndróm znamená, že slovo už prešlo kontrolou.</li></ol><div class="note"><p><strong>Kontrola:</strong> Počet kódových slov lineárneho binárneho kódu je \(2^k\); okolitý priestor má \(2^n\) slov.</p></div></section>
     <section class="card">
       <div class="section-tag">Vypracovanie</div>
       <p>Kontrolná matica má stĺpce zodpovedajúce binárnym číslam \(1\) až \(15\):</p><div class="math-block">\[H=\begin{bmatrix}0 & 0 & 0 & 0 & 0 & 0 & 0 & 1 & 1 & 1 & 1 & 1 & 1 & 1 & 1 \\\\ 0 & 0 & 0 & 1 & 1 & 1 & 1 & 0 & 0 & 0 & 0 & 1 & 1 & 1 & 1 \\\\ 0 & 1 & 1 & 0 & 0 & 1 & 1 & 0 & 0 & 1 & 1 & 0 & 0 & 1 & 1 \\\\ 1 & 0 & 1 & 0 & 1 & 0 & 1 & 0 & 1 & 0 & 1 & 0 & 1 & 0 & 1\end{bmatrix}\]</div><p>Pri jednobitovej chybe je syndróm presne stĺpec matice \(H\), v ktorom nastala chyba. Preto tabuľka vyzerá takto:</p><div class="table-scroll"><table class="compact"><thead><tr><th>Syndróm</th><th>Najpravdepodobnejšia chyba</th></tr></thead><tbody><tr><td>\(0001\)</td><td>chyba v pozícii 1</td></tr><tr><td>\(0010\)</td><td>chyba v pozícii 2</td></tr><tr><td>\(0011\)</td><td>chyba v pozícii 3</td></tr><tr><td>\(0100\)</td><td>chyba v pozícii 4</td></tr><tr><td>\(0101\)</td><td>chyba v pozícii 5</td></tr><tr><td>\(0110\)</td><td>chyba v pozícii 6</td></tr><tr><td>\(0111\)</td><td>chyba v pozícii 7</td></tr><tr><td>\(1000\)</td><td>chyba v pozícii 8</td></tr><tr><td>\(1001\)</td><td>chyba v pozícii 9</td></tr><tr><td>\(1010\)</td><td>chyba v pozícii 10</td></tr><tr><td>\(1011\)</td><td>chyba v pozícii 11</td></tr><tr><td>\(1100\)</td><td>chyba v pozícii 12</td></tr><tr><td>\(1101\)</td><td>chyba v pozícii 13</td></tr><tr><td>\(1110\)</td><td>chyba v pozícii 14</td></tr><tr><td>\(1111\)</td><td>chyba v pozícii 15</td></tr></tbody></table></div><p>Syndróm prijatého vektora počítame ako \(s=vH^T\):</p><div class="math-block">\[s=0000\]</div><p>Keďže syndróm je nulový, vektor už spĺňa všetky kontrolné rovnice. Dekódovaný výsledok je teda rovnaký vektor:</p><div class="math-block">\[c=v=(1,0,1,0,1,0,1,0,1,0,1,0,1,0,1)\]</div>

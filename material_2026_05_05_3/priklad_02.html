@@ -154,6 +154,15 @@ th {
   font-size: 0.98rem;
 }
 
+.guide-list {
+  margin: 8px 0 14px;
+  padding-left: 1.35rem;
+}
+
+.guide-list li + li {
+  margin-top: 0.35rem;
+}
+
 .index-list {
   list-style: none;
   padding: 0;
@@ -253,6 +262,7 @@ code {
       <div class="section-tag">Zadanie</div>
       <p>A) Napíšte definíciu lineárneho blokového kódu.</p><p>B) Vysvetlite rozdiel medzi systematickým a nesystematickým kódovým slovom.</p>
     </section>
+    <section class="card"><div class="section-tag">Ako to riešiť</div><p>Najprv si úlohu rozdeľ na malé rozhodnutia. Pri skúške je dôležitejšie vedieť, ktorý postup použiť, než si pamätať výsledok.</p><ol class="guide-list"><li>Najprv urč dĺžku slova \(n\), počet informačných symbolov \(k\) a spôsob, akým vznikajú paritné symboly.</li><li>Ak máš generujúcu maticu, kódové slová vznikajú ako \(uG\). Ak máš kontrolnú maticu, platné slová spĺňajú \(cH^T=0\).</li><li>Minimálnu vzdialenosť pri lineárnom kóde hľadaj cez najmenšiu nenulovú Hammingovu váhu kódového slova.</li><li>Pri syndróme násob prijaté slovo kontrolnou maticou. Nulový syndróm znamená, že slovo už prešlo kontrolou.</li></ol><div class="note"><p><strong>Kontrola:</strong> Počet kódových slov lineárneho binárneho kódu je \(2^k\); okolitý priestor má \(2^n\) slov.</p></div></section>
     <section class="card">
       <div class="section-tag">Vypracovanie</div>
       <p>Lineárny blokový kód dĺžky \(n\) nad \(GF(q)\) je lineárny podpriestor priestoru \(GF(q)^n\). To znamená, že kódové slová sú vektory dĺžky \(n\) a súčet dvoch kódových slov aj násobok kódového slova skalárom znovu patria do kódu.</p><div class="math-block">\[C\le GF(q)^n\]</div><p>Ak má kód dimenziu \(k\), označuje sa často ako \([n,k,d]\), kde \(d\) je minimálna vzdialenosť.</p><p><strong>Systematický tvar:</strong> informačné symboly sú priamo viditeľné v kódovom slove, napríklad \((i_1,i_2,\dots,i_k,p_1,p_2,\dots)\).</p><p><strong>Nesystematický tvar:</strong> kódové slovo je vypočítaná kombinácia informačných symbolov a informačnú správu v ňom nevidíme ako súvislý blok bez ďalšieho spätného výpočtu.</p>

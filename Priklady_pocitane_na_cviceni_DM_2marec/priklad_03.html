@@ -154,6 +154,15 @@ th {
   font-size: 0.98rem;
 }
 
+.guide-list {
+  margin: 8px 0 14px;
+  padding-left: 1.35rem;
+}
+
+.guide-list li + li {
+  margin-top: 0.35rem;
+}
+
 .index-list {
   list-style: none;
   padding: 0;
@@ -253,6 +262,7 @@ code {
       <div class="section-tag">Zadanie</div>
       <p>Zistite, či prvky poľa GF(5) tvoria grupu vzhľadom na operáciu ×.</p>
     </section>
+    <section class="card"><div class="section-tag">Ako to riešiť</div><p>Najprv si úlohu rozdeľ na malé rozhodnutia. Pri skúške je dôležitejšie vedieť, ktorý postup použiť, než si pamätať výsledok.</p><ol class="guide-list"><li>Najprv si napíš, v akom poli sa počíta. V \(GF(p)\) berieš zvyšky modulo \(p\); v \(GF(2^m)\) redukuješ podľa daného polynómu.</li><li>Pri rozšírenom poli polož \(p(\alpha)=0\) a z toho vyjadri najvyššiu mocninu \(\alpha^m\).</li><li>Pri sčítaní nad charakteristikou \(2\) sa rovnaké členy zrušia. Pri násobení najprv roznásob a potom zredukuj vyššie mocniny.</li><li>Pri delení nenulových mocnín odčítaj exponenty modulo \(q-1\), alebo nájdi prvok, ktorý po vynásobení dá čitateľ.</li></ol><div class="note"><p><strong>Kontrola:</strong> Výsledok v \(GF(2^m)\) musí mať stupeň menší ako \(m\); inak ešte nie je zredukovaný.</p></div></section>
     <section class="card">
       <div class="section-tag">Vypracovanie</div>
       <p>Nie, celá množina GF(5) netvorí grupu vzhľadom na násobenie, pretože prvok 0 nemá násobkový inverz.</p><p>Keby 0 malo inverz x, muselo by platiť 0 · x = 1, čo je nemožné, lebo 0 · x = 0.</p><p>Naopak, množina nenulových prvkov {1,2,3,4} už grupu tvorí.</p>

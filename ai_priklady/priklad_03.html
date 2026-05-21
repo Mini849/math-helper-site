@@ -154,6 +154,15 @@ th {
   font-size: 0.98rem;
 }
 
+.guide-list {
+  margin: 8px 0 14px;
+  padding-left: 1.35rem;
+}
+
+.guide-list li + li {
+  margin-top: 0.35rem;
+}
+
 .index-list {
   list-style: none;
   padding: 0;
@@ -253,6 +262,7 @@ code {
       <div class="section-tag">Zadanie</div>
       <p>Skús si najprv vyriešiť tieto príklady bez pozerania do vypracovania. Sú poskladané podľa typov, ktoré sa opakovali v materiáloch.</p><ol><li>Navrhni hardvérové rovnice registra pre \(g(x)=x^4+x+1\).</li><li>Vydeľ \(x^9+x^7+x^6+x^3+x\) polynómom \(x^4+x^3+1\).</li><li>Systematicky zakóduj správu <code>1101</code> pomocou \(g(x)=x^3+x+1\). LSB je napravo.</li><li>V \(GF(4)\), kde \(\alpha^2=\alpha+1\), vypočítaj \(\alpha^5/\alpha\).</li><li>RS kód nad \(GF(16)\) má opravovať 3 chyby. Koľko koreňov má \(g(x)\), aký je posledný koreň pri prvom koreni \(\alpha^2\), aké sú \(n\), \(k\) a \(|C|\)?</li><li>Pre \(g(x)=x^3+x+1\) nájdi syndróm prijatého polynómu \(v(x)=x^5+x^2+1\) a oprav jednobitovú chybu.</li></ol>
     </section>
+    <section class="card"><div class="section-tag">Ako to riešiť</div><p>Najprv si úlohu rozdeľ na malé rozhodnutia. Pri skúške je dôležitejšie vedieť, ktorý postup použiť, než si pamätať výsledok.</p><ol class="guide-list"><li>Najprv prepíš zadanie do symbolov a vypíš, čo presne sa má nájsť.</li><li>Vyber definíciu alebo vzorec, ktorý zodpovedá typu úlohy.</li><li>Počítaj po malých krokoch a každý medzivýsledok redukuj v poli alebo modulo aritmetike, ak to zadanie vyžaduje.</li><li>Nakoniec výsledok porovnaj s podmienkou zo zadania.</li></ol><div class="note"><p><strong>Kontrola:</strong> Výsledok má spĺňať všetky obmedzenia zo zadania, nielen vyzerať algebraicky správne.</p></div></section>
     <section class="card">
       <div class="section-tag">Vypracovanie</div>
       <h3>1. Hardvér pre \(g(x)=x^4+x+1\)</h3><p>Stupeň je \(4\), takže potrebujeme registre \(R_3,R_2,R_1,R_0\). Nenulové nižšie členy sú pri \(x\) a \(1\):</p><figure class="source-figure">

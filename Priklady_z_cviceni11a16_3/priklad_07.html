@@ -154,6 +154,15 @@ th {
   font-size: 0.98rem;
 }
 
+.guide-list {
+  margin: 8px 0 14px;
+  padding-left: 1.35rem;
+}
+
+.guide-list li + li {
+  margin-top: 0.35rem;
+}
+
 .index-list {
   list-style: none;
   padding: 0;
@@ -253,6 +262,7 @@ code {
       <div class="section-tag">Zadanie</div>
       <p>Vysvetlite, ako sa dá výsledok úlohy 6 využiť v programe na určenie minimálnej kódovej vzdialenosti lineárneho blokového kódu.</p>
     </section>
+    <section class="card"><div class="section-tag">Ako to riešiť</div><p>Najprv si úlohu rozdeľ na malé rozhodnutia. Pri skúške je dôležitejšie vedieť, ktorý postup použiť, než si pamätať výsledok.</p><ol class="guide-list"><li>Najprv prepíš zadanie do symbolov a vypíš, čo presne sa má nájsť.</li><li>Vyber definíciu alebo vzorec, ktorý zodpovedá typu úlohy.</li><li>Počítaj po malých krokoch a každý medzivýsledok redukuj v poli alebo modulo aritmetike, ak to zadanie vyžaduje.</li><li>Nakoniec výsledok porovnaj s podmienkou zo zadania.</li></ol><div class="note"><p><strong>Kontrola:</strong> Výsledok má spĺňať všetky obmedzenia zo zadania, nielen vyzerať algebraicky správne.</p></div></section>
     <section class="card">
       <div class="section-tag">Vypracovanie</div>
       <p>Pre lineárny kód platí, že rozdiel dvoch kódových slov je opäť kódové slovo. Nad \(GF(2)\) je rozdiel to isté ako súčet.</p><p>Preto minimálna vzdialenosť kódu nemusí byť počítaná ako minimum cez všetky dvojice \((c_i,c_j)\). Stačí hľadať najmenšiu nenulovú Hammingovu váhu medzi nenulovými kódovými slovami:</p><div class="math-block">\[d_{\min} = \min\{w(c)\; ;\; c\in C,\ c\neq0\}\]</div><p>Programovo je to výrazne jednoduchšie:</p><ol><li>vygenerujeme všetky kódové slová,</li><li>vynecháme nulové slovo,</li><li>spočítame ich váhy,</li><li>zoberieme minimum.</li></ol><p>Tým sa z problému porovnávania všetkých dvojíc stane problém merania váh jednotlivých kódových slov.</p>

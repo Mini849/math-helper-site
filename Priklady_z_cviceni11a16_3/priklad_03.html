@@ -154,6 +154,15 @@ th {
   font-size: 0.98rem;
 }
 
+.guide-list {
+  margin: 8px 0 14px;
+  padding-left: 1.35rem;
+}
+
+.guide-list li + li {
+  margin-top: 0.35rem;
+}
+
 .index-list {
   list-style: none;
   padding: 0;
@@ -253,6 +262,7 @@ code {
       <div class="section-tag">Zadanie</div>
       <p>Pre lineárny blokový kód \([15,11,3]\) nad \(GF(2)\) určte počet kódových slov, veľkosť okolitého priestoru, rýchlosť kódu a maximálny počet opravených chýb.</p>
     </section>
+    <section class="card"><div class="section-tag">Ako to riešiť</div><p>Najprv si úlohu rozdeľ na malé rozhodnutia. Pri skúške je dôležitejšie vedieť, ktorý postup použiť, než si pamätať výsledok.</p><ol class="guide-list"><li>Najprv urč dĺžku slova \(n\), počet informačných symbolov \(k\) a spôsob, akým vznikajú paritné symboly.</li><li>Ak máš generujúcu maticu, kódové slová vznikajú ako \(uG\). Ak máš kontrolnú maticu, platné slová spĺňajú \(cH^T=0\).</li><li>Minimálnu vzdialenosť pri lineárnom kóde hľadaj cez najmenšiu nenulovú Hammingovu váhu kódového slova.</li><li>Pri syndróme násob prijaté slovo kontrolnou maticou. Nulový syndróm znamená, že slovo už prešlo kontrolou.</li></ol><div class="note"><p><strong>Kontrola:</strong> Počet kódových slov lineárneho binárneho kódu je \(2^k\); okolitý priestor má \(2^n\) slov.</p></div></section>
     <section class="card">
       <div class="section-tag">Vypracovanie</div>
       <p>Pre lineárny kód \([n,k,d]\) platí:</p><ul><li>počet kódových slov je \(2^k\),</li><li>počet všetkých vektorov v okolí je \(2^n\),</li><li>rýchlosť kódu je \(R=\frac{k}{n}\),</li><li>počet opraviteľných chýb je \(t=\left\lfloor\frac{d-1}{2}\right\rfloor\).</li></ul><div class="math-block">\[|C| = 2^{11} = 2048\]</div><div class="math-block">\[|GF(2)^{15}| = 2^{15} = 32768\]</div><div class="math-block">\[R = \frac{11}{15} \approx 0.7333\]</div><div class="math-block">\[t = \left\lfloor \frac{3-1}{2} \right\rfloor = 1\]</div><p>Záver: kód má 2048 kódových slov, okolitý priestor 32768 vektorov, rýchlosť \(11/15\) a opraví najviac 1 chybu v kódovom slove.</p>

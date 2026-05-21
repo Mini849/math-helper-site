@@ -154,6 +154,15 @@ th {
   font-size: 0.98rem;
 }
 
+.guide-list {
+  margin: 8px 0 14px;
+  padding-left: 1.35rem;
+}
+
+.guide-list li + li {
+  margin-top: 0.35rem;
+}
+
 .index-list {
   list-style: none;
   padding: 0;
@@ -253,6 +262,7 @@ code {
       <div class="section-tag">Zadanie</div>
       <p>Pre Hammingov \([15,11,3]\) kód s generujúcim polynómom \(g(x)=x^4+x^3+1\) zostrojte syndrómovú tabuľku a dekódujte \(v(x)=x^5+x^4+x^3+1\).</p>
     </section>
+    <section class="card"><div class="section-tag">Ako to riešiť</div><p>Najprv si úlohu rozdeľ na malé rozhodnutia. Pri skúške je dôležitejšie vedieť, ktorý postup použiť, než si pamätať výsledok.</p><ol class="guide-list"><li>Najprv premeň bity na polynóm. Ak zadanie hovorí, že LSB je napravo, pravý bit je koeficient pri \(x^0\).</li><li>Stupeň generujúceho polynómu \(g(x)\) určuje počet kontrolných bitov a počet miest posunu pri systematickom kódovaní.</li><li>Pri systematickom kódovaní počítaj zvyšok z \(x^r m(x)\) po delení \(g(x)\), potom tento zvyšok pripočítaj späť.</li><li>Pri dekódovaní je syndróm zvyšok po delení prijatého slova. Rovnaký syndróm hľadaj v tabuľke chýb.</li></ol><div class="note"><p><strong>Kontrola:</strong> Platné kódové slovo má po delení \(g(x)\) nulový zvyšok.</p><p><strong>Pozor:</strong> Nad \(GF(2)\) je odčítanie to isté ako sčítanie, teda XOR.</p></div></section>
     <section class="card">
       <div class="section-tag">Vypracovanie</div>
       <p>Syndróm jednobitovej chyby \(x^i\) je zvyšok po delení \(x^i\) polynómom \(g(x)\). Pre dĺžku \(15\) dostaneme tabuľku:</p><div class="table-scroll"><table class="compact"><thead><tr><th>Syndróm</th><th>Chyba</th><th>Interpretácia</th></tr></thead><tbody><tr><td>\(1\)</td><td>\(1\)</td><td>chyba v koeficiente pri \(x^0\)</td></tr><tr><td>\(x\)</td><td>\(x\)</td><td>chyba v koeficiente pri \(x^1\)</td></tr><tr><td>\(x^2\)</td><td>\(x^2\)</td><td>chyba v koeficiente pri \(x^2\)</td></tr><tr><td>\(x^3\)</td><td>\(x^3\)</td><td>chyba v koeficiente pri \(x^3\)</td></tr><tr><td>\(x^3 + 1\)</td><td>\(x^4\)</td><td>chyba v koeficiente pri \(x^4\)</td></tr><tr><td>\(x^3 + x + 1\)</td><td>\(x^5\)</td><td>chyba v koeficiente pri \(x^5\)</td></tr><tr><td>\(x^3 + x^2 + x + 1\)</td><td>\(x^6\)</td><td>chyba v koeficiente pri \(x^6\)</td></tr><tr><td>\(x^2 + x + 1\)</td><td>\(x^7\)</td><td>chyba v koeficiente pri \(x^7\)</td></tr><tr><td>\(x^3 + x^2 + x\)</td><td>\(x^8\)</td><td>chyba v koeficiente pri \(x^8\)</td></tr><tr><td>\(x^2 + 1\)</td><td>\(x^9\)</td><td>chyba v koeficiente pri \(x^9\)</td></tr><tr><td>\(x^3 + x\)</td><td>\(x^10\)</td><td>chyba v koeficiente pri \(x^10\)</td></tr><tr><td>\(x^3 + x^2 + 1\)</td><td>\(x^11\)</td><td>chyba v koeficiente pri \(x^11\)</td></tr><tr><td>\(x + 1\)</td><td>\(x^12\)</td><td>chyba v koeficiente pri \(x^12\)</td></tr><tr><td>\(x^2 + x\)</td><td>\(x^13\)</td><td>chyba v koeficiente pri \(x^13\)</td></tr><tr><td>\(x^3 + x^2\)</td><td>\(x^14\)</td><td>chyba v koeficiente pri \(x^14\)</td></tr></tbody></table></div><p>Teraz vydelíme prijatý polynóm generujúcim polynómom:</p><div class="math-block">\[s(x)=\operatorname{rem}(v(x),g(x))=x^3 + x + 1\]</div><p>V tabuľke tento syndróm patrí chybe \(e(x)=x^5\). Opravíme pripočítaním chyby, čo je nad \(GF(2)\) to isté ako odčítanie:</p><div class="math-block">\[c(x)=v(x)+x^5=x^4 + x^3 + 1\]</div><p>Zvyšok \(c(x)\) po delení \(g(x)\) je nulový, takže výsledok je kódové slovo.</p>

@@ -154,6 +154,15 @@ th {
   font-size: 0.98rem;
 }
 
+.guide-list {
+  margin: 8px 0 14px;
+  padding-left: 1.35rem;
+}
+
+.guide-list li + li {
+  margin-top: 0.35rem;
+}
+
 .index-list {
   list-style: none;
   padding: 0;
@@ -253,6 +262,7 @@ code {
       <div class="section-tag">Zadanie</div>
       <p>Vypočítajte determinant matice nad \(GF(2)\)</p><div class="math-block">\[\begin{bmatrix}1 & 0 & 1 \\\\ 1 & 1 & 0 \\\\ 0 & 1 & 1\end{bmatrix}\]</div>
     </section>
+    <section class="card"><div class="section-tag">Ako to riešiť</div><p>Najprv si úlohu rozdeľ na malé rozhodnutia. Pri skúške je dôležitejšie vedieť, ktorý postup použiť, než si pamätať výsledok.</p><ol class="guide-list"><li>Najprv si označ rozmery objektov: pri súčine matíc musí počet stĺpcov prvej matice sedieť s počtom riadkov druhej.</li><li>Každý prvok výsledku počítaj ako riadok krát stĺpec. Pri lineárnej kombinácii najprv vynásob koeficientmi, potom sčítaj súradnice.</li><li>Ak sa počíta nad \(GF(2)\), po každom sčítaní aj násobení ber zvyšok modulo \(2\).</li><li>Pri determinante alebo úprave matice si vždy po jednom kroku skontroluj znamienka alebo modulo redukciu.</li></ol><div class="note"><p><strong>Kontrola:</strong> Výsledok musí mať správny rozmer a v \(GF(2)\) sa v ňom môžu objaviť iba hodnoty \(0\) a \(1\).</p></div></section>
     <section class="card">
       <div class="section-tag">Vypracovanie</div>
       <p>Rozvoj podľa prvého riadku dá</p><div class="math-block">\[\det A = 1\cdot\begin{vmatrix}1&0\\1&1\end{vmatrix} + 0 + 1\cdot\begin{vmatrix}1&1\\0&1\end{vmatrix}\]</div><p>V obyčajných číslach sú menšie determinanty \(1\) a \(1\), takže celkový determinant je \(2\).</p><p>Nad \(GF(2)\) však redukujeme modulo \(2\):</p><div class="math-block">\[2 \equiv 0 \pmod 2\]</div><p>Preto \(\det A = 0\) v \(GF(2)\).</p>
